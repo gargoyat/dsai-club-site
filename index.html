@@ -93,7 +93,7 @@
             flex: 1; width: 100%; box-sizing: border-box;
         }
 
-        /* --- Updated Image Slider Styles (Pause on Hover) --- */
+        /* --- Image Slider Styles (Pause on Hover) --- */
         .slider-wrapper {
             width: 100%;
             height: 400px;
@@ -113,7 +113,6 @@
             animation: autoSlide 25s infinite cubic-bezier(0.77, 0, 0.175, 1);
         }
 
-        /* Pauses the sliding animation when hovered */
         .slider-wrapper:hover .slider-track {
             animation-play-state: paused;
         }
@@ -187,21 +186,18 @@
             gap: 25px; margin-top: 30px;
         }
 
-        .image-card {
-            background: #ffffff; border-radius: 16px; overflow: hidden;
+        .text-card {
+            background: #ffffff; border-radius: 16px; padding: 30px;
             border: 1px solid rgba(0,0,0,0.05); transition: all 0.4s ease;
             display: flex; flex-direction: column; box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            border-top: 4px solid var(--primary-blue);
         }
         
-        .image-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(2, 132, 199, 0.15); }
-        .img-container { overflow: hidden; }
-        .image-card img { width: 100%; height: 180px; object-fit: cover; transition: transform 0.5s ease; }
-        .image-card:hover img { transform: scale(1.08); }
+        .text-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(2, 132, 199, 0.15); }
+        .text-card h3 { color: var(--primary-blue); margin: 0 0 15px 0; font-size: 1.4rem; }
+        .text-card p { margin: 0; font-size: 1rem; color: #64748b; }
 
-        .card-content { padding: 25px; position: relative; flex-grow: 1; background: #ffffff; }
-        .card-content h3 { color: var(--primary-blue); margin: 0 0 10px 0; font-size: 1.3rem; }
-        .card-content p { margin: 0; font-size: 0.95rem; color: #64748b; }
-
+        /* Core Members Custom Grid */
         .core-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -228,6 +224,7 @@
             box-shadow: 0 5px 15px rgba(2, 132, 199, 0.2);
         }
 
+        /* Footer */
         footer {
             background: rgba(255, 255, 255, 0.9); border-top: 1px solid rgba(0, 0, 0, 0.05);
             padding: 60px 20px; text-align: center; margin-top: auto; backdrop-filter: blur(10px);
@@ -286,15 +283,16 @@
 
     <div class="container">
         
-        <!-- Automated Image Slider with Fallbacks -->
+        <!-- Automated Image Slider with your exact links -->
         <div class="slider-wrapper">
             <div class="slider-track">
-                <img src="https://polaris.iitbhilai.ac.in/images/Club%20Images/SciTech/DSAI/DSAI_1.jpg" onerror="this.src='https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800&q=80'" alt="DSAI Slide 1">
-                <img src="https://polaris.iitbhilai.ac.in/images/Club%20Images/SciTech/DSAI/DSAI_2.jpg" onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80'" alt="DSAI Slide 2">
-                <img src="https://media.licdn.com/dms/image/v2/D5622AQFBw2qVkEQFRg/feedshare-shrink_800/B56aANgCJtIUAc-/0/1786932896610?e=1790208000&v=beta&t=VK8620pyPesK4buTeIF3it-yOEMiUNGuO4saEh8QoQc" onerror="this.src='https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80'" alt="DSAI Slide 3">
-                <img src="https://media.licdn.com/dms/image/v2/D5622AQGNJSnfxIoiNg/feedshare-image-high-res/B56aANgCPZGUAU-/0/1786932896954?e=1790208000&v=beta&t=phVnhHCeaAyLq5KLFLoNtkEiwkKR2PCSt2CnsmUQUFU" onerror="this.src='https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?auto=format&fit=crop&w=800&q=80'" alt="DSAI Slide 4">
-                <img src="https://polaris.iitbhilai.ac.in/images/Club%20Images/SciTech/DSAI/DSAI_4.jpg" onerror="this.src='https://images.unsplash.com/photo-1591115765373-5207764f72e7?auto=format&fit=crop&w=800&q=80'" alt="DSAI Slide 5">
-                <img src="https://polaris.iitbhilai.ac.in/images/Club%20Images/SciTech/DSAI/DSAI_1.jpg" onerror="this.src='https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800&q=80'" alt="DSAI Slide 1 Loop">
+                <img src="https://polaris.iitbhilai.ac.in/images/Club%20Images/SciTech/DSAI/DSAI_1.jpg" alt="DSAI Slide 1">
+                <img src="https://polaris.iitbhilai.ac.in/images/Club%20Images/SciTech/DSAI/DSAI_2.jpg" alt="DSAI Slide 2">
+                <img src="https://media.licdn.com/dms/image/v2/D5622AQFBw2qVkEQFRg/feedshare-shrink_800/B56aANgCJtIUAc-/0/1786932896610?e=1790208000&v=beta&t=VK8620pyPesK4buTeIF3it-yOEMiUNGuO4saEh8QoQc" alt="DSAI Slide 3">
+                <img src="https://media.licdn.com/dms/image/v2/D5622AQEcDD1DPo4Frw/feedshare-shrink_1280/B56aANgCVXHsAM-/0/1786932897337?e=1790208000&v=beta&t=-TrorEZQw-ZKN1BhfjRh5NSVZlhPIsmJcWU7ztnIy00" alt="DSAI Slide 4">
+                <img src="https://polaris.iitbhilai.ac.in/images/Club%20Images/SciTech/DSAI/DSAI_4.jpg" alt="DSAI Slide 5">
+                <!-- Cloned first image for smooth infinite looping -->
+                <img src="https://polaris.iitbhilai.ac.in/images/Club%20Images/SciTech/DSAI/DSAI_1.jpg" alt="DSAI Slide 1 Loop">
             </div>
         </div>
 
@@ -322,44 +320,24 @@
             <p>We are highly active on campus, transforming theoretical knowledge into hands-on experiences through continuous events and community building[cite: 3].</p>
             
             <div class="card-grid">
-                <div class="image-card">
-                    <div class="img-container">
-                        <img src="https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?auto=format&fit=crop&w=600&q=80" alt="Group Discussion">
-                    </div>
-                    <div class="card-content">
-                        <h3>Group Discussions</h3>
-                        <p>Weekly roundtables where members debate the ethics of AI, break down new research papers, and brainstorm project solutions.</p>
-                    </div>
+                <div class="text-card">
+                    <h3>Group Discussions</h3>
+                    <p>Weekly roundtables where members debate the ethics of AI, break down new research papers, and brainstorm project solutions.</p>
                 </div>
                 
-                <div class="image-card">
-                    <div class="img-container">
-                        <img src="https://images.unsplash.com/photo-1591115765373-5207764f72e7?auto=format&fit=crop&w=600&q=80" alt="Expert Talk">
-                    </div>
-                    <div class="card-content">
-                        <h3>Expert Talks</h3>
-                        <p>We invite industry leaders, researchers, and alumni to share cutting-edge insights on where the AI industry is heading.</p>
-                    </div>
+                <div class="text-card">
+                    <h3>Expert Talks</h3>
+                    <p>We invite industry leaders, researchers, and alumni to share cutting-edge insights on where the AI industry is heading.</p>
                 </div>
 
-                <div class="image-card">
-                    <div class="img-container">
-                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Hackathon">
-                    </div>
-                    <div class="card-content">
-                        <h3>Hackathons</h3>
-                        <p>Intense, coffee-fueled coding marathons where teams compete to build functioning AI applications in just 24-48 hours[cite: 3].</p>
-                    </div>
+                <div class="text-card">
+                    <h3>Hackathons</h3>
+                    <p>Intense, coffee-fueled coding marathons where teams compete to build functioning AI applications in just 24-48 hours[cite: 3].</p>
                 </div>
 
-                <div class="image-card">
-                    <div class="img-container">
-                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=600&q=80" alt="Meraz Fest">
-                    </div>
-                    <div class="card-content">
-                        <h3>Meraz Fest Events</h3>
-                        <p>Hosting flagship technical challenges, AI showcases, and competitive tech events during IIT Bhilai's annual techno-cultural extravaganza[cite: 2].</p>
-                    </div>
+                <div class="text-card">
+                    <h3>Meraz Fest Events</h3>
+                    <p>Hosting flagship technical challenges, AI showcases, and competitive tech events during IIT Bhilai's annual techno-cultural extravaganza[cite: 2].</p>
                 </div>
             </div>
         </div>
@@ -380,33 +358,31 @@
             <p>Nobody learns alone here. Our club uses a two-tier mentorship system to ensure that every single beginner gets the personal guidance they need to succeed[cite: 3].</p>
             
             <div class="card-grid">
-                <div class="image-card">
-                    <div class="card-content">
-                        <h3>Coordinators</h3>
-                        <p style="color: var(--primary-blue); font-weight: bold; margin-bottom: 10px;">Vatsal Yadav & Siddhesh Bansal</p>
-                        <p>The visionary leaders driving the club's operations, organizing hackathons, and ensuring everyone has the resources they need[cite: 3].</p>
-                    </div>
+                <div class="text-card" style="border-top-color: var(--primary-blue);">
+                    <h3>Coordinators</h3>
+                    <p style="color: var(--primary-blue); font-weight: bold; margin-bottom: 10px;">Vatsal Yadav & Siddhesh Bansal</p>
+                    <p>The visionary leaders driving the club's operations, organizing hackathons, and ensuring everyone has the resources they need[cite: 3].</p>
                 </div>
-                <div class="image-card" style="grid-column: 1 / -1;">
-                    <div class="card-content">
-                        <h3>Core Members</h3>
-                        <p style="color: var(--secondary-blue); font-weight: bold; margin-bottom: 15px;">Project Mentors & Technical Leaders</p>
-                        <p>Experienced senior students who lead the technical projects. They act as your personal mentors, guiding you through bugs and code errors[cite: 3].</p>
-                        
-                        <div class="core-grid">
-                            <div class="core-badge">Adhi Agrawal</div>
-                            <div class="core-badge">Dinesh Abhiram A.V.N</div>
-                            <div class="core-badge">Sikharam Satya Sri Harsha</div>
-                            <div class="core-badge">Kushal Radia</div>
-                            <div class="core-badge">Navanil Ghosh</div>
-                            <div class="core-badge">Parth N Bhosale</div>
-                            <div class="core-badge">Sai Siddhardha Moguluri</div>
-                            <div class="core-badge">Shlok Divyam</div>
-                            <div class="core-badge">Siddhant Shukla</div>
-                            <div class="core-badge">Vaibhav</div>
-                            <div class="core-badge">Yog Damahe</div>
-                            <div class="core-badge">Thammandra Saketh Ram</div>
-                        </div>
+                
+                <!-- Core Members Card expanded to fit the roster -->
+                <div class="text-card" style="grid-column: 1 / -1; border-top-color: var(--secondary-blue);">
+                    <h3>Core Members</h3>
+                    <p style="color: var(--secondary-blue); font-weight: bold; margin-bottom: 15px;">Project Mentors & Technical Leaders</p>
+                    <p>Experienced senior students who lead the technical projects. They act as your personal mentors, guiding you through bugs and code errors[cite: 3].</p>
+                    
+                    <div class="core-grid">
+                        <div class="core-badge">Adhi Agrawal</div>
+                        <div class="core-badge">Dinesh Abhiram A.V.N</div>
+                        <div class="core-badge">Sikharam Satya Sri Harsha</div>
+                        <div class="core-badge">Kushal Radia</div>
+                        <div class="core-badge">Navanil Ghosh</div>
+                        <div class="core-badge">Parth N Bhosale</div>
+                        <div class="core-badge">Sai Siddhardha Moguluri</div>
+                        <div class="core-badge">Shlok Divyam</div>
+                        <div class="core-badge">Siddhant Shukla</div>
+                        <div class="core-badge">Vaibhav</div>
+                        <div class="core-badge">Yog Damahe</div>
+                        <div class="core-badge">Thammandra Saketh Ram</div>
                     </div>
                 </div>
             </div>
