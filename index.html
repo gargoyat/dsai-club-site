@@ -71,8 +71,8 @@
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.4); /* Reduced fade */
-            backdrop-filter: blur(2px); /* Reduced blur */
+            background: rgba(255, 255, 255, 0.4); 
+            backdrop-filter: blur(2px); 
             z-index: 0;
         }
 
@@ -140,6 +140,7 @@
 
         @keyframes typing { from { width: 0 } to { width: 100% } }
         @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--primary-blue); } }
+        @keyframes fadeIn { to { opacity: 1; } }
 
         .container {
             max-width: 1100px;
@@ -173,6 +174,7 @@
         .overlay-title { 
             font-family: 'Montserrat', sans-serif; font-size: 2.8rem; font-weight: 800; 
             color: var(--primary-blue); letter-spacing: 4px; animation: pulse 1s infinite alternate; 
+            text-align: center;
         }
         
         @keyframes pulse { from { opacity: 0.6; transform: scale(0.95); } to { opacity: 1; transform: scale(1.05); } }
@@ -220,9 +222,9 @@
         /* Sticky Tabs */
         .tabs {
             display: flex;
-            justify-content: flex-start;
+            justify-content: center;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 12px;
             margin-bottom: 40px;
             position: sticky;
             top: 20px;
@@ -239,11 +241,11 @@
             background: transparent;
             color: #64748b;
             border: 1px solid transparent;
-            padding: 10px 25px;
+            padding: 10px 20px;
             border-radius: 30px;
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 600;
-            font-size: 1.05rem;
+            font-size: 1rem;
             text-decoration: none;
             transition: all 0.3s ease;
         }
@@ -267,7 +269,7 @@
             border: 1px solid var(--glass-border);
             box-shadow: 0 20px 40px rgba(0,0,0,0.04); 
             margin-bottom: 50px;
-            scroll-margin-top: 120px; 
+            scroll-margin-top: 150px; 
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -363,8 +365,8 @@
 
         .core-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 12px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
             margin-top: 15px;
         }
         
@@ -372,9 +374,9 @@
             background: rgba(2, 132, 199, 0.05);
             border: 1px solid rgba(2, 132, 199, 0.2);
             color: var(--dark-text);
-            padding: 10px 15px;
+            padding: 10px;
             border-radius: 8px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
             text-align: center;
             transition: all 0.3s ease;
@@ -419,7 +421,7 @@
 
         .social-container {
             display: flex;
-            gap: 25px;
+            gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
         }
@@ -429,10 +431,10 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 65px; height: 65px;
+            width: 60px; height: 60px;
             background: var(--light-bg);
             color: var(--primary-blue);
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             text-decoration: none;
             border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
             transition: all 0.5s ease;
@@ -474,6 +476,69 @@
             transform: translateY(-3px);
             box-shadow: 0 15px 25px rgba(2, 132, 199, 0.4);
         }
+
+        /* -------------------------------------
+           MOBILE RESPONSIVENESS (Media Queries) 
+           ------------------------------------- */
+        @media (max-width: 768px) {
+            header {
+                padding: 40px 15px 20px;
+            }
+            .title-wrapper {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .club-logo {
+                height: 70px;
+                width: 70px;
+            }
+            h1 {
+                font-size: 2.8rem;
+            }
+            .subtitle {
+                font-size: 1.1rem;
+                white-space: normal; 
+                border-right: none; 
+                animation: fadeIn 1s ease-in forwards; 
+            }
+            .slider-wrapper {
+                height: 220px;
+                border-radius: 16px;
+                margin-bottom: 30px;
+            }
+            .tabs {
+                gap: 8px;
+                padding: 10px;
+                top: 10px;
+            }
+            .tab-btn {
+                padding: 8px 14px;
+                font-size: 0.9rem;
+            }
+            .section {
+                padding: 30px 20px;
+                border-radius: 16px;
+                scroll-margin-top: 160px; /* Account for wrapped tabs on mobile */
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            .overlay-title {
+                font-size: 1.8rem;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            .liquid-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+            .coordinator-info p {
+                font-size: 1.1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -500,14 +565,13 @@
 
     <div class="container">
         
-        <!-- Automated 4-Image Slider with exactly the requested images -->
+        <!-- Automated 4-Image Slider -->
         <div class="slider-wrapper">
             <div class="slider-track">
                 <img src="https://media.licdn.com/dms/image/v2/D5622AQFBw2qVkEQFRg/feedshare-shrink_800/B56aANgCJtIUAc-/0/1786932896610?e=1790208000&v=beta&t=VK8620pyPesK4buTeIF3it-yOEMiUNGuO4saEh8QoQc" alt="DSAI Image 1">
                 <img src="https://media.licdn.com/dms/image/v2/D5622AQEcDD1DPo4Frw/feedshare-shrink_1280/B56aANgCVXHsAM-/0/1786932897337?e=1790208000&v=beta&t=-TrorEZQw-ZKN1BhfjRh5NSVZlhPIsmJcWU7ztnIy00" alt="DSAI Image 2">
                 <img src="https://scontent-bom2-4.xx.fbcdn.net/v/t39.30808-6/476927714_646486844574808_772153997691883184_n.jpg?stp=dst-jpg_tt6&cstp=mx640x288&ctp=s640x288&_nc_cat=106&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=2Bm9MIfhChgQ7kNvwEc3nrw&_nc_oc=AdoM1Y25F-FdR6nJxMQl71l-_HMHjD4j2hXuulGHOIMuqN8xBvhPsegxgS2troqVHD0&_nc_zt=23&_nc_ht=scontent-bom2-4.xx&_nc_gid=_DyC8aP8dTjmraI4-ly9qw&_nc_ss=7b289&oh=00_AQL0BMx39Y2B1b1H2WMaT0Ub6gr5d3kNAzx78nJrTxV_iA&oe=6AA1AD02" alt="DSAI Image 3">
                 <img src="logo.jpg" onerror="this.style.display='none'" alt="DSAI Logo">
-                <!-- Cloned first image for smooth infinite looping -->
                 <img src="https://media.licdn.com/dms/image/v2/D5622AQFBw2qVkEQFRg/feedshare-shrink_800/B56aANgCJtIUAc-/0/1786932896610?e=1790208000&v=beta&t=VK8620pyPesK4buTeIF3it-yOEMiUNGuO4saEh8QoQc" alt="DSAI Image 1 Loop">
             </div>
         </div>
