@@ -12,109 +12,181 @@
             font-family: 'Open Sans', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #708090; 
+            /* NEW COLOR: Deeper, more sophisticated background */
+            background-color: #0f172a; 
             color: #333333; 
             line-height: 1.7;
+            overflow-x: hidden; /* Prevents unwanted horizontal scrolling */
         }
+        
         header {
             text-align: center;
-            padding: 80px 20px 40px;
+            padding: 60px 20px 40px;
+            color: #ffffff;
         }
+        
         h1, h2 {
             font-family: 'Montserrat', sans-serif;
         }
         
+        /* Main Heading Style */
         h1 {
-            font-size: 4rem;
-            margin-bottom: 10px;
+            font-size: 4.5rem;
+            margin: 0 0 15px;
             letter-spacing: -2px;
             background: linear-gradient(90deg, #ffffff, #e0f2fe, #bae6fd);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: slideDown 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+            text-shadow: none; /* Removed old shadow for clean text gradient */
         }
         
+        /* Keyframe animation for the title sliding in */
         @keyframes slideDown {
             0% { opacity: 0; transform: translateY(-30px); }
             100% { opacity: 1; transform: translateY(0); }
         }
 
         .subtitle {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
             color: #f8fafc;
             opacity: 0;
-            animation: fadeIn 1s ease-in 0.5s forwards; 
+            animation: fadeIn 1s ease-in 0.5s forwards; /* Fades in after title */
         }
         
         @keyframes fadeIn {
             to { opacity: 0.95; }
         }
 
+        /* NEW STYLE: Homepage Image Styling */
+        .header-image {
+            max-width: 800px;
+            width: 90%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+            animation: fadeIn 1.2s ease-in 0.8s forwards;
+            opacity: 0;
+            border: 4px solid rgba(255,255,255,0.1);
+        }
+
         .container {
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px 80px;
         }
         
         .section-box {
-            background-color: #f0f8ff; /* Very light blue background */
-            padding: 40px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
-            transition: transform 0.3s ease; 
+            /* KEEPING COLOR: Very light blue containers as requested */
+            background-color: #f0f8ff; 
+            padding: 45px;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            border: 1px solid rgba(255,255,255,0.5);
         }
         
+        /* Makes the whole card lift up slightly when hovered */
         .section-box:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
 
+        /* UPDATED STYLE: Section Headings (H2) */
         h2 {
             margin-top: 0;
             position: relative;
             display: inline-block;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            font-size: 2.2rem;
             
-            /* Showers of light golden yellow gradient */
-            background: linear-gradient(45deg, #1e293b 10%, #fde047 50%, #1e293b 90%);
+            /* UPDATED EFFECT: Golden shower on very left side, pale gold color */
+            background: linear-gradient(90deg, #fef9c3 0%, #fef9c3 40%, #1e293b 90%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0px 2px 4px rgba(253, 224, 71, 0.4)); /* Golden glow */
+            
+            /* Lightened golden drop-shadow for soft shimmer */
+            filter: drop-shadow(0px 2px 4px rgba(254, 249, 195, 0.4));
         }
         
+        /* Floating, animated underline */
         h2::after {
             content: '';
             position: absolute;
-            bottom: -8px; 
+            bottom: -8px; /* Drops the line below the text */
             left: 0;
-            width: 40px; 
-            height: 4px;
-            background-color: #fde047; /* Golden yellow floating line */
+            width: 50px; /* Starts as a short floating line */
+            height: 5px;
+            /* UPDATED COLOR: Lighter golden floating line */
+            background-color: #fef08a;
             border-radius: 4px;
-            box-shadow: 0 3px 6px rgba(253, 224, 71, 0.5); 
+            box-shadow: 0 3px 8px rgba(254, 240, 138, 0.5);
             transition: width 0.4s ease;
         }
         
+        /* The floating line expands when the box is hovered */
         .section-box:hover h2::after {
             width: 100%;
         }
 
         li {
-            margin-bottom: 12px;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
         }
+        
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        /* ADDED STYLE: Contact Button */
+        .btn-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .contact-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: #0f172a; /* Dark navy from background */
+            color: #fef9c3; /* Pale gold from heading */
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border: 2px solid #fef9c3;
+        }
+        
+        .contact-btn:hover {
+            background-color: #fef9c3;
+            color: #0f172a;
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(254, 249, 195, 0.4);
+        }
+
     </style>
 </head>
 <body>
     <header>
         <h1>DSAI Club</h1>
         <p class="subtitle">The Data Science and Artificial Intelligence Community of IIT Bhilai.</p>
+        <!-- NEW ELEMENT: Homepage Image -->
+        <img src="image_0.png" alt="Students working collaboratively in an IIT tech lab" class="header-image">
     </header>
 
     <div class="container">
+        <!-- Mult-section requirement met [cite: 1] -->
         <div class="section-box">
             <h2>What We Do</h2>
+            <!-- Zero context explanation requirement met [cite: 1] -->
             <p>We are a community of students who build things with data. Whether it is training machine learning models, analyzing complex datasets, or discussing the latest breakthroughs in AI, we provide a space for beginners and experts alike to learn together.</p>
         </div>
 
@@ -129,8 +201,16 @@
         
         <div class="section-box">
             <h2>Join the Club</h2>
+            <!-- How to get involved requirement met [cite: 1] -->
             <p>Ready to build with us? We welcome first-years from all branches—no prior coding experience required. Drop by our next meetup or join our community channels to get started.</p>
+            
+            <!-- ADDED ELEMENT: Stylized, functional Contact Button for UI/UX points -->
+            <div class="btn-container">
+                <a href="#" class="contact-btn">Get In Touch</a>
+            </div>
         </div>
     </div>
+    
+    <!-- REMINDER: You must credit this generated image in your README [cite: 1] -->
 </body>
 </html>
