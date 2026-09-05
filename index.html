@@ -280,6 +280,14 @@
         }
         .section:hover h2::after { width: 100%; }
 
+        ul { list-style: none; padding: 0; }
+        li {
+            background: var(--card-bg); padding: 20px; margin-bottom: 15px; border-radius: 12px;
+            border-left: 5px solid var(--primary-blue); font-size: 1.1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease, background 0.5s ease, border-color 0.5s ease; color: var(--main-text);
+        }
+        li:hover { transform: translateX(10px); box-shadow: 0 8px 20px rgba(2, 132, 199, 0.1); }
+
         .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; margin-top: 30px; perspective: 1000px; }
 
         .text-card {
@@ -305,8 +313,8 @@
             scroll-margin-top: 100px; transition: background 0.5s ease, border-color 0.5s ease;
         }
 
-        .coordinator-info h3 { color: var(--primary-blue); font-size: 1rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; }
-        .coordinator-info p { color: var(--main-text); font-size: 1.4rem; font-weight: 700; margin: 0 0 30px 0; }
+        .coordinator-info h3 { color: var(--primary-blue); font-size: 1rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; transition: color 0.5s ease; }
+        .coordinator-info p { color: var(--main-text); font-size: 1.4rem; font-weight: 700; margin: 0 0 30px 0; transition: color 0.5s ease; }
         .coordinator-info span { color: var(--secondary-blue); margin: 0 15px; }
 
         .social-container { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
@@ -334,6 +342,7 @@
             .title-wrapper { flex-direction: column; align-items: center; gap: 15px; text-align: center; }
             .static-logo { height: 75px; width: 75px; }
             h1 { font-size: 2.8rem; }
+            .subtitle { font-size: 1.1rem; white-space: normal; border-right: none; }
             .slider-wrapper { height: 220px; border-radius: 16px; margin-bottom: 30px; }
             .tabs { gap: 8px; padding: 10px; top: 10px; justify-content: center; }
             .tab-btn { padding: 8px 14px; font-size: 0.9rem; }
@@ -386,6 +395,7 @@
 
     <div class="container">
         
+        <!-- Top Controls: Theme Switcher -->
         <div class="top-controls">
             <button id="theme-switch" class="theme-btn"><i class="fa-solid fa-microchip"></i> Train Model</button>
         </div>
@@ -517,7 +527,7 @@
     </footer>
 
     <script>
-        // --- WEB AUDIO SYNTHESIS API (No external files needed) ---
+        // --- WEB AUDIO SYNTHESIS API ---
         let audioCtx;
         function initAudio() {
             if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -563,18 +573,43 @@
             osc.start(); osc.stop(audioCtx.currentTime + 1);
         }
 
+        // Accurately synthesized typing sound synced with CSS
+        function playTypingSound() {
+            if (!audioCtx) return;
+            const now = audioCtx.currentTime;
+            const startTime = now + 1; // Exactly 1 sec after site loads (matches CSS delay)
+            const duration = 3;        // 3 sec typing duration
+            const steps = 50;          // 50 characters/steps
+            const stepTime = duration / steps;
+
+            for (let i = 0; i < steps; i++) {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(800 + Math.random() * 200, startTime + i * stepTime);
+                
+                gain.gain.setValueAtTime(0.05, startTime + i * stepTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, startTime + i * stepTime + 0.03);
+                
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                
+                osc.start(startTime + i * stepTime);
+                osc.stop(startTime + i * stepTime + 0.03);
+            }
+        }
+
         // --- CINEMATIC INTRO LOGIC ---
         const initBtn = document.getElementById('init-btn');
         initBtn.addEventListener('click', () => {
             initAudio(); // Unlocks audio
-            initBtn.style.display = 'none'; // Hide button
-            document.getElementById('logo-wrapper').style.display = 'flex'; // Show logos
+            initBtn.style.display = 'none';
+            document.getElementById('logo-wrapper').style.display = 'flex';
             
-            // Trigger Logo animations
             document.getElementById('inst-splash').classList.add('animate-left');
             document.getElementById('club-splash').classList.add('animate-right');
 
-            // At 1.2s: Logos crash -> Play Boom, Show Flash, Shockwave & Dust
             setTimeout(() => {
                 playBoom();
                 document.getElementById('flash').classList.add('flash-active');
@@ -583,16 +618,20 @@
                 document.getElementById('intro-title').classList.add('title-active');
             }, 1200);
 
-            // At 3.8s: Fade out intro, trigger main site fade in
             setTimeout(() => {
                 const splash = document.getElementById('cinematic-intro');
                 splash.style.opacity = '0';
+                
                 document.body.classList.add('site-active');
+                
+                // Triggers exactly aligned 3-second mechanical typing audio
+                playTypingSound();
+
                 setTimeout(() => splash.style.display = 'none', 800);
             }, 3800);
         });
 
-        // Add Hover Sounds to all buttons
+        // Add Hover Sounds
         document.querySelectorAll('.tab-btn, .action-btn, .liquid-btn').forEach(btn => {
             btn.addEventListener('mouseenter', playHoverBlip);
         });
