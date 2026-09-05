@@ -11,14 +11,40 @@
             padding: 0;
             background-color: #0f172a;
             color: #f8fafc;
+            line-height: 1.6;
         }
         header {
             text-align: center;
-            padding: 100px 20px;
+            padding: 100px 20px 50px;
         }
         h1 {
             color: #38bdf8;
-            font-size: 3rem;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #94a3b8;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .section-box {
+            background-color: #1e293b;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border: 1px solid #334155;
+        }
+        h2 {
+            color: #38bdf8;
+            margin-top: 0;
+        }
+        li {
             margin-bottom: 10px;
         }
     </style>
@@ -26,8 +52,23 @@
 <body>
     <header>
         <h1>DSAI Club</h1>
-        <p>The Data Science and Artificial Intelligence Community of IIT Bhilai.</p>
-        <hr>
+        <p class="subtitle">The Data Science and Artificial Intelligence Community of IIT Bhilai.</p>
     </header>
+
+    <div class="container">
+        <div class="section-box">
+            <h2>What We Do</h2>
+            <p>We are a community of students who build things with data. Whether it is training machine learning models, analyzing complex datasets, or discussing the latest breakthroughs in AI, we provide a space for beginners and experts alike to learn together.</p>
+        </div>
+
+        <div class="section-box">
+            <h2>Our Focus Areas</h2>
+            <ul>
+                <li><strong>Machine Learning:</strong> Building algorithms that learn from data.</li>
+                <li><strong>Data Analytics:</strong> Finding patterns and stories in raw numbers.</li>
+                <li><strong>Workshops & Hackathons:</strong> Hands-on sessions to turn theory into real projects.</li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
