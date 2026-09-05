@@ -54,11 +54,11 @@
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="black" stroke="%23ff6b00" stroke-width="2"/></svg>') 12 12, auto;
         }
 
-        a, button, input, .tab-btn, .action-btn, .slider-wrapper, .image-card, .text-card, .theme-btn, #open-terminal, #clear-canvas-btn, .slider-dot {
+        a, button, input, .tab-btn, .action-btn, .slider-wrapper, .image-card, .text-card, .theme-btn, #open-terminal, #clear-canvas-btn, .slider-dot, .slider-btn {
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="black" stroke="%23f97316" stroke-width="2.5"/></svg>') 12 12, pointer !important;
         }
 
-        [data-theme="dark"] a, [data-theme="dark"] button, [data-theme="dark"] input, [data-theme="dark"] .tab-btn, [data-theme="dark"] .action-btn, [data-theme="dark"] .theme-btn, [data-theme="dark"] #open-terminal, [data-theme="dark"] .slider-dot {
+        [data-theme="dark"] a, [data-theme="dark"] button, [data-theme="dark"] input, [data-theme="dark"] .tab-btn, [data-theme="dark"] .action-btn, [data-theme="dark"] .theme-btn, [data-theme="dark"] #open-terminal, [data-theme="dark"] .slider-dot, [data-theme="dark"] .slider-btn {
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="black" stroke="%23ffb300" stroke-width="2.5"/></svg>') 12 12, pointer !important;
         }
 
@@ -88,7 +88,7 @@
         @keyframes clashLeft { 0% { transform: translateX(-60vw) rotate(-1080deg); } 100% { transform: translateX(-70px) rotate(0deg); } }
         @keyframes clashRight { 0% { transform: translateX(60vw) rotate(1080deg); } 100% { transform: translateX(70px) rotate(0deg); } }
 
-        .impact-flash { position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; background: #ffffff; z-index: 3; opacity: 0; pointer-events: none; }
+        .impact-flash { position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; background: var(--primary-color); z-index: 3; opacity: 0; pointer-events: none; }
         .flash-active { animation: flashAnim 0.8s ease-out forwards; }
         @keyframes flashAnim { 0% { opacity: 0; } 10% { opacity: 0.8; } 100% { opacity: 0; } }
 
@@ -144,7 +144,7 @@
         #transition-overlay.active { opacity: 1; pointer-events: all; }
         .cyber-loader { width: 90px; height: 90px; border: 5px solid transparent; border-top-color: var(--primary-color); border-bottom-color: var(--secondary-color); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 25px; }
 
-        /* --- INTERACTIVE SLIDER --- */
+        /* --- INTERACTIVE JS SLIDER WITH CONTROLS --- */
         .slider-wrapper { 
             width: 100%; height: 450px; border-radius: 24px; overflow: hidden; margin-bottom: 50px; 
             box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 4px solid var(--card-bg); 
@@ -156,14 +156,27 @@
         }
         .slider-track img { width: 25%; height: 100%; object-fit: cover; object-position: center; background-color: var(--card-bg); }
         
+        .slider-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.4); border: 2px solid var(--primary-color);
+            color: var(--primary-color); width: 45px; height: 45px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            z-index: 10; font-size: 1.2rem; backdrop-filter: blur(5px);
+            transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        [data-theme="dark"] .slider-btn { background: rgba(0,0,0,0.5); }
+        .slider-btn:hover { background: var(--primary-color); color: #fff; transform: translateY(-50%) scale(1.1); box-shadow: 0 0 20px var(--primary-color); }
+        .prev-btn { left: 15px; }
+        .next-btn { right: 15px; }
+
         .slider-nav {
             position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
-            display: flex; gap: 12px; z-index: 10;
+            display: flex; gap: 12px; z-index: 10; background: rgba(0,0,0,0.3);
+            padding: 8px 15px; border-radius: 20px; backdrop-filter: blur(5px);
         }
         .slider-dot {
-            width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.6);
-            border: 2px solid transparent; cursor: pointer; transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.5);
+            border: 2px solid transparent; transition: all 0.3s ease;
         }
         .slider-dot:hover { background: #fff; transform: scale(1.2); }
         .slider-dot.active {
@@ -243,7 +256,7 @@
         .coordinator-info p { color: var(--main-text); font-size: 1.4rem; font-weight: 700; margin: 0 0 30px 0; transition: color 0.5s ease; }
         .coordinator-info span { color: var(--secondary-color); margin: 0 15px; }
         .social-container { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-        .liquid-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: var(--light-bg); color: var(--primary-color); font-size: 1.6rem; text-decoration: none; border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transition: all 0.5s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 2px solid transparent; }
+        .liquid-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: var(--light-bg); color: var(--primary-color); font-size: 1.6rem; text-decoration: none; border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transition: all 0.5s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 2px solid transparent; }
         .liquid-btn:hover { border-radius: 50%; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: #ffffff; transform: translateY(-5px) scale(1.1); box-shadow: 0 15px 30px rgba(234, 88, 12, 0.4); }
 
         /* --- INTERACTIVE ALIEN OBSERVER --- */
@@ -256,12 +269,12 @@
         .alien-container {
             background: var(--glass-bg); border: 2px solid var(--primary-color); 
             border-radius: 50px; padding: 10px 20px; display: flex; gap: 15px; 
-            box-shadow: 0 0 20px rgba(234, 88, 12, 0.2); backdrop-filter: blur(10px); 
+            box-shadow: 0 0 20px rgba(234, 88, 12, 0.3); backdrop-filter: blur(10px); 
             animation: floatAlien 4s ease-in-out infinite; cursor: crosshair;
             transition: box-shadow 0.3s ease, transform 0.3s ease, background 0.5s ease, border-color 0.5s ease;
         }
         @keyframes floatAlien { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        .alien-container:hover { box-shadow: 0 0 30px rgba(234, 88, 12, 0.5); transform: scale(1.1); }
+        .alien-container:hover { box-shadow: 0 0 30px rgba(234, 88, 12, 0.6); transform: scale(1.1); }
         
         .alien-eye {
             width: 25px; height: 25px; background: #fff; border-radius: 50%;
@@ -316,6 +329,7 @@
             h1 { font-size: 2.8rem; }
             .subtitle { font-size: 1.1rem; white-space: normal; border-right: none; }
             .slider-wrapper { height: 220px; border-radius: 16px; margin-bottom: 30px; }
+            .slider-btn { width: 35px; height: 35px; font-size: 1rem; }
             .tabs { gap: 8px; padding: 10px; top: 10px; justify-content: center; }
             .tab-btn { padding: 8px 14px; font-size: 0.9rem; }
             .theme-btn { margin-left: 0; width: 100%; justify-content: center; margin-top: 10px; }
@@ -374,14 +388,22 @@
             <button id="theme-switch" class="theme-btn"><i class="fa-solid fa-moon"></i> Dark Mode</button>
         </div>
 
-        <!-- NEW INTERACTIVE JAVASCRIPT SLIDER -->
+        <!-- NEW INTERACTIVE JS SLIDER WITH CONTROLS -->
         <div class="slider-wrapper" id="main-slider">
+            
+            <!-- Left and Right Arrows -->
+            <button class="slider-btn prev-btn" id="slide-prev" title="Previous Image"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="slider-btn next-btn" id="slide-next" title="Next Image"><i class="fa-solid fa-chevron-right"></i></button>
+            
+            <!-- The Image Track -->
             <div class="slider-track" id="slider-track">
                 <img src="https://media.licdn.com/dms/image/v2/D5622AQFBw2qVkEQFRg/feedshare-shrink_800/B56aANgCJtIUAc-/0/1786932896610?e=1790208000&v=beta&t=VK8620pyPesK4buTeIF3it-yOEMiUNGuO4saEh8QoQc" alt="DSAI Image 1">
                 <img src="https://media.licdn.com/dms/image/v2/D5622AQEcDD1DPo4Frw/feedshare-shrink_1280/B56aANgCVXHsAM-/0/1786932897337?e=1790208000&v=beta&t=-TrorEZQw-ZKN1BhfjRh5NSVZlhPIsmJcWU7ztnIy00" alt="DSAI Image 2">
                 <img src="https://scontent-bom2-4.xx.fbcdn.net/v/t39.30808-6/476927714_646486844574808_772153997691883184_n.jpg?stp=dst-jpg_tt6&cstp=mx640x288&ctp=s640x288&_nc_cat=106&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=2Bm9MIfhChgQ7kNvwEc3nrw&_nc_oc=AdoM1Y25F-FdR6nJxMQl71l-_HMHjD4j2hXuulGHOIMuqN8xBvhPsegxgS2troqVHD0&_nc_zt=23&_nc_ht=scontent-bom2-4.xx&_nc_gid=_DyC8aP8dTjmraI4-ly9qw&_nc_ss=7b289&oh=00_AQL0BMx39Y2B1b1H2WMaT0Ub6gr5d3kNAzx78nJrTxV_iA&oe=6AA1AD02" alt="DSAI Image 3">
                 <img src="logo.jpg" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23f97316\'/></svg>'" alt="DSAI Logo">
             </div>
+            
+            <!-- Bottom Navigation Dots -->
             <div class="slider-nav">
                 <button class="slider-dot active" data-index="0" title="Slide 1"></button>
                 <button class="slider-dot" data-index="1" title="Slide 2"></button>
@@ -675,7 +697,8 @@
         // --- CINEMATIC INTRO LOGIC ---
         const initBtn = document.getElementById('init-btn');
         initBtn.addEventListener('click', () => {
-            initAudio(); 
+            initAudio(); // Safe initialization
+            
             initBtn.style.display = 'none';
             document.getElementById('logo-wrapper').style.display = 'flex';
             
@@ -717,17 +740,21 @@
             dots[currentSlide].classList.add('active');
         }
 
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % 4; // 4 unique images
-            goToSlide(currentSlide);
-        }
+        function nextSlide() { currentSlide = (currentSlide + 1) % 4; goToSlide(currentSlide); }
+        function prevSlide() { currentSlide = (currentSlide - 1 + 4) % 4; goToSlide(currentSlide); }
 
         function startSlide() { slideInterval = setInterval(nextSlide, 3500); }
         function stopSlide() { clearInterval(slideInterval); }
 
+        // Hover to freeze auto-sliding
         wrapper.addEventListener('mouseenter', stopSlide);
         wrapper.addEventListener('mouseleave', startSlide);
 
+        // Arrow Controls
+        document.getElementById('slide-next').addEventListener('click', () => { playHoverBlip(); nextSlide(); });
+        document.getElementById('slide-prev').addEventListener('click', () => { playHoverBlip(); prevSlide(); });
+
+        // Dot Controls
         dots.forEach(dot => {
             dot.addEventListener('click', (e) => {
                 playHoverBlip();
@@ -735,11 +762,11 @@
                 goToSlide(index);
             });
         });
-        startSlide(); // init slider
+        startSlide(); // init auto-slide
 
         document.querySelectorAll('.tab-btn, .action-btn, .liquid-btn, .theme-btn').forEach(btn => { btn.addEventListener('mouseenter', playHoverBlip); });
 
-        // Theme Switcher Logic 
+        // Theme Switcher Logic (Now defaults to Dark when clicked)
         const themeBtn = document.getElementById('theme-switch');
         themeBtn.addEventListener('click', () => {
             initAudio(); playPowerUp();
