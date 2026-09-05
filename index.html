@@ -103,6 +103,10 @@
         
         h1, h2, h3 { font-family: 'Montserrat', sans-serif; color: var(--main-text); transition: color 0.5s ease; }
         
+        /* Glitch Text Effect */
+        .glitch-text { display: inline-block; position: relative; }
+        .glitch-text::after { content: attr(data-text); position: absolute; left: 0; top: 0; opacity: 0; color: var(--primary-blue); background: var(--glass-bg); pointer-events: none; }
+
         .title-wrapper { display: flex; align-items: center; justify-content: flex-start; gap: 20px; flex-wrap: wrap; }
         .logo-container { display: flex; gap: 15px; }
 
@@ -147,7 +151,7 @@
         .section { background: var(--glass-bg); backdrop-filter: blur(16px); padding: 50px; border-radius: 24px; border: 1px solid var(--glass-border); box-shadow: 0 20px 40px rgba(0,0,0,0.04); margin-bottom: 50px; scroll-margin-top: 120px; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out, background 0.5s ease, border-color 0.5s ease; }
         .section.visible { opacity: 1; transform: translateY(0); }
 
-        h2 { font-size: 2.5rem; margin-top: 0; margin-bottom: 30px; position: relative; display: inline-block; }
+        h2 { font-size: 2.5rem; margin-top: 0; margin-bottom: 30px; position: relative; display: inline-block; cursor: crosshair; }
         h2::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 50px; height: 5px; background: var(--primary-blue); border-radius: 4px; transition: width 0.4s ease, background 0.5s ease; }
         .section:hover h2::after { width: 100%; }
 
@@ -166,12 +170,19 @@
         .core-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 15px; }
         .core-badge { background: rgba(2, 132, 199, 0.05); border: 1px solid rgba(2, 132, 199, 0.2); color: var(--main-text); padding: 10px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-align: center; pointer-events: none; transition: all 0.3s ease; }
         
-        .mission-cta {
-            background: rgba(2, 132, 199, 0.1); border-left: 4px solid var(--primary-blue);
-            padding: 15px; margin-top: 20px; border-radius: 8px; font-weight: bold; color: var(--primary-blue);
-        }
+        .mission-cta { background: rgba(2, 132, 199, 0.1); border-left: 4px solid var(--primary-blue); padding: 15px; margin-top: 20px; border-radius: 8px; font-weight: bold; color: var(--primary-blue); }
         .mission-cta code { background: rgba(0,0,0,0.1); padding: 2px 6px; border-radius: 4px; font-family: monospace; }
         [data-theme="cyber"] .mission-cta code { color: #fff; background: rgba(255,255,255,0.1); }
+
+        /* --- ML PLAYGROUND (Linear Regression) --- */
+        .playground-container {
+            width: 100%; background: #0f172a; border-radius: 16px; padding: 20px; box-sizing: border-box;
+            border: 2px solid var(--primary-blue); margin-top: 20px;
+        }
+        .playground-header { display: flex; justify-content: space-between; align-items: center; color: #fff; margin-bottom: 10px; }
+        .playground-header h3 { color: #38bdf8; margin: 0; }
+        #regressionCanvas { width: 100%; height: 300px; background: #1e293b; border-radius: 8px; cursor: crosshair !important; border: 1px dashed #334155; }
+        .btn-clear-data { background: #ef4444; color: #fff; border: none; padding: 8px 15px; border-radius: 6px; font-family: 'Space Grotesk'; font-weight: bold; }
 
         footer { background: var(--glass-bg); border-top: 1px solid var(--glass-border); padding: 60px 20px; text-align: center; margin-top: auto; backdrop-filter: blur(10px); scroll-margin-top: 100px; transition: background 0.5s ease, border-color 0.5s ease; }
         .coordinator-info h3 { color: var(--primary-blue); font-size: 1rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; transition: color 0.5s ease; }
@@ -181,9 +192,6 @@
         .liquid-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: var(--light-bg); color: var(--primary-blue); font-size: 1.6rem; text-decoration: none; border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transition: all 0.5s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 2px solid transparent; }
         .liquid-btn:hover { border-radius: 50%; background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)); color: #ffffff; transform: translateY(-5px) scale(1.1); box-shadow: 0 15px 30px rgba(2, 132, 199, 0.3); }
 
-        .action-btn { display: inline-block; margin-top: 20px; padding: 15px 35px; background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)); color: #ffffff; text-decoration: none; border-radius: 30px; font-weight: bold; font-size: 1.1rem; transition: transform 0.3s ease; box-shadow: 0 10px 20px rgba(2, 132, 199, 0.2); }
-        .action-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(2, 132, 199, 0.4); }
-
         /* --- INTERACTIVE TERMINAL WIDGET --- */
         #open-terminal {
             position: fixed; bottom: 30px; right: 30px; background: var(--primary-blue); color: #fff;
@@ -192,9 +200,7 @@
             display: flex; align-items: center; gap: 10px; transition: transform 0.3s ease; display: none;
             animation: pulseBtn 2s infinite alternate;
         }
-        
         .pulse-dot-green { width: 10px; height: 10px; background-color: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981; }
-        
         @keyframes pulseBtn { 0% { box-shadow: 0 0 15px rgba(2, 132, 199, 0.4); transform: scale(1); } 100% { box-shadow: 0 0 25px rgba(2, 132, 199, 0.8); transform: scale(1.02); } }
 
         .site-active #open-terminal { display: flex; animation: fadeIn 1s ease-out 2s forwards, pulseBtn 2s infinite alternate; opacity: 0; }
@@ -208,10 +214,8 @@
             backdrop-filter: blur(15px); font-family: monospace;
         }
         #terminal-window.open { opacity: 1; transform: translateY(0); pointer-events: all; }
-
         #terminal-header { background: rgba(0, 0, 0, 0.5); padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--primary-blue); color: #9ca3af; font-size: 0.9rem; }
         #terminal-close { background: none; border: none; color: #ef4444; font-size: 1.2rem; cursor: pointer; }
-
         #terminal-body { flex: 1; padding: 15px; overflow-y: auto; color: #10b981; font-size: 0.95rem; display: flex; flex-direction: column; }
         .term-line { margin-bottom: 5px; line-height: 1.4; word-wrap: break-word; }
         .term-user { color: var(--primary-blue); }
@@ -254,12 +258,7 @@
         <div class="intro-title" id="intro-title">DSAI CLUB</div>
     </div>
 
-    <!-- Tab Transition Overlay -->
-    <div id="transition-overlay">
-        <div class="cyber-loader"></div>
-        <div class="overlay-title">DSAI CLUB</div>
-    </div>
-
+    <div id="transition-overlay"><div class="cyber-loader"></div><div class="overlay-title">DSAI CLUB</div></div>
     <canvas id="networkCanvas"></canvas>
 
     <header>
@@ -297,21 +296,22 @@
             <a href="#activities" class="tab-btn">Activities</a>
             <a href="#join" class="tab-btn">How to Join</a>
             <a href="#team" class="tab-btn">Our Structure</a>
-            <a href="#projects" class="tab-btn">Real Projects</a>
+            <a href="#playground" class="tab-btn">Playground <i class="fa-solid fa-bolt" style="color: #f59e0b"></i></a>
             <a href="#reach" class="tab-btn">Reach Us</a>
         </div>
 
         <div id="about" class="section">
-            <h2>The Mission</h2>
+            <h2 class="glitch-target" data-text="The Mission">The Mission</h2>
             <p>The DSAI Club at IIT Bhilai explores the world of data science and AI through hands-on projects, research, and innovation. It offers a collaborative space for students to engage with intelligent systems and data-driven solutions. Through workshops, research initiatives, and peer learning, members gain practical skills and a deeper understanding of emerging technologies. The club encourages curiosity, problem-solving, and creativity in applying AI to real-world challenges. We warmly welcome you to IIT Bhilai and look forward to being part of your journey into data and intelligence.</p>
             <div class="mission-cta">
-                <i class="fa-solid fa-graduation-cap"></i> Want a 2-minute crash course in AI? Open the Terminal in the bottom corner and type <code>learn</code>.
+                <i class="fa-solid fa-terminal"></i> Want a 2-minute crash course? Open the Terminal in the bottom right corner and type <code>learn</code>.
             </div>
         </div>
 
         <div id="activities" class="section">
-            <h2>What We Actually Do</h2>
+            <h2 class="glitch-target" data-text="What We Actually Do">What We Actually Do</h2>
             <p>We are highly active on campus, transforming theoretical knowledge into hands-on experiences through continuous events and community building.</p>
+            
             <div class="card-grid">
                 <div class="text-card tilt-card">
                     <h3>Group Discussions</h3>
@@ -333,7 +333,7 @@
         </div>
 
         <div id="join" class="section">
-            <h2>Start Your Journey</h2>
+            <h2 class="glitch-target" data-text="Start Your Journey">Start Your Journey</h2>
             <p>Ready to build with us? We welcome first-years from all branches—<strong>absolutely no prior coding experience required.</strong> We will teach you everything. The onboarding process is simple:</p>
             <ul>
                 <li><strong>Introductory Session:</strong> Attend our orientation to see the cool tech we build and understand our vision.</li>
@@ -344,7 +344,7 @@
         </div>
 
         <div id="team" class="section">
-            <h2>How We Operate</h2>
+            <h2 class="glitch-target" data-text="How We Operate">How We Operate</h2>
             <p>Nobody learns alone here. Our club uses a two-tier mentorship system to ensure that every single beginner gets the personal guidance they need to succeed.</p>
             
             <div class="card-grid">
@@ -377,12 +377,18 @@
             </div>
         </div>
 
-        <div id="projects" class="section">
-            <h2>Learn By Building</h2>
-            <p>We firmly believe in learning by doing, not just watching boring lectures. From your very first week, you will contribute to meaningful, tangible work.</p>
-            <p>Our project cycles typically run for <strong>8-12 weeks</strong>, requiring just 2-3 hours of commitment per week so it never interferes with your exams. You will learn real industry tools like Python, GitHub, and machine learning libraries.</p>
-            <p>Check out our open-source code base to see the facial recognition software, trading bots, and data dashboards we have already built!</p>
-            <a href="https://github.com/dsai-iitbhilai" target="_blank" class="action-btn">Explore Our Code <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></a>
+        <!-- NEW ML PLAYGROUND SECTION -->
+        <div id="playground" class="section">
+            <h2 class="glitch-target" data-text="ML Playground">ML Playground</h2>
+            <p>Don't just read about Data Science—do it. <strong>Click inside the grid below</strong> to drop data points. Our Vanilla JavaScript algorithm will calculate the Linear Regression (Line of Best Fit) in real-time, just like a real machine learning model predicting a trend.</p>
+            
+            <div class="playground-container">
+                <div class="playground-header">
+                    <h3>Live Linear Regression Model</h3>
+                    <button class="btn-clear-data" id="clear-canvas-btn">Clear Data</button>
+                </div>
+                <canvas id="regressionCanvas" width="800" height="350"></canvas>
+            </div>
         </div>
 
     </div>
@@ -395,18 +401,10 @@
         </div>
         
         <div class="social-container">
-            <a href="https://www.instagram.com/dsai_iitbhilai/" target="_blank" class="liquid-btn" title="Instagram">
-                <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="https://x.com/DSAI_IITBHILAI" target="_blank" class="liquid-btn" title="X (Twitter)">
-                <i class="fa-brands fa-x-twitter"></i>
-            </a>
-            <a href="https://github.com/dsai-iitbhilai" target="_blank" class="liquid-btn" title="GitHub">
-                <i class="fa-brands fa-github"></i>
-            </a>
-            <a href="https://www.linkedin.com/company/data-science-and-artificial-intelligence-club-iit-bhilai/posts/?feedView=all" target="_blank" class="liquid-btn" title="LinkedIn">
-                <i class="fa-brands fa-linkedin-in"></i>
-            </a>
+            <a href="https://www.instagram.com/dsai_iitbhilai/" target="_blank" class="liquid-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://x.com/DSAI_IITBHILAI" target="_blank" class="liquid-btn" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://github.com/dsai-iitbhilai" target="_blank" class="liquid-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/company/data-science-and-artificial-intelligence-club-iit-bhilai/posts/?feedView=all" target="_blank" class="liquid-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
         </div>
     </footer>
 
@@ -440,62 +438,47 @@
 
         function playHoverBlip() {
             if (!audioCtx) return;
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
+            const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
             osc.type = 'sine'; osc.frequency.setValueAtTime(800, audioCtx.currentTime);
             osc.frequency.exponentialRampToValueAtTime(300, audioCtx.currentTime + 0.05);
-            gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
-            osc.connect(gain); gain.connect(audioCtx.destination);
-            osc.start(); osc.stop(audioCtx.currentTime + 0.05);
+            gain.gain.setValueAtTime(0.05, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+            osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 0.05);
         }
 
         function playBoom() {
             if (!audioCtx) return;
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
+            const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
             osc.type = 'square'; osc.frequency.setValueAtTime(150, audioCtx.currentTime);
             osc.frequency.exponentialRampToValueAtTime(20, audioCtx.currentTime + 0.8);
-            gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.8);
-            osc.connect(gain); gain.connect(audioCtx.destination);
-            osc.start(); osc.stop(audioCtx.currentTime + 0.8);
+            gain.gain.setValueAtTime(0.3, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.8);
+            osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 0.8);
         }
 
         function playPowerUp() {
             if (!audioCtx) return;
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
+            const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
             osc.type = 'sawtooth'; osc.frequency.setValueAtTime(100, audioCtx.currentTime);
             osc.frequency.exponentialRampToValueAtTime(600, audioCtx.currentTime + 1);
-            gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
-            gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 1);
-            osc.connect(gain); gain.connect(audioCtx.destination);
-            osc.start(); osc.stop(audioCtx.currentTime + 1);
+            gain.gain.setValueAtTime(0.05, audioCtx.currentTime); gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 1);
+            osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 1);
         }
 
         function playKeyClick() {
             if (!audioCtx) return;
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
+            const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
             osc.type = 'triangle'; osc.frequency.setValueAtTime(800 + Math.random() * 200, audioCtx.currentTime);
-            gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.03);
-            osc.connect(gain); gain.connect(audioCtx.destination);
-            osc.start(); osc.stop(audioCtx.currentTime + 0.03);
+            gain.gain.setValueAtTime(0.05, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.03);
+            osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 0.03);
         }
 
         function playTypingSound() {
             if (!audioCtx) return;
-            const now = audioCtx.currentTime; const startTime = now + 1; const duration = 3; const steps = 50;
-            const stepTime = duration / steps;
+            const now = audioCtx.currentTime; const startTime = now + 1; const duration = 3; const steps = 50; const stepTime = duration / steps;
             for (let i = 0; i < steps; i++) {
                 const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
                 osc.type = 'triangle'; osc.frequency.setValueAtTime(800 + Math.random() * 200, startTime + i * stepTime);
-                gain.gain.setValueAtTime(0.05, startTime + i * stepTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, startTime + i * stepTime + 0.03);
-                osc.connect(gain); gain.connect(audioCtx.destination);
-                osc.start(startTime + i * stepTime); osc.stop(startTime + i * stepTime + 0.03);
+                gain.gain.setValueAtTime(0.05, startTime + i * stepTime); gain.gain.exponentialRampToValueAtTime(0.001, startTime + i * stepTime + 0.03);
+                osc.connect(gain); gain.connect(audioCtx.destination); osc.start(startTime + i * stepTime); osc.stop(startTime + i * stepTime + 0.03);
             }
         }
 
@@ -504,105 +487,87 @@
         initBtn.addEventListener('click', () => {
             initAudio(); initBtn.style.display = 'none';
             document.getElementById('logo-wrapper').style.display = 'flex';
-            document.getElementById('inst-splash').classList.add('animate-left');
-            document.getElementById('club-splash').classList.add('animate-right');
+            document.getElementById('inst-splash').classList.add('animate-left'); document.getElementById('club-splash').classList.add('animate-right');
 
             setTimeout(() => {
-                playBoom();
-                document.getElementById('flash').classList.add('flash-active');
+                playBoom(); document.getElementById('flash').classList.add('flash-active');
                 document.getElementById('shockwave').classList.add('shockwave-active');
-                document.getElementById('dust-cloud').classList.add('explode');
-                document.getElementById('intro-title').classList.add('title-active');
+                document.getElementById('dust-cloud').classList.add('explode'); document.getElementById('intro-title').classList.add('title-active');
             }, 1200);
 
             setTimeout(() => {
-                const splash = document.getElementById('cinematic-intro');
-                splash.style.opacity = '0';
-                document.body.classList.add('site-active');
-                playTypingSound();
+                const splash = document.getElementById('cinematic-intro'); splash.style.opacity = '0';
+                document.body.classList.add('site-active'); playTypingSound();
                 setTimeout(() => splash.style.display = 'none', 800);
             }, 3800);
         });
 
-        document.querySelectorAll('.tab-btn, .action-btn, .liquid-btn, .theme-btn').forEach(btn => {
-            btn.addEventListener('mouseenter', playHoverBlip);
-        });
+        document.querySelectorAll('.tab-btn, .action-btn, .liquid-btn, .theme-btn').forEach(btn => { btn.addEventListener('mouseenter', playHoverBlip); });
 
         const themeBtn = document.getElementById('theme-switch');
         themeBtn.addEventListener('click', () => {
             initAudio(); playPowerUp();
-            themeBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Training...';
-            themeBtn.style.pointerEvents = 'none';
+            themeBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Training...'; themeBtn.style.pointerEvents = 'none';
             setTimeout(() => {
                 const html = document.documentElement;
-                if (html.getAttribute('data-theme') === 'cyber') {
-                    html.removeAttribute('data-theme');
-                    themeBtn.innerHTML = '<i class="fa-solid fa-microchip"></i> Train Model';
-                } else {
-                    html.setAttribute('data-theme', 'cyber');
-                    themeBtn.innerHTML = '<i class="fa-solid fa-power-off"></i> Reset Model';
-                }
+                if (html.getAttribute('data-theme') === 'cyber') { html.removeAttribute('data-theme'); themeBtn.innerHTML = '<i class="fa-solid fa-microchip"></i> Train Model'; } 
+                else { html.setAttribute('data-theme', 'cyber'); themeBtn.innerHTML = '<i class="fa-solid fa-power-off"></i> Reset Model'; }
                 themeBtn.style.pointerEvents = 'auto';
             }, 1000);
         });
 
-        document.querySelectorAll('.tab-btn:not(.theme-btn)').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault(); const targetId = this.getAttribute('href');
-                const overlay = document.getElementById('transition-overlay');
-                overlay.classList.add('active');
-                setTimeout(() => {
-                    overlay.classList.remove('active');
-                    document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
-                }, 1000);
+        // HACKER GLITCH TEXT EFFECT
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*";
+        document.querySelectorAll('.glitch-target').forEach(el => {
+            let originalText = el.innerText;
+            el.addEventListener('mouseenter', () => {
+                playHoverBlip();
+                let iterations = 0;
+                const interval = setInterval(() => {
+                    el.innerText = originalText.split('').map((char, index) => {
+                        if(index < iterations) return originalText[index];
+                        return chars[Math.floor(Math.random() * chars.length)];
+                    }).join('');
+                    if(iterations >= originalText.length) clearInterval(interval);
+                    iterations += 1/3;
+                }, 30);
             });
         });
 
-        const sections = document.querySelectorAll('.section');
-        const navLinks = document.querySelectorAll('.tab-btn:not(.theme-btn)');
+        document.querySelectorAll('.tab-btn:not(.theme-btn)').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault(); const targetId = this.getAttribute('href'); const overlay = document.getElementById('transition-overlay');
+                overlay.classList.add('active');
+                setTimeout(() => { overlay.classList.remove('active'); document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' }); }, 1000);
+            });
+        });
+
+        const sections = document.querySelectorAll('.section'); const navLinks = document.querySelectorAll('.tab-btn:not(.theme-btn)');
         const observerOptions = { root: null, rootMargin: '-20% 0px -60% 0px', threshold: 0 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    navLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href').substring(1) === entry.target.id) { link.classList.add('active'); }});
-                }
+                if (entry.isIntersecting) { navLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href').substring(1) === entry.target.id) { link.classList.add('active'); }}); }
             });
         }, observerOptions);
 
-        const fadeObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('visible'); }});
-        }, { threshold: 0.1 });
-
+        const fadeObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('visible'); }}); }, { threshold: 0.1 });
         sections.forEach(section => { observer.observe(section); fadeObserver.observe(section); });
 
-        // --- INTERACTIVE 3D MOUSE TRACKING TILT ---
-        const tiltCards = document.querySelectorAll('.tilt-card');
-        tiltCards.forEach(card => {
+        // 3D TILT
+        document.querySelectorAll('.tilt-card').forEach(card => {
             card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left; 
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2; 
-                const centerY = rect.height / 2;
-                
-                const rotateX = ((y - centerY) / centerY) * -10; 
-                const rotateY = ((x - centerX) / centerX) * 10;
-                
+                const rect = card.getBoundingClientRect(); const x = e.clientX - rect.left; const y = e.clientY - rect.top;
+                const centerX = rect.width / 2; const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -10; const rotateY = ((x - centerX) / centerX) * 10;
                 card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px) scale(1.02)`;
             });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)`;
-            });
+            card.addEventListener('mouseleave', () => { card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)`; });
         });
 
         // --- INTERACTIVE TERMINAL LOGIC ---
-        const termBtn = document.getElementById('open-terminal');
-        const termWin = document.getElementById('terminal-window');
-        const termClose = document.getElementById('terminal-close');
-        const termInput = document.getElementById('term-input');
-        const termBody = document.getElementById('terminal-body');
-        
-        let termState = 'idle'; // state tracker for the mini-game
+        const termBtn = document.getElementById('open-terminal'); const termWin = document.getElementById('terminal-window');
+        const termClose = document.getElementById('terminal-close'); const termInput = document.getElementById('term-input');
+        const termBody = document.getElementById('terminal-body'); let termState = 'idle';
 
         termBtn.addEventListener('click', () => { termWin.classList.add('open'); termInput.focus(); });
         termClose.addEventListener('click', () => { termWin.classList.remove('open'); });
@@ -610,20 +575,13 @@
         termInput.addEventListener('keydown', function(e) {
             playKeyClick(); 
             if (e.key === 'Enter') {
-                const command = this.value.trim().toLowerCase();
-                this.value = '';
+                const command = this.value.trim().toLowerCase(); this.value = '';
                 if (command === '') return;
                 
-                // Echo command
-                const echo = document.createElement('div');
-                echo.className = 'term-line';
-                echo.innerHTML = `<span class="term-user">> ${command}</span>`;
-                termBody.insertBefore(echo, termBody.lastElementChild);
-
-                const response = document.createElement('div');
-                response.className = 'term-line';
+                const echo = document.createElement('div'); echo.className = 'term-line';
+                echo.innerHTML = `<span class="term-user">> ${command}</span>`; termBody.insertBefore(echo, termBody.lastElementChild);
+                const response = document.createElement('div'); response.className = 'term-line';
                 
-                // Route to Mini-Game if state is active
                 if (termState === 'learn_1') {
                     if (command === 'increase') {
                         response.className = 'term-line term-success';
@@ -631,101 +589,122 @@
                         termState = 'idle';
                     } else if (command === 'decrease') {
                         response.className = 'term-line term-err';
-                        response.innerHTML = "Incorrect. If we decrease it, the guess gets even lower! Try 'increase'.";
-                    } else {
-                        response.className = 'term-line term-err';
-                        response.innerHTML = "Please type 'increase' or 'decrease'.";
-                    }
-                } 
-                // Normal Commands
-                else {
+                        response.innerHTML = "Incorrect. If we decrease it, the guess gets even lower! Try typing 'increase'.";
+                    } else { response.className = 'term-line term-err'; response.innerHTML = "Please type 'increase' or 'decrease'."; }
+                } else {
                     switch(command) {
-                        case 'help':
-                            response.innerHTML = "Commands: <br>- <b>learn</b>: AI Crash Course<br>- <b>team</b>: View Core Members<br>- <b>ping</b>: Network test<br>- <b>clear</b>: Clear screen";
-                            break;
+                        case 'help': response.innerHTML = "Commands: <br>- <b>learn</b>: AI Crash Course<br>- <b>team</b>: View Core Members<br>- <b>ping</b>: Network test<br>- <b>clear</b>: Clear screen"; break;
                         case 'learn':
                             termState = 'learn_1';
                             response.innerHTML = "<b>[ CRASH COURSE: Train a Model ]</b><br>Let's train a simple AI.<br>Data: [Study Hours] -> [Test Score]<br>Row 1: [2 hours] -> [20 score]<br>Row 2: [4 hours] -> [40 score]<br><br>Our untrained AI guesses the multiplier (weight) is 5. So for 2 hours, it guesses 10 (Error = 10 off).<br><br>To reduce this error, should we <b>increase</b> or <b>decrease</b> the weight? (Type your answer)";
                             break;
                         case 'team':
-                            // Fulfill Feature Request: Output text AND scroll to section
                             response.innerHTML = "<b>Coordinators:</b><br>Vatsal Yadav, Siddhesh Bansal<br><b>Core Members:</b><br>Adhi, Dinesh, Sikharam, Kushal, Navanil, Parth, Sai, Shlok, Siddhant, Vaibhav, Yog, Thammandra.<br><br><i>Auto-navigating to Team Section...</i>";
-                            setTimeout(() => {
-                                document.querySelector('#team').scrollIntoView({ behavior: 'smooth' });
-                            }, 1000);
+                            setTimeout(() => { document.querySelector('#team').scrollIntoView({ behavior: 'smooth' }); }, 1000);
                             break;
-                        case 'ping':
-                            response.innerHTML = "Pinging AI mainframe... <br>Reply from 127.0.0.1: time < 1ms. System ONLINE.";
-                            break;
-                        case 'clear':
-                            const lines = document.querySelectorAll('.term-line:not(:last-child)');
-                            lines.forEach(line => line.remove());
-                            return; 
-                        default:
-                            response.className = 'term-line term-err';
-                            response.innerHTML = `Command not found: ${command}. Type 'help'.`;
+                        case 'ping': response.innerHTML = "Pinging AI mainframe... <br>Reply from 127.0.0.1: time < 1ms. System ONLINE."; break;
+                        case 'clear': document.querySelectorAll('.term-line:not(:last-child)').forEach(line => line.remove()); return; 
+                        default: response.className = 'term-line term-err'; response.innerHTML = `Command not found: ${command}. Type 'help'.`;
                     }
                 }
-
-                termBody.insertBefore(response, termBody.lastElementChild);
-                termBody.scrollTop = termBody.scrollHeight; 
+                termBody.insertBefore(response, termBody.lastElementChild); termBody.scrollTop = termBody.scrollHeight; 
             }
         });
 
-        // Interactive Neural Network Canvas Background
-        const canvas = document.getElementById('networkCanvas');
-        const ctx = canvas.getContext('2d');
-        let width, height; let particles = []; let mouse = { x: null, y: null };
+        // --- LIVE ML PLAYGROUND (Linear Regression) ---
+        const regCanvas = document.getElementById('regressionCanvas');
+        const regCtx = regCanvas.getContext('2d');
+        let regPoints = [];
 
-        function resize() { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; }
-        window.addEventListener('resize', resize); resize();
-        window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
-        window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
+        // Fix canvas scaling for high-DPI displays
+        function fixCanvasScale() {
+            const rect = regCanvas.getBoundingClientRect();
+            regCanvas.width = rect.width;
+            regCanvas.height = rect.height;
+            drawRegression();
+        }
+        window.addEventListener('resize', fixCanvasScale);
+        // Call once after container is visible
+        setTimeout(fixCanvasScale, 4000);
 
-        class Particle {
-            constructor() {
-                this.x = Math.random() * width; this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.5; this.vy = (Math.random() - 0.5) * 0.5;
-                this.radius = Math.random() * 2 + 1;
-            }
-            update() {
-                this.x += this.vx; this.y += this.vy;
-                if (this.x < 0 || this.x > width) this.vx *= -1; if (this.y < 0 || this.y > height) this.vy *= -1;
-            }
-            draw() {
-                ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(56, 189, 248, 0.4)'; ctx.fill();
+        regCanvas.addEventListener('mousedown', (e) => {
+            const rect = regCanvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            regPoints.push({x, y});
+            drawRegression();
+            playKeyClick();
+        });
+
+        document.getElementById('clear-canvas-btn').addEventListener('click', () => {
+            regPoints = []; drawRegression(); playHoverBlip();
+        });
+
+        function drawRegression() {
+            regCtx.clearRect(0,0, regCanvas.width, regCanvas.height);
+            
+            // Draw points
+            regPoints.forEach(p => {
+                regCtx.beginPath();
+                regCtx.arc(p.x, p.y, 6, 0, Math.PI*2);
+                regCtx.fillStyle = '#00f0ff';
+                regCtx.fill();
+                regCtx.strokeStyle = '#fff';
+                regCtx.stroke();
+            });
+
+            if(regPoints.length > 1) {
+                // Least Squares Calculation
+                let sumX = 0, sumY = 0, sumXY = 0, sumXX = 0;
+                let n = regPoints.length;
+                regPoints.forEach(p => {
+                    sumX += p.x; sumY += p.y;
+                    sumXY += p.x * p.y; sumXX += p.x * p.x;
+                });
+                let slope = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX);
+                let intercept = (sumY - slope * sumX) / n;
+
+                // Draw Line of Best Fit
+                regCtx.beginPath();
+                regCtx.moveTo(0, intercept);
+                regCtx.lineTo(regCanvas.width, slope * regCanvas.width + intercept);
+                regCtx.strokeStyle = '#b026ff';
+                regCtx.lineWidth = 3;
+                regCtx.stroke();
             }
         }
 
-        const particleCount = Math.min(Math.floor(window.innerWidth / 15), 100);
-        for (let i = 0; i < particleCount; i++) { particles.push(new Particle()); }
+        // Background Network Canvas
+        const bgCanvas = document.getElementById('networkCanvas'); const bgCtx = bgCanvas.getContext('2d');
+        let w, h; let bgParticles = []; let bgMouse = { x: null, y: null };
+        function resizeBg() { w = bgCanvas.width = window.innerWidth; h = bgCanvas.height = window.innerHeight; }
+        window.addEventListener('resize', resizeBg); resizeBg();
+        window.addEventListener('mousemove', (e) => { bgMouse.x = e.x; bgMouse.y = e.y; });
+        window.addEventListener('mouseout', () => { bgMouse.x = null; bgMouse.y = null; });
 
-        function animate() {
-            ctx.clearRect(0, 0, width, height);
-            particles.forEach(p => { p.update(); p.draw(); });
+        class BgParticle {
+            constructor() { this.x = Math.random() * w; this.y = Math.random() * h; this.vx = (Math.random() - 0.5) * 0.5; this.vy = (Math.random() - 0.5) * 0.5; this.radius = Math.random() * 2 + 1; }
+            update() { this.x += this.vx; this.y += this.vy; if (this.x < 0 || this.x > w) this.vx *= -1; if (this.y < 0 || this.y > h) this.vy *= -1; }
+            draw() { bgCtx.beginPath(); bgCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); bgCtx.fillStyle = 'rgba(56, 189, 248, 0.4)'; bgCtx.fill(); }
+        }
+        const pCount = Math.min(Math.floor(window.innerWidth / 15), 100);
+        for (let i = 0; i < pCount; i++) { bgParticles.push(new BgParticle()); }
 
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x; const dy = particles[i].y - particles[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < 120) {
-                        ctx.beginPath(); ctx.strokeStyle = `rgba(56, 189, 248, ${0.2 - dist/120})`;
-                        ctx.lineWidth = 1; ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke();
-                    }
+        function animateBg() {
+            bgCtx.clearRect(0, 0, w, h); bgParticles.forEach(p => { p.update(); p.draw(); });
+            for (let i = 0; i < bgParticles.length; i++) {
+                for (let j = i + 1; j < bgParticles.length; j++) {
+                    const dx = bgParticles[i].x - bgParticles[j].x; const dy = bgParticles[i].y - bgParticles[j].y; const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 120) { bgCtx.beginPath(); bgCtx.strokeStyle = `rgba(56, 189, 248, ${0.2 - dist/120})`; bgCtx.lineWidth = 1; bgCtx.moveTo(bgParticles[i].x, bgParticles[i].y); bgCtx.lineTo(bgParticles[j].x, bgParticles[j].y); bgCtx.stroke(); }
                 }
-                if(mouse.x != null) {
-                    const dx = particles[i].x - mouse.x; const dy = particles[i].y - mouse.y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    if(dist < 150) {
-                        ctx.beginPath(); ctx.strokeStyle = `rgba(56, 189, 248, ${0.4 - dist/150})`;
-                        ctx.lineWidth = 1.5; ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
-                    }
+                if(bgMouse.x != null) {
+                    const dx = bgParticles[i].x - bgMouse.x; const dy = bgParticles[i].y - bgMouse.y; const dist = Math.sqrt(dx * dx + dy * dy);
+                    if(dist < 150) { bgCtx.beginPath(); bgCtx.strokeStyle = `rgba(56, 189, 248, ${0.4 - dist/150})`; bgCtx.lineWidth = 1.5; bgCtx.moveTo(bgParticles[i].x, bgParticles[i].y); bgCtx.lineTo(bgMouse.x, bgMouse.y); bgCtx.stroke(); }
                 }
             }
-            requestAnimationFrame(animate);
+            requestAnimationFrame(animateBg);
         }
-        animate();
+        animateBg();
     </script>
 </body>
 </html>
