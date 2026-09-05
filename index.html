@@ -67,18 +67,10 @@
             transition: all 0.3s ease; box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
             z-index: 10;
         }
-        #init-btn:hover {
-            background: var(--neon-blue); color: #020617;
-            box-shadow: 0 0 30px var(--neon-blue); transform: scale(1.05);
-        }
+        #init-btn:hover { background: var(--neon-blue); color: #020617; box-shadow: 0 0 30px var(--neon-blue); transform: scale(1.05); }
 
         .intro-logos-wrapper { position: relative; display: none; align-items: center; justify-content: center; height: 150px; width: 100%; z-index: 2; }
-
-        .intro-logo {
-            width: 130px; height: 130px; border-radius: 50%; object-fit: contain; background: #fff;
-            border: 4px solid var(--neon-blue); position: absolute; box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
-        }
-
+        .intro-logo { width: 130px; height: 130px; border-radius: 50%; object-fit: contain; background: #fff; border: 4px solid var(--neon-blue); position: absolute; box-shadow: 0 0 30px rgba(0, 240, 255, 0.4); }
         .animate-left { animation: clashLeft 1.2s cubic-bezier(0.5, 0, 0.5, 1) forwards; }
         .animate-right { animation: clashRight 1.2s cubic-bezier(0.5, 0, 0.5, 1) forwards; }
 
@@ -89,35 +81,21 @@
         .flash-active { animation: flashAnim 0.8s ease-out forwards; }
         @keyframes flashAnim { 0% { opacity: 0; } 10% { opacity: 1; } 100% { opacity: 0; } }
 
-        .impact-shockwave {
-            position: absolute; width: 50px; height: 50px; border-radius: 50%; border: 15px solid var(--neon-blue);
-            top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); opacity: 0; z-index: 1; pointer-events: none;
-        }
+        .impact-shockwave { position: absolute; width: 50px; height: 50px; border-radius: 50%; border: 15px solid var(--neon-blue); top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); opacity: 0; z-index: 1; pointer-events: none; }
         .shockwave-active { animation: shockwaveAnim 1s ease-out forwards; }
         @keyframes shockwaveAnim { 0% { transform: translate(-50%, -50%) scale(0); opacity: 1; border-width: 15px; } 100% { transform: translate(-50%, -50%) scale(40); opacity: 0; border-width: 0; } }
 
         .dust-cloud { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: transparent; z-index: 2; transition: all 0.6s ease-out; }
-        .dust-cloud.explode {
-            box-shadow: -40px -40px 60px 40px rgba(100, 116, 139, 0.6), 40px 40px 60px 40px rgba(100, 116, 139, 0.6), -40px 40px 60px 40px rgba(100, 116, 139, 0.6), 40px -40px 60px 40px rgba(100, 116, 139, 0.6), 0px 0px 100px 100px rgba(100, 116, 139, 0.8);
-            transform: scale(2.5); opacity: 0;
-        }
+        .dust-cloud.explode { box-shadow: -40px -40px 60px 40px rgba(100, 116, 139, 0.6), 40px 40px 60px 40px rgba(100, 116, 139, 0.6), -40px 40px 60px 40px rgba(100, 116, 139, 0.6), 40px -40px 60px 40px rgba(100, 116, 139, 0.6), 0px 0px 100px 100px rgba(100, 116, 139, 0.8); transform: scale(2.5); opacity: 0; }
 
-        .intro-title {
-            margin-top: 180px; font-family: 'Montserrat', sans-serif; font-size: 3.5rem; color: #fff;
-            letter-spacing: 10px; text-shadow: 0 0 20px var(--neon-blue); text-align: center; opacity: 0; display: none;
-        }
+        .intro-title { margin-top: 180px; font-family: 'Montserrat', sans-serif; font-size: 3.5rem; color: #fff; letter-spacing: 10px; text-shadow: 0 0 20px var(--neon-blue); text-align: center; opacity: 0; display: none; }
         .title-active { display: block; animation: textReveal 1s ease-out 0.2s forwards; }
         @keyframes textReveal { 0% { opacity: 0; transform: translateY(20px); letter-spacing: 25px; filter: blur(10px); } 100% { opacity: 1; transform: translateY(0); letter-spacing: 8px; filter: blur(0); } }
 
         /* --- MAIN SITE CSS --- */
         #networkCanvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; background: var(--canvas-bg); transition: background 0.5s ease; }
         
-        header {
-            position: relative; text-align: left; padding: 80px 20px 40px; width: 100%; box-sizing: border-box;
-            background-image: url('https://media.licdn.com/dms/image/v2/D4D3DAQFRzBS_ytkuLw/image-scale_191_1128/image-scale_191_1128/0/1713457712793/data_science_and_artificial_intelligence_club_iit_bhilai_cover?e=1789200000&v=beta&t=pTkM-99X8uFxTWFCMIwc4mxMxPh206eZuHm1bo2M1OQ');
-            background-size: cover; background-position: center; border-bottom: 4px solid var(--primary-blue); transition: border-color 0.5s ease; overflow: hidden;
-        }
-
+        header { position: relative; text-align: left; padding: 80px 20px 40px; width: 100%; box-sizing: border-box; background-image: url('https://media.licdn.com/dms/image/v2/D4D3DAQFRzBS_ytkuLw/image-scale_191_1128/image-scale_191_1128/0/1713457712793/data_science_and_artificial_intelligence_club_iit_bhilai_cover?e=1789200000&v=beta&t=pTkM-99X8uFxTWFCMIwc4mxMxPh206eZuHm1bo2M1OQ'); background-size: cover; background-position: center; border-bottom: 4px solid var(--primary-blue); transition: border-color 0.5s ease; overflow: hidden; }
         header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--header-overlay); backdrop-filter: blur(2px); z-index: 0; transition: background 0.5s ease; }
 
         .header-content { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; opacity: 0; }
@@ -144,17 +122,14 @@
 
         .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px 60px; flex: 1; width: 100%; box-sizing: border-box; opacity: 0; }
         .site-active .container { animation: fadeIn 1s ease-out 1s forwards; }
-
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         .top-controls { display: flex; justify-content: flex-end; margin-bottom: 25px; }
-
         .theme-btn { background: var(--glass-bg); backdrop-filter: blur(10px); color: var(--primary-blue); border: 2px solid var(--primary-blue); padding: 12px 25px; border-radius: 30px; font-weight: bold; font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .theme-btn:hover { background: var(--primary-blue); color: #fff; box-shadow: 0 0 20px var(--primary-blue); transform: translateY(-2px); }
 
         #transition-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: var(--glass-bg); backdrop-filter: blur(20px); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease, background 0.5s ease; }
         #transition-overlay.active { opacity: 1; pointer-events: all; }
-        
         .cyber-loader { width: 90px; height: 90px; border: 5px solid transparent; border-top-color: var(--primary-blue); border-bottom-color: var(--secondary-blue); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 25px; }
 
         .slider-wrapper { width: 100%; height: 450px; border-radius: 24px; overflow: hidden; margin-bottom: 50px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 4px solid var(--card-bg); position: relative; transition: border-color 0.5s ease; }
@@ -180,26 +155,24 @@
         li { background: var(--card-bg); padding: 20px; margin-bottom: 15px; border-radius: 12px; border-left: 5px solid var(--primary-blue); font-size: 1.1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.02); transition: transform 0.3s ease, background 0.5s ease, border-color 0.5s ease; color: var(--main-text); }
         li:hover { transform: translateX(10px); box-shadow: 0 8px 20px rgba(2, 132, 199, 0.1); }
 
-        /* 3D TILT CARDS */
         .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; margin-top: 30px; perspective: 1000px; }
 
-        .text-card {
-            background: var(--card-bg); border-radius: 16px; overflow: hidden;
-            border: 1px solid var(--glass-border); display: flex; flex-direction: column;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-blue); padding: 30px;
-            transform-style: preserve-3d; transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.3s ease;
-        }
+        .text-card { background: var(--card-bg); border-radius: 16px; overflow: hidden; border: 1px solid var(--glass-border); display: flex; flex-direction: column; box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-blue); padding: 30px; transform-style: preserve-3d; transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.3s ease; }
         .text-card:hover { box-shadow: 0 20px 40px rgba(2, 132, 199, 0.2); border-color: var(--primary-blue); z-index: 10; }
-        
-        /* Inner content translated forward in Z space for 3D popping effect */
         .text-card > * { transform: translateZ(30px); transition: transform 0.3s; }
-        
         .text-card h3 { color: var(--primary-blue); margin: 0 0 10px 0; font-size: 1.3rem; transition: color 0.5s ease; }
         .text-card p { margin: 0; font-size: 0.95rem; color: var(--sub-text); transition: color 0.5s ease; }
 
         .core-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 15px; }
         .core-badge { background: rgba(2, 132, 199, 0.05); border: 1px solid rgba(2, 132, 199, 0.2); color: var(--main-text); padding: 10px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-align: center; pointer-events: none; transition: all 0.3s ease; }
         
+        .mission-cta {
+            background: rgba(2, 132, 199, 0.1); border-left: 4px solid var(--primary-blue);
+            padding: 15px; margin-top: 20px; border-radius: 8px; font-weight: bold; color: var(--primary-blue);
+        }
+        .mission-cta code { background: rgba(0,0,0,0.1); padding: 2px 6px; border-radius: 4px; font-family: monospace; }
+        [data-theme="cyber"] .mission-cta code { color: #fff; background: rgba(255,255,255,0.1); }
+
         footer { background: var(--glass-bg); border-top: 1px solid var(--glass-border); padding: 60px 20px; text-align: center; margin-top: auto; backdrop-filter: blur(10px); scroll-margin-top: 100px; transition: background 0.5s ease, border-color 0.5s ease; }
         .coordinator-info h3 { color: var(--primary-blue); font-size: 1rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; transition: color 0.5s ease; }
         .coordinator-info p { color: var(--main-text); font-size: 1.4rem; font-weight: 700; margin: 0 0 30px 0; transition: color 0.5s ease; }
@@ -214,15 +187,21 @@
         /* --- INTERACTIVE TERMINAL WIDGET --- */
         #open-terminal {
             position: fixed; bottom: 30px; right: 30px; background: var(--primary-blue); color: #fff;
-            border: none; border-radius: 30px; padding: 15px 25px; font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.1rem; font-weight: bold; box-shadow: 0 10px 25px rgba(2, 132, 199, 0.5); z-index: 9000;
+            border: none; border-radius: 30px; padding: 12px 25px; font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem; font-weight: bold; box-shadow: 0 0 20px rgba(2, 132, 199, 0.6); z-index: 9000;
             display: flex; align-items: center; gap: 10px; transition: transform 0.3s ease; display: none;
+            animation: pulseBtn 2s infinite alternate;
         }
-        .site-active #open-terminal { display: flex; animation: fadeIn 1s ease-out 2s forwards; opacity: 0; }
-        #open-terminal:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 15px 35px rgba(2, 132, 199, 0.6); }
+        
+        .pulse-dot-green { width: 10px; height: 10px; background-color: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981; }
+        
+        @keyframes pulseBtn { 0% { box-shadow: 0 0 15px rgba(2, 132, 199, 0.4); transform: scale(1); } 100% { box-shadow: 0 0 25px rgba(2, 132, 199, 0.8); transform: scale(1.02); } }
+
+        .site-active #open-terminal { display: flex; animation: fadeIn 1s ease-out 2s forwards, pulseBtn 2s infinite alternate; opacity: 0; }
+        #open-terminal:hover { transform: translateY(-5px) scale(1.05); }
 
         #terminal-window {
-            position: fixed; bottom: 90px; right: 30px; width: 350px; height: 400px;
+            position: fixed; bottom: 90px; right: 30px; width: 380px; height: 420px;
             background: rgba(15, 23, 42, 0.95); border: 1px solid var(--primary-blue); border-radius: 12px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.5); z-index: 9001; display: flex; flex-direction: column;
             overflow: hidden; opacity: 0; transform: translateY(20px); pointer-events: none; transition: all 0.3s ease;
@@ -230,22 +209,17 @@
         }
         #terminal-window.open { opacity: 1; transform: translateY(0); pointer-events: all; }
 
-        #terminal-header {
-            background: rgba(0, 0, 0, 0.5); padding: 10px 15px; display: flex; justify-content: space-between;
-            align-items: center; border-bottom: 1px solid var(--primary-blue); color: #9ca3af; font-size: 0.9rem;
-        }
+        #terminal-header { background: rgba(0, 0, 0, 0.5); padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--primary-blue); color: #9ca3af; font-size: 0.9rem; }
         #terminal-close { background: none; border: none; color: #ef4444; font-size: 1.2rem; cursor: pointer; }
 
         #terminal-body { flex: 1; padding: 15px; overflow-y: auto; color: #10b981; font-size: 0.95rem; display: flex; flex-direction: column; }
         .term-line { margin-bottom: 5px; line-height: 1.4; word-wrap: break-word; }
         .term-user { color: var(--primary-blue); }
         .term-err { color: #ef4444; }
+        .term-success { color: #f59e0b; font-weight: bold; }
 
         .terminal-input-wrapper { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
-        #term-input {
-            background: transparent; border: none; color: #10b981; font-family: monospace; font-size: 0.95rem;
-            flex: 1; outline: none;
-        }
+        #term-input { background: transparent; border: none; color: #10b981; font-family: monospace; font-size: 0.95rem; flex: 1; outline: none; }
 
         @media (max-width: 768px) {
             header { padding: 40px 15px 20px; }
@@ -261,7 +235,7 @@
             h2 { font-size: 2rem; }
             .intro-title { font-size: 2.2rem; margin-top: 120px; }
             #terminal-window { width: calc(100vw - 40px); right: 20px; bottom: 80px; }
-            #open-terminal { bottom: 20px; right: 20px; padding: 12px 20px; }
+            #open-terminal { bottom: 20px; right: 20px; }
         }
     </style>
 </head>
@@ -330,12 +304,14 @@
         <div id="about" class="section">
             <h2>The Mission</h2>
             <p>The DSAI Club at IIT Bhilai explores the world of data science and AI through hands-on projects, research, and innovation. It offers a collaborative space for students to engage with intelligent systems and data-driven solutions. Through workshops, research initiatives, and peer learning, members gain practical skills and a deeper understanding of emerging technologies. The club encourages curiosity, problem-solving, and creativity in applying AI to real-world challenges. We warmly welcome you to IIT Bhilai and look forward to being part of your journey into data and intelligence.</p>
+            <div class="mission-cta">
+                <i class="fa-solid fa-graduation-cap"></i> Want a 2-minute crash course in AI? Open the Terminal in the bottom corner and type <code>learn</code>.
+            </div>
         </div>
 
         <div id="activities" class="section">
             <h2>What We Actually Do</h2>
             <p>We are highly active on campus, transforming theoretical knowledge into hands-on experiences through continuous events and community building.</p>
-            
             <div class="card-grid">
                 <div class="text-card tilt-card">
                     <h3>Group Discussions</h3>
@@ -435,13 +411,16 @@
     </footer>
 
     <!-- INTERACTIVE TERMINAL WIDGET -->
-    <button id="open-terminal"><i class="fa-solid fa-terminal"></i> Terminal</button>
+    <button id="open-terminal">
+        <span class="pulse-dot-green"></span> 
+        > Terminal
+    </button>
     <div id="terminal-window">
         <div id="terminal-header">
             <span>DSAI_OS v1.0</span>
             <button id="terminal-close">×</button>
         </div>
-        <div id="terminal-body" id="term-out">
+        <div id="terminal-body">
             <div class="term-line">System Initialized. Welcome to DSAI.</div>
             <div class="term-line">Type <span style="color:#00f0ff">'help'</span> to see available commands.</div>
             <div class="terminal-input-wrapper">
@@ -545,12 +524,10 @@
             }, 3800);
         });
 
-        // Add Hover Sounds
-        document.querySelectorAll('.tab-btn, .action-btn, .liquid-btn').forEach(btn => {
+        document.querySelectorAll('.tab-btn, .action-btn, .liquid-btn, .theme-btn').forEach(btn => {
             btn.addEventListener('mouseenter', playHoverBlip);
         });
 
-        // Theme Switcher Logic
         const themeBtn = document.getElementById('theme-switch');
         themeBtn.addEventListener('click', () => {
             initAudio(); playPowerUp();
@@ -569,7 +546,6 @@
             }, 1000);
         });
 
-        // Tab Overlay Transition
         document.querySelectorAll('.tab-btn:not(.theme-btn)').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault(); const targetId = this.getAttribute('href');
@@ -582,7 +558,6 @@
             });
         });
 
-        // Scroll Spying
         const sections = document.querySelectorAll('.section');
         const navLinks = document.querySelectorAll('.tab-btn:not(.theme-btn)');
         const observerOptions = { root: null, rootMargin: '-20% 0px -60% 0px', threshold: 0 };
@@ -610,7 +585,6 @@
                 const centerX = rect.width / 2; 
                 const centerY = rect.height / 2;
                 
-                // Calculate rotation (max 10 degrees)
                 const rotateX = ((y - centerY) / centerY) * -10; 
                 const rotateY = ((x - centerX) / centerX) * 10;
                 
@@ -627,16 +601,17 @@
         const termClose = document.getElementById('terminal-close');
         const termInput = document.getElementById('term-input');
         const termBody = document.getElementById('terminal-body');
+        
+        let termState = 'idle'; // state tracker for the mini-game
 
         termBtn.addEventListener('click', () => { termWin.classList.add('open'); termInput.focus(); });
         termClose.addEventListener('click', () => { termWin.classList.remove('open'); });
 
         termInput.addEventListener('keydown', function(e) {
-            playKeyClick(); // Play typing sound on every key press
+            playKeyClick(); 
             if (e.key === 'Enter') {
                 const command = this.value.trim().toLowerCase();
                 this.value = '';
-                
                 if (command === '') return;
                 
                 // Echo command
@@ -645,39 +620,55 @@
                 echo.innerHTML = `<span class="term-user">> ${command}</span>`;
                 termBody.insertBefore(echo, termBody.lastElementChild);
 
-                // Process command
                 const response = document.createElement('div');
                 response.className = 'term-line';
                 
-                switch(command) {
-                    case 'help':
-                        response.innerHTML = "Commands: <br>- <b>about</b>: Mission<br>- <b>team</b>: Leaders<br>- <b>ping</b>: Network test<br>- <b>clear</b>: Clear screen";
-                        break;
-                    case 'about':
-                        response.innerHTML = "DSAI Club: We build intelligent systems and data-driven solutions at IIT Bhilai.";
-                        break;
-                    case 'team':
-                        response.innerHTML = "Coordinators: Vatsal Yadav & Siddhesh Bansal.";
-                        break;
-                    case 'ping':
-                        response.innerHTML = "Pinging AI mainframe... <br>Reply from 127.0.0.1: time < 1ms. System is ONLINE.";
-                        break;
-                    case 'hack':
-                    case 'sudo':
+                // Route to Mini-Game if state is active
+                if (termState === 'learn_1') {
+                    if (command === 'increase') {
+                        response.className = 'term-line term-success';
+                        response.innerHTML = "Correct! The AI increases the weight to fix the error. This is called 'Gradient Descent'.<br><br>Now the weight is 10. For 6 hours of study, AI predicts 60. Error is 0!<br><br>Model Trained. Welcome to Machine Learning. Type 'help' for normal commands.";
+                        termState = 'idle';
+                    } else if (command === 'decrease') {
                         response.className = 'term-line term-err';
-                        response.innerHTML = "Access Denied. Nice try, hacker. This attempt has been logged.";
-                        break;
-                    case 'clear':
-                        const lines = document.querySelectorAll('.term-line:not(:last-child)');
-                        lines.forEach(line => line.remove());
-                        return; // Prevent adding empty response div
-                    default:
+                        response.innerHTML = "Incorrect. If we decrease it, the guess gets even lower! Try 'increase'.";
+                    } else {
                         response.className = 'term-line term-err';
-                        response.innerHTML = `Command not found: ${command}. Type 'help'.`;
+                        response.innerHTML = "Please type 'increase' or 'decrease'.";
+                    }
+                } 
+                // Normal Commands
+                else {
+                    switch(command) {
+                        case 'help':
+                            response.innerHTML = "Commands: <br>- <b>learn</b>: AI Crash Course<br>- <b>team</b>: View Core Members<br>- <b>ping</b>: Network test<br>- <b>clear</b>: Clear screen";
+                            break;
+                        case 'learn':
+                            termState = 'learn_1';
+                            response.innerHTML = "<b>[ CRASH COURSE: Train a Model ]</b><br>Let's train a simple AI.<br>Data: [Study Hours] -> [Test Score]<br>Row 1: [2 hours] -> [20 score]<br>Row 2: [4 hours] -> [40 score]<br><br>Our untrained AI guesses the multiplier (weight) is 5. So for 2 hours, it guesses 10 (Error = 10 off).<br><br>To reduce this error, should we <b>increase</b> or <b>decrease</b> the weight? (Type your answer)";
+                            break;
+                        case 'team':
+                            // Fulfill Feature Request: Output text AND scroll to section
+                            response.innerHTML = "<b>Coordinators:</b><br>Vatsal Yadav, Siddhesh Bansal<br><b>Core Members:</b><br>Adhi, Dinesh, Sikharam, Kushal, Navanil, Parth, Sai, Shlok, Siddhant, Vaibhav, Yog, Thammandra.<br><br><i>Auto-navigating to Team Section...</i>";
+                            setTimeout(() => {
+                                document.querySelector('#team').scrollIntoView({ behavior: 'smooth' });
+                            }, 1000);
+                            break;
+                        case 'ping':
+                            response.innerHTML = "Pinging AI mainframe... <br>Reply from 127.0.0.1: time < 1ms. System ONLINE.";
+                            break;
+                        case 'clear':
+                            const lines = document.querySelectorAll('.term-line:not(:last-child)');
+                            lines.forEach(line => line.remove());
+                            return; 
+                        default:
+                            response.className = 'term-line term-err';
+                            response.innerHTML = `Command not found: ${command}. Type 'help'.`;
+                    }
                 }
 
                 termBody.insertBefore(response, termBody.lastElementChild);
-                termBody.scrollTop = termBody.scrollHeight; // Auto scroll down
+                termBody.scrollTop = termBody.scrollHeight; 
             }
         });
 
