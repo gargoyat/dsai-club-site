@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
-        /* --- DEFAULT: LIGHT ORANGE THEME --- */
+        /* --- DEFAULT: BLAZING LIGHT ORANGE THEME --- */
         :root {
             --primary-color: #ea580c;
             --secondary-color: #f97316;
@@ -25,7 +25,7 @@
         }
 
         /* --- CYBERPUNK DARK THEME --- */
-        [data-theme="cyber"] {
+        [data-theme="dark"] {
             --primary-color: #ff6b00;
             --secondary-color: #ffb300;
             --neon-glow: #ff8c00;
@@ -50,15 +50,15 @@
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="black" stroke="%23ea580c" stroke-width="2"/></svg>') 12 12, auto;
         }
 
-        [data-theme="cyber"] body {
+        [data-theme="dark"] body {
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="black" stroke="%23ff6b00" stroke-width="2"/></svg>') 12 12, auto;
         }
 
-        a, button, input, .tab-btn, .action-btn, .slider-wrapper, .image-card, .text-card, .theme-btn, #open-terminal {
+        a, button, input, .tab-btn, .action-btn, .slider-wrapper, .image-card, .text-card, .theme-btn, #open-terminal, #clear-canvas-btn {
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="black" stroke="%23f97316" stroke-width="2.5"/></svg>') 12 12, pointer !important;
         }
 
-        [data-theme="cyber"] a, [data-theme="cyber"] button, [data-theme="cyber"] input, [data-theme="cyber"] .tab-btn, [data-theme="cyber"] .action-btn, [data-theme="cyber"] .slider-wrapper, [data-theme="cyber"] .image-card, [data-theme="cyber"] .text-card, [data-theme="cyber"] .theme-btn, [data-theme="cyber"] #open-terminal {
+        [data-theme="dark"] a, [data-theme="dark"] button, [data-theme="dark"] input, [data-theme="dark"] .tab-btn, [data-theme="dark"] .action-btn, [data-theme="dark"] .theme-btn, [data-theme="dark"] #open-terminal {
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="black" stroke="%23ffb300" stroke-width="2.5"/></svg>') 12 12, pointer !important;
         }
 
@@ -99,7 +99,7 @@
         .dust-cloud { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: transparent; z-index: 2; transition: all 0.6s ease-out; }
         .dust-cloud.explode { box-shadow: -40px -40px 60px 40px rgba(234, 88, 12, 0.4), 40px 40px 60px 40px rgba(234, 88, 12, 0.4), -40px 40px 60px 40px rgba(234, 88, 12, 0.4), 40px -40px 60px 40px rgba(234, 88, 12, 0.4), 0px 0px 100px 100px rgba(234, 88, 12, 0.5); transform: scale(2.5); opacity: 0; }
 
-        .intro-title { margin-top: 180px; font-family: 'Montserrat', sans-serif; font-size: 3.5rem; color: var(--primary-color); letter-spacing: 10px; text-shadow: 0 0 20px var(--neon-glow); text-align: center; opacity: 0; display: none; }
+        .intro-title { margin-top: 180px; font-family: 'Montserrat', sans-serif; font-size: 3.5rem; color: var(--primary-color); letter-spacing: 10px; text-shadow: 0 0 20px rgba(234, 88, 12, 0.5); text-align: center; opacity: 0; display: none; }
         .title-active { display: block; animation: textReveal 1s ease-out 0.2s forwards; }
         @keyframes textReveal { 0% { opacity: 0; transform: translateY(20px); letter-spacing: 25px; filter: blur(10px); } 100% { opacity: 1; transform: translateY(0); letter-spacing: 8px; filter: blur(0); } }
 
@@ -122,11 +122,11 @@
         .static-logo { height: 90px; width: 90px; border-radius: 50%; object-fit: contain; box-shadow: 0 10px 25px rgba(234, 88, 12, 0.4); border: 4px solid var(--primary-color); background-color: #fff; transition: box-shadow 0.5s ease, border-color 0.5s ease; }
 
         h1 { font-size: 4.5rem; margin: 0; letter-spacing: -2px; color: var(--primary-color); text-shadow: 0 2px 15px rgba(255, 255, 255, 0.8); }
-        [data-theme="cyber"] h1 { text-shadow: 0 2px 15px rgba(255, 107, 0, 0.5); }
+        [data-theme="dark"] h1 { text-shadow: 0 2px 15px rgba(255, 107, 0, 0.5); }
         .header-hr { border: 0; height: 4px; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), transparent); margin: 15px 0 20px 0; width: 100%; border-radius: 2px; }
 
         .subtitle { font-size: 1.4rem; color: var(--main-text); margin: 0 0 10px 0; font-weight: 800; text-shadow: 0 2px 10px rgba(255, 255, 255, 0.8); border-right: 3px solid var(--primary-color); white-space: nowrap; overflow: hidden; }
-        [data-theme="cyber"] .subtitle { text-shadow: 0 2px 10px rgba(0,0,0,1); }
+        [data-theme="dark"] .subtitle { text-shadow: 0 2px 10px rgba(0,0,0,1); }
         .site-active .subtitle { animation: typing 3s steps(50, end) 1s both, blink-caret .75s step-end infinite; }
 
         @keyframes typing { from { width: 0 } to { width: 100% } }
@@ -180,29 +180,40 @@
         
         .mission-cta { background: rgba(234, 88, 12, 0.1); border-left: 4px solid var(--primary-color); padding: 15px; margin-top: 20px; border-radius: 8px; font-weight: bold; color: var(--primary-color); }
         .mission-cta code { background: rgba(0,0,0,0.1); color: #000; padding: 2px 6px; border-radius: 4px; font-family: monospace; }
-        [data-theme="cyber"] .mission-cta code { color: #fff; background: rgba(255,255,255,0.1); }
+        [data-theme="dark"] .mission-cta code { color: #fff; background: rgba(255,255,255,0.1); }
 
-        /* --- ML PLAYGROUND (Polynomial Regression) --- */
+        /* --- ML PLAYGROUND --- */
         .playground-container {
-            width: 100%; display: flex; flex-wrap: wrap; gap: 20px; background: var(--glass-bg); border-radius: 16px;
+            width: 100%; display: flex; flex-wrap: wrap; gap: 20px; background: rgba(0,0,0,0.03); border-radius: 16px;
             padding: 20px; box-sizing: border-box; border: 2px solid var(--primary-color); margin-top: 20px;
             transition: background 0.5s ease, border-color 0.5s ease;
         }
+        [data-theme="dark"] .playground-container { background: rgba(0,0,0,0.3); }
+        
         .pg-canvas-wrapper { flex: 2; min-width: 300px; display: flex; flex-direction: column; }
         .playground-header { display: flex; justify-content: space-between; align-items: center; color: var(--main-text); margin-bottom: 10px; }
         .playground-header h3 { color: var(--secondary-color); margin: 0; font-family: 'Space Grotesk'; }
-        #regressionCanvas { width: 100%; height: 350px; background: var(--card-bg); border-radius: 8px; cursor: crosshair !important; border: 1px dashed var(--glass-border); transition: background 0.5s ease; }
+        
+        #regressionCanvas { width: 100%; height: 350px; background: rgba(15, 23, 42, 0.05); border-radius: 8px; cursor: crosshair !important; border: 1px dashed var(--glass-border); transition: background 0.5s ease; }
+        [data-theme="dark"] #regressionCanvas { background: rgba(15, 23, 42, 0.8); }
         
         .pg-dashboard {
-            flex: 1; min-width: 250px; background: var(--card-bg); border-radius: 8px; padding: 20px;
-            color: var(--sub-text); font-family: monospace; display: flex; flex-direction: column; gap: 15px;
+            flex: 1; min-width: 250px; background: rgba(15, 23, 42, 0.05); border-radius: 8px; padding: 20px;
+            color: var(--main-text); font-family: monospace; display: flex; flex-direction: column; gap: 15px;
             border: 1px solid var(--glass-border); transition: background 0.5s ease;
         }
-        .pg-dash-title { color: var(--main-text); font-weight: bold; font-family: 'Space Grotesk'; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; transition: color 0.5s ease; }
-        .pg-stat { display: flex; justify-content: space-between; border-bottom: 1px solid var(--glass-border); padding-bottom: 5px; }
+        [data-theme="dark"] .pg-dashboard { background: rgba(15, 23, 42, 0.8); color: #94a3b8; }
+        
+        .pg-dash-title { color: var(--primary-color); font-weight: bold; font-family: 'Space Grotesk'; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 10px; transition: color 0.5s ease; }
+        [data-theme="dark"] .pg-dash-title { color: #fff; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        
+        .pg-stat { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 5px; }
+        [data-theme="dark"] .pg-stat { border-bottom: 1px solid rgba(255,255,255,0.05); }
         .pg-stat span:first-child { color: var(--sub-text); }
         .pg-stat span:last-child { color: #10b981; font-weight: bold; }
+        
         .pg-insight { background: rgba(234, 88, 12, 0.1); border-left: 3px solid var(--secondary-color); padding: 10px; border-radius: 4px; font-size: 0.9rem; line-height: 1.4; color: var(--main-text); margin-top: auto; }
+        [data-theme="dark"] .pg-insight { color: #e2e8f0; }
         
         .btn-clear-data { background: #ef4444; color: #fff; border: none; padding: 8px 15px; border-radius: 6px; font-family: 'Space Grotesk'; font-weight: bold; cursor: pointer; transition: 0.3s; }
         .btn-clear-data:hover { background: #dc2626; transform: scale(1.05); }
@@ -213,26 +224,24 @@
         .coordinator-info span { color: var(--secondary-color); margin: 0 15px; }
         .social-container { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
         .liquid-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: var(--light-bg); color: var(--primary-color); font-size: 1.6rem; text-decoration: none; border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transition: all 0.5s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 2px solid transparent; }
-        .liquid-btn:hover { border-radius: 50%; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: #ffffff; transform: translateY(-5px) scale(1.1); box-shadow: 0 15px 30px rgba(234, 88, 12, 0.3); }
+        .liquid-btn:hover { border-radius: 50%; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: #ffffff; transform: translateY(-5px) scale(1.1); box-shadow: 0 15px 30px rgba(234, 88, 12, 0.4); }
 
-        /* --- INTERACTIVE ALIEN OBSERVER (Moves opposite to cursor) --- */
+        /* --- INTERACTIVE ALIEN OBSERVER --- */
         #alien-wrapper {
             position: fixed; bottom: 30px; left: 30px; z-index: 8999;
             opacity: 0; pointer-events: none; transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease 2s;
         }
-        
         .site-active #alien-wrapper { opacity: 1; pointer-events: auto; }
         
         .alien-container {
             background: var(--glass-bg); border: 2px solid var(--primary-color); 
             border-radius: 50px; padding: 10px 20px; display: flex; gap: 15px; 
-            box-shadow: 0 0 20px rgba(234, 88, 12, 0.2); backdrop-filter: blur(10px); 
+            box-shadow: 0 0 20px rgba(234, 88, 12, 0.3); backdrop-filter: blur(10px); 
             animation: floatAlien 4s ease-in-out infinite; cursor: crosshair;
             transition: box-shadow 0.3s ease, transform 0.3s ease, background 0.5s ease, border-color 0.5s ease;
         }
-        
         @keyframes floatAlien { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        .alien-container:hover { box-shadow: 0 0 30px rgba(234, 88, 12, 0.5); transform: scale(1.1); }
+        .alien-container:hover { box-shadow: 0 0 30px rgba(234, 88, 12, 0.6); transform: scale(1.1); }
         
         .alien-eye {
             width: 25px; height: 25px; background: #fff; border-radius: 50%;
@@ -296,10 +305,11 @@
             #terminal-window { width: calc(100vw - 40px); right: 20px; bottom: 80px; }
             #open-terminal { bottom: 20px; right: 20px; }
             .playground-container { flex-direction: column; }
-            #alien-wrapper { display: none; } /* Hide alien on mobile */
+            #alien-wrapper { display: none; } 
         }
     </style>
 </head>
+<!-- DEFAULT IS LIGHT MODE (NO data-theme attribute on body) -->
 <body>
 
     <!-- Cinematic Splash Screen Intro -->
@@ -340,7 +350,6 @@
     <div class="container">
         
         <div class="top-controls">
-            <!-- Theme defaults to Light, button switches to Dark Cyber mode -->
             <button id="theme-switch" class="theme-btn"><i class="fa-solid fa-moon"></i> Dark Mode</button>
         </div>
 
@@ -351,380 +360,6 @@
                 <img src="https://scontent-bom2-4.xx.fbcdn.net/v/t39.30808-6/476927714_646486844574808_772153997691883184_n.jpg?stp=dst-jpg_tt6&cstp=mx640x288&ctp=s640x288&_nc_cat=106&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=2Bm9MIfhChgQ7kNvwEc3nrw&_nc_oc=AdoM1Y25F-FdR6nJxMQl71l-_HMHjD4j2hXuulGHOIMuqN8xBvhPsegxgS2troqVHD0&_nc_zt=23&_nc_ht=scontent-bom2-4.xx&_nc_gid=_DyC8aP8dTjmraI4-ly9qw&_nc_ss=7b289&oh=00_AQL0BMx39Y2B1b1H2WMaT0Ub6gr5d3kNAzx78nJrTxV_iA&oe=6AA1AD02" alt="DSAI Image 3">
                 <img src="logo.jpg" onerror="this.style.display='none'" alt="DSAI Logo">
                 <img src="https://media.licdn.com/dms/image/v2/D5622AQFBw2qVkEQFRg/feedshare-shrink_800/B56aANgCJtIUAc-/0/1786932896610?e=1790208000&v=beta&t=VK8620pyPesK4buTeIF3it-yOEMiUNGuO4saEh8QoQc" alt="DSAI Image 1 Loop">
-            </div>
-        </div>
-
-        <div class="tabs" id="nav-tabs">
-            <a href="#about" class="tab-btn active">The Mission</a>
-            <a href="#activities" class="tab-btn">Activities</a>
-            <a href="#join" class="tab-btn">How to Join</a>
-            <a href="#team" class="tab-btn">Our Structure</a>
-            <a href="#playground" class="tab-btn">Playground <i class="fa-solid fa-bolt" style="color: #f59e0b"></i></a>
-            <a href="#reach" class="tab-btn">Reach Us</a>
-        </div>
-
-        <div id="about" class="section">
-            <h2 class="glitch-target" data-text="The Mission">The Mission</h2>
-            <p>The DSAI Club at IIT Bhilai explores the world of data science and AI through hands-on projects, research, and innovationThat is a great choice. The light orange mode has an incredibly clean, vibrant, and energetic feel that makes the frosted glass cards pop perfectly. 
-
-I have swapped the core engine so the **default is now the blazing Light Orange theme**. The cinematic intro still plays flawlessly, but it now boots directly into the bright interface. 
-
-I also updated the toggle button so when users want to switch to the darker, cyberpunk aesthetic, they just click **"Dark Mode"**, and it processes the theme swap just like before. 
-
-Here is your ultimate, copyright-safe, fully interactive final code. Replace `index.html` with this:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DSAI Club | IIT Bhilai</title>
-    
-    <link href="[https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Space+Grotesk:wght@400;600&display=swap](https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Space+Grotesk:wght@400;600&display=swap)" rel="stylesheet">
-    <link rel="stylesheet" href="[https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css)">
-    
-    <style>
-        /* --- DEFAULT: BLAZING LIGHT ORANGE THEME --- */
-        :root {
-            --primary-color: #ea580c;
-            --secondary-color: #f97316;
-            --neon-glow: #fb923c;
-            --main-text: #0f172a;
-            --sub-text: #475569;
-            --light-bg: #fff7ed;
-            --glass-bg: rgba(255, 255, 255, 0.85);
-            --glass-border: rgba(234, 88, 12, 0.3);
-            --card-bg: #ffffff;
-            --canvas-bg: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
-            --header-overlay: rgba(255, 255, 255, 0.4);
-        }
-
-        /* --- CYBERPUNK DARK THEME --- */
-        [data-theme="dark"] {
-            --primary-color: #ff6b00;
-            --secondary-color: #ffb300;
-            --neon-glow: #ff8c00;
-            --main-text: #e5e7eb;
-            --sub-text: #9ca3af;
-            --light-bg: #0a0500;
-            --glass-bg: rgba(26, 10, 0, 0.85);
-            --glass-border: rgba(255, 107, 0, 0.2);
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --canvas-bg: radial-gradient(circle at top left, #2a1200 0%, #0a0500 100%);
-            --header-overlay: rgba(10, 5, 0, 0.75);
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Space Grotesk', sans-serif; margin: 0; padding: 0;
-            background-color: var(--light-bg); color: var(--main-text);
-            line-height: 1.7; overflow-x: hidden; min-height: 100vh;
-            display: flex; flex-direction: column; position: relative;
-            transition: background-color 0.5s ease, color 0.5s ease;
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="black" stroke="%23ea580c" stroke-width="2"/></svg>') 12 12, auto;
-        }
-
-        a, button, input, .tab-btn, .action-btn, .slider-wrapper, .image-card, .text-card, .theme-btn, #open-terminal {
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="black" stroke="%23f97316" stroke-width="2.5"/></svg>') 12 12, pointer !important;
-        }
-
-        /* --- CINEMATIC INTRO --- */
-        #cinematic-intro {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: var(--light-bg); z-index: 10000;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            transition: opacity 0.8s ease;
-        }
-
-        #init-btn {
-            padding: 15px 40px; font-size: 1.5rem; color: var(--primary-color);
-            background: rgba(234, 88, 12, 0.05); border: 2px solid var(--primary-color);
-            cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-weight: bold;
-            text-transform: uppercase; letter-spacing: 5px; border-radius: 8px;
-            transition: all 0.3s ease; box-shadow: 0 0 15px rgba(234, 88, 12, 0.2);
-            z-index: 10;
-        }
-        #init-btn:hover { background: var(--primary-color); color: #fff; box-shadow: 0 0 30px var(--primary-color); transform: scale(1.05); }
-
-        .intro-logos-wrapper { position: relative; display: none; align-items: center; justify-content: center; height: 150px; width: 100%; z-index: 2; }
-        .intro-logo { width: 130px; height: 130px; border-radius: 50%; object-fit: contain; background: #fff; border: 4px solid var(--primary-color); position: absolute; box-shadow: 0 0 30px rgba(234, 88, 12, 0.4); }
-        .animate-left { animation: clashLeft 1.2s cubic-bezier(0.5, 0, 0.5, 1) forwards; }
-        .animate-right { animation: clashRight 1.2s cubic-bezier(0.5, 0, 0.5, 1) forwards; }
-
-        @keyframes clashLeft { 0% { transform: translateX(-60vw) rotate(-1080deg); } 100% { transform: translateX(-70px) rotate(0deg); } }
-        @keyframes clashRight { 0% { transform: translateX(60vw) rotate(1080deg); } 100% { transform: translateX(70px) rotate(0deg); } }
-
-        .impact-flash { position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; background: var(--primary-color); z-index: 3; opacity: 0; pointer-events: none; }
-        .flash-active { animation: flashAnim 0.8s ease-out forwards; }
-        @keyframes flashAnim { 0% { opacity: 0; } 10% { opacity: 0.8; } 100% { opacity: 0; } }
-
-        .impact-shockwave { position: absolute; width: 50px; height: 50px; border-radius: 50%; border: 15px solid var(--primary-color); top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); opacity: 0; z-index: 1; pointer-events: none; }
-        .shockwave-active { animation: shockwaveAnim 1s ease-out forwards; }
-        @keyframes shockwaveAnim { 0% { transform: translate(-50%, -50%) scale(0); opacity: 1; border-width: 15px; } 100% { transform: translate(-50%, -50%) scale(40); opacity: 0; border-width: 0; } }
-
-        .dust-cloud { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: transparent; z-index: 2; transition: all 0.6s ease-out; }
-        .dust-cloud.explode { box-shadow: -40px -40px 60px 40px rgba(234, 88, 12, 0.4), 40px 40px 60px 40px rgba(234, 88, 12, 0.4), -40px 40px 60px 40px rgba(234, 88, 12, 0.4), 40px -40px 60px 40px rgba(234, 88, 12, 0.4), 0px 0px 100px 100px rgba(234, 88, 12, 0.5); transform: scale(2.5); opacity: 0; }
-
-        .intro-title { margin-top: 180px; font-family: 'Montserrat', sans-serif; font-size: 3.5rem; color: var(--primary-color); letter-spacing: 10px; text-shadow: 0 0 20px rgba(234, 88, 12, 0.5); text-align: center; opacity: 0; display: none; }
-        .title-active { display: block; animation: textReveal 1s ease-out 0.2s forwards; }
-        @keyframes textReveal { 0% { opacity: 0; transform: translateY(20px); letter-spacing: 25px; filter: blur(10px); } 100% { opacity: 1; transform: translateY(0); letter-spacing: 8px; filter: blur(0); } }
-
-        /* --- MAIN SITE CSS --- */
-        #networkCanvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; background: var(--canvas-bg); transition: background 0.5s ease; }
-        
-        header { position: relative; text-align: left; padding: 80px 20px 40px; width: 100%; box-sizing: border-box; background-image: url('[https://media.licdn.com/dms/image/v2/D4D3DAQFRzBS_ytkuLw/image-scale_191_1128/image-scale_191_1128/0/1713457712793/data_science_and_artificial_intelligence_club_iit_bhilai_cover?e=1789200000&v=beta&t=pTkM-99X8uFxTWFCMIwc4mxMxPh206eZuHm1bo2M1OQ](https://media.licdn.com/dms/image/v2/D4D3DAQFRzBS_ytkuLw/image-scale_191_1128/image-scale_191_1128/0/1713457712793/data_science_and_artificial_intelligence_club_iit_bhilai_cover?e=1789200000&v=beta&t=pTkM-99X8uFxTWFCMIwc4mxMxPh206eZuHm1bo2M1OQ)'); background-size: cover; background-position: center; border-bottom: 4px solid var(--primary-color); transition: border-color 0.5s ease; overflow: hidden; }
-        header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--header-overlay); backdrop-filter: blur(2px); z-index: 0; transition: background 0.5s ease; }
-
-        .header-content { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; opacity: 0; }
-        .site-active .header-content { animation: fadeIn 1s ease-out 0.5s forwards; }
-        
-        h1, h2, h3 { font-family: 'Montserrat', sans-serif; color: var(--main-text); transition: color 0.5s ease; }
-        
-        .glitch-text { display: inline-block; position: relative; }
-        .glitch-text::after { content: attr(data-text); position: absolute; left: 0; top: 0; opacity: 0; color: var(--primary-color); background: var(--glass-bg); pointer-events: none; }
-
-        .title-wrapper { display: flex; align-items: center; justify-content: flex-start; gap: 20px; flex-wrap: wrap; }
-        .logo-container { display: flex; gap: 15px; }
-        .static-logo { height: 90px; width: 90px; border-radius: 50%; object-fit: contain; box-shadow: 0 10px 25px rgba(234, 88, 12, 0.4); border: 4px solid var(--primary-color); background-color: #fff; }
-
-        h1 { font-size: 4.5rem; margin: 0; letter-spacing: -2px; color: var(--primary-color); text-shadow: 0 2px 15px rgba(255, 255, 255, 0.8); }
-        [data-theme="dark"] h1 { text-shadow: 0 2px 15px rgba(255, 107, 0, 0.5); }
-        .header-hr { border: 0; height: 4px; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), transparent); margin: 15px 0 20px 0; width: 100%; border-radius: 2px; }
-
-        .subtitle { font-size: 1.4rem; color: var(--main-text); margin: 0 0 10px 0; font-weight: 800; text-shadow: 0 2px 10px rgba(255, 255, 255, 0.8); border-right: 3px solid var(--primary-color); white-space: nowrap; overflow: hidden; }
-        [data-theme="dark"] .subtitle { text-shadow: 0 2px 10px rgba(0,0,0,1); }
-        .site-active .subtitle { animation: typing 3s steps(50, end) 1s both, blink-caret .75s step-end infinite; }
-
-        @keyframes typing { from { width: 0 } to { width: 100% } }
-        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--primary-color); } }
-
-        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px 60px; flex: 1; width: 100%; box-sizing: border-box; opacity: 0; }
-        .site-active .container { animation: fadeIn 1s ease-out 1s forwards; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        .top-controls { display: flex; justify-content: flex-end; margin-bottom: 25px; }
-        .theme-btn { background: var(--glass-bg); backdrop-filter: blur(10px); color: var(--primary-color); border: 2px solid var(--primary-color); padding: 12px 25px; border-radius: 30px; font-weight: bold; font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .theme-btn:hover { background: var(--primary-color); color: #fff; box-shadow: 0 0 20px var(--primary-color); transform: translateY(-2px); }
-
-        #transition-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: var(--glass-bg); backdrop-filter: blur(20px); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease, background 0.5s ease; }
-        #transition-overlay.active { opacity: 1; pointer-events: all; }
-        .cyber-loader { width: 90px; height: 90px; border: 5px solid transparent; border-top-color: var(--primary-color); border-bottom-color: var(--secondary-color); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 25px; }
-
-        .slider-wrapper { width: 100%; height: 450px; border-radius: 24px; overflow: hidden; margin-bottom: 50px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 4px solid var(--card-bg); position: relative; transition: border-color 0.5s ease; }
-        .slider-track { display: flex; width: 500%; height: 100%; animation: autoSlide 20s infinite cubic-bezier(0.77, 0, 0.175, 1); }
-        .slider-wrapper:hover .slider-track { animation-play-state: paused; }
-        .slider-track img { width: 20%; height: 100%; object-fit: cover; object-position: center; background-color: var(--card-bg); }
-
-        @keyframes autoSlide { 0%, 15% { transform: translateX(0); } 20%, 35% { transform: translateX(-20%); } 40%, 55% { transform: translateX(-40%); } 60%, 75% { transform: translateX(-60%); } 80%, 95% { transform: translateX(-80%); } 100% { transform: translateX(0); } }
-        
-        .tabs { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; position: sticky; top: 20px; z-index: 1000; background: var(--glass-bg); backdrop-filter: blur(12px); padding: 15px; border-radius: 16px; border: 1px solid var(--glass-border); box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: background 0.5s ease, border-color 0.5s ease; }
-        .tab-btn { background: transparent; color: var(--sub-text); border: 1px solid transparent; padding: 10px 20px; border-radius: 30px; font-weight: 600; font-size: 1.05rem; text-decoration: none; transition: all 0.3s ease; }
-        .tab-btn:hover { color: var(--primary-color); background: rgba(234, 88, 12, 0.05); }
-        .tab-btn.active { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: #fff; box-shadow: 0 5px 15px rgba(234, 88, 12, 0.3); }
-
-        .section { background: var(--glass-bg); backdrop-filter: blur(16px); padding: 50px; border-radius: 24px; border: 1px solid var(--glass-border); box-shadow: 0 20px 40px rgba(0,0,0,0.1); margin-bottom: 50px; scroll-margin-top: 120px; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out, background 0.5s ease, border-color 0.5s ease; }
-        .section.visible { opacity: 1; transform: translateY(0); }
-
-        h2 { font-size: 2.5rem; margin-top: 0; margin-bottom: 30px; position: relative; display: inline-block; cursor: crosshair; }
-        h2::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 50px; height: 5px; background: var(--primary-color); border-radius: 4px; transition: width 0.4s ease, background 0.5s ease; }
-        .section:hover h2::after { width: 100%; }
-
-        ul { list-style: none; padding: 0; }
-        li { background: var(--card-bg); padding: 20px; margin-bottom: 15px; border-radius: 12px; border-left: 5px solid var(--primary-color); font-size: 1.1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.02); transition: transform 0.3s ease, background 0.5s ease, border-color 0.5s ease; color: var(--main-text); }
-        li:hover { transform: translateX(10px); box-shadow: 0 8px 20px rgba(234, 88, 12, 0.2); }
-
-        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; margin-top: 30px; perspective: 1000px; }
-
-        .text-card { background: var(--card-bg); border-radius: 16px; overflow: hidden; border: 1px solid var(--glass-border); display: flex; flex-direction: column; box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-color); padding: 30px; transform-style: preserve-3d; transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.3s ease; }
-        .text-card:hover { box-shadow: 0 20px 40px rgba(234, 88, 12, 0.2); border-color: var(--primary-color); z-index: 10; }
-        .text-card > * { transform: translateZ(30px); transition: transform 0.3s; }
-        .text-card h3 { color: var(--primary-color); margin: 0 0 10px 0; font-size: 1.3rem; transition: color 0.5s ease; }
-        .text-card p { margin: 0; font-size: 0.95rem; color: var(--sub-text); transition: color 0.5s ease; }
-
-        .core-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 15px; }
-        .core-badge { background: rgba(234, 88, 12, 0.05); border: 1px solid rgba(234, 88, 12, 0.2); color: var(--main-text); padding: 10px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-align: center; pointer-events: none; transition: all 0.3s ease; }
-        
-        .mission-cta { background: rgba(234, 88, 12, 0.1); border-left: 4px solid var(--primary-color); padding: 15px; margin-top: 20px; border-radius: 8px; font-weight: bold; color: var(--primary-color); }
-        .mission-cta code { color: #000; background: rgba(0,0,0,0.1); padding: 2px 6px; border-radius: 4px; font-family: monospace; }
-        [data-theme="dark"] .mission-cta code { background: rgba(255,255,255,0.1); color: #fff; }
-
-        /* --- ML PLAYGROUND --- */
-        .playground-container {
-            width: 100%; display: flex; flex-wrap: wrap; gap: 20px; background: rgba(0,0,0,0.03); border-radius: 16px;
-            padding: 20px; box-sizing: border-box; border: 2px solid var(--primary-color); margin-top: 20px;
-        }
-        [data-theme="dark"] .playground-container { background: rgba(0,0,0,0.3); }
-        
-        .pg-canvas-wrapper { flex: 2; min-width: 300px; display: flex; flex-direction: column; }
-        .playground-header { display: flex; justify-content: space-between; align-items: center; color: var(--main-text); margin-bottom: 10px; }
-        .playground-header h3 { color: var(--secondary-color); margin: 0; font-family: 'Space Grotesk'; }
-        #regressionCanvas { width: 100%; height: 350px; background: rgba(15, 23, 42, 0.05); border-radius: 8px; cursor: crosshair !important; border: 1px dashed var(--glass-border); }
-        [data-theme="dark"] #regressionCanvas { background: rgba(15, 23, 42, 0.8); }
-        
-        .pg-dashboard {
-            flex: 1; min-width: 250px; background: rgba(15, 23, 42, 0.05); border-radius: 8px; padding: 20px;
-            color: var(--main-text); font-family: monospace; display: flex; flex-direction: column; gap: 15px;
-            border: 1px solid var(--glass-border);
-        }
-        [data-theme="dark"] .pg-dashboard { background: rgba(15, 23, 42, 0.8); color: #94a3b8; }
-        
-        .pg-dash-title { color: var(--primary-color); font-weight: bold; font-family: 'Space Grotesk'; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 10px; }
-        [data-theme="dark"] .pg-dash-title { color: #fff; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        
-        .pg-stat { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 5px; }
-        [data-theme="dark"] .pg-stat { border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .pg-stat span:last-child { color: #10b981; font-weight: bold; }
-        
-        .pg-insight { background: rgba(234, 88, 12, 0.1); border-left: 3px solid var(--secondary-color); padding: 10px; border-radius: 4px; font-size: 0.9rem; line-height: 1.4; color: var(--main-text); margin-top: auto; }
-        [data-theme="dark"] .pg-insight { color: #e2e8f0; }
-        
-        .btn-clear-data { background: #ef4444; color: #fff; border: none; padding: 8px 15px; border-radius: 6px; font-family: 'Space Grotesk'; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        .btn-clear-data:hover { background: #dc2626; transform: scale(1.05); }
-
-        footer { background: var(--glass-bg); border-top: 1px solid var(--glass-border); padding: 60px 20px; text-align: center; margin-top: auto; backdrop-filter: blur(10px); scroll-margin-top: 100px; transition: background 0.5s ease, border-color 0.5s ease; }
-        .coordinator-info h3 { color: var(--primary-color); font-size: 1rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; transition: color 0.5s ease; }
-        .coordinator-info p { color: var(--main-text); font-size: 1.4rem; font-weight: 700; margin: 0 0 30px 0; transition: color 0.5s ease; }
-        .coordinator-info span { color: var(--secondary-color); margin: 0 15px; }
-        .social-container { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-        .liquid-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: var(--light-bg); color: var(--primary-color); font-size: 1.6rem; text-decoration: none; border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transition: all 0.5s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 2px solid transparent; }
-        .liquid-btn:hover { border-radius: 50%; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: #ffffff; transform: translateY(-5px) scale(1.1); box-shadow: 0 15px 30px rgba(234, 88, 12, 0.4); }
-
-        /* --- INTERACTIVE ALIEN OBSERVER --- */
-        #alien-wrapper {
-            position: fixed; bottom: 30px; left: 30px; z-index: 8999;
-            opacity: 0; pointer-events: none; transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease 2s;
-        }
-        .site-active #alien-wrapper { opacity: 1; pointer-events: auto; }
-        
-        .alien-container {
-            background: var(--glass-bg); border: 2px solid var(--primary-color); 
-            border-radius: 50px; padding: 10px 20px; display: flex; gap: 15px; 
-            box-shadow: 0 0 20px rgba(234, 88, 12, 0.3); backdrop-filter: blur(10px); 
-            animation: floatAlien 4s ease-in-out infinite; cursor: crosshair;
-            transition: box-shadow 0.3s ease, transform 0.3s ease;
-        }
-        @keyframes floatAlien { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        .alien-container:hover { box-shadow: 0 0 30px rgba(234, 88, 12, 0.6); transform: scale(1.1); }
-        
-        .alien-eye {
-            width: 25px; height: 25px; background: #fff; border-radius: 50%;
-            position: relative; box-shadow: inset 0 0 10px #000; overflow: hidden;
-            display: flex; align-items: center; justify-content: center;
-            animation: alienBlink 4s infinite;
-        }
-        .alien-pupil {
-            width: 10px; height: 10px; background: #ef4444; border-radius: 50%;
-            position: absolute; box-shadow: 0 0 8px #ef4444, inset 0 0 2px #000;
-            transition: transform 0.05s linear;
-        }
-        @keyframes alienBlink { 0%, 96%, 98%, 100% { transform: scaleY(1); } 97% { transform: scaleY(0.1); } }
-
-        /* --- INTERACTIVE TERMINAL WIDGET --- */
-        #open-terminal {
-            position: fixed; bottom: 30px; right: 30px; background: var(--primary-color); color: #fff;
-            border: none; border-radius: 30px; padding: 12px 25px; font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.1rem; font-weight: bold; box-shadow: 0 0 20px rgba(234, 88, 12, 0.4); z-index: 9000;
-            display: flex; align-items: center; gap: 10px; transition: transform 0.3s ease; display: none;
-            animation: pulseBtn 2s infinite alternate;
-        }
-        .pulse-dot-green { width: 10px; height: 10px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981; }
-        @keyframes pulseBtn { 0% { box-shadow: 0 0 15px rgba(234, 88, 12, 0.3); transform: scale(1); } 100% { box-shadow: 0 0 25px rgba(234, 88, 12, 0.6); transform: scale(1.02); } }
-
-        .site-active #open-terminal { display: flex; animation: fadeIn 1s ease-out 2s forwards, pulseBtn 2s infinite alternate; opacity: 0; }
-        #open-terminal:hover { transform: translateY(-5px) scale(1.05); }
-
-        #terminal-window {
-            position: fixed; bottom: 90px; right: 30px; width: 380px; height: 420px;
-            background: rgba(15, 23, 42, 0.95); border: 1px solid var(--primary-color); border-radius: 12px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5); z-index: 9001; display: flex; flex-direction: column;
-            overflow: hidden; opacity: 0; transform: translateY(20px); pointer-events: none; transition: all 0.3s ease;
-            backdrop-filter: blur(15px); font-family: monospace;
-        }
-        #terminal-window.open { opacity: 1; transform: translateY(0); pointer-events: all; }
-        #terminal-header { background: rgba(0, 0, 0, 0.5); padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--primary-color); color: #9ca3af; font-size: 0.9rem; }
-        #terminal-close { background: none; border: none; color: #ef4444; font-size: 1.2rem; cursor: pointer; }
-        #terminal-body { flex: 1; padding: 15px; overflow-y: auto; color: #10b981; font-size: 0.95rem; display: flex; flex-direction: column; }
-        .term-line { margin-bottom: 5px; line-height: 1.4; word-wrap: break-word; }
-        .term-user { color: var(--primary-color); }
-        .term-err { color: #ef4444; }
-        .term-success { color: #f59e0b; font-weight: bold; }
-
-        .terminal-input-wrapper { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
-        #term-input { background: transparent; border: none; color: #10b981; font-family: monospace; font-size: 0.95rem; flex: 1; outline: none; }
-
-        @media (max-width: 768px) {
-            header { padding: 40px 15px 20px; }
-            .title-wrapper { flex-direction: column; align-items: center; gap: 15px; text-align: center; }
-            .static-logo, .intro-logo { height: 75px; width: 75px; }
-            h1 { font-size: 2.8rem; }
-            .subtitle { font-size: 1.1rem; white-space: normal; border-right: none; }
-            .slider-wrapper { height: 220px; border-radius: 16px; margin-bottom: 30px; }
-            .tabs { gap: 8px; padding: 10px; top: 10px; justify-content: center; }
-            .tab-btn { padding: 8px 14px; font-size: 0.9rem; }
-            .theme-btn { margin-left: 0; width: 100%; justify-content: center; margin-top: 10px; }
-            .section { padding: 30px 20px; border-radius: 16px; scroll-margin-top: 200px; }
-            h2 { font-size: 2rem; }
-            .intro-title { font-size: 2.2rem; margin-top: 120px; }
-            #terminal-window { width: calc(100vw - 40px); right: 20px; bottom: 80px; }
-            #open-terminal { bottom: 20px; right: 20px; }
-            .playground-container { flex-direction: column; }
-            #alien-wrapper { display: none; } 
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Cinematic Splash Screen Intro -->
-    <div id="cinematic-intro">
-        <button id="init-btn">[ Initialize System ]</button>
-        <div class="impact-flash" id="flash"></div>
-        <div class="impact-shockwave" id="shockwave"></div>
-        <div class="intro-logos-wrapper" id="logo-wrapper">
-            <div class="dust-cloud" id="dust-cloud"></div>
-            <img src="[https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Logo_IIT_Bhilai.png/250px-Logo_IIT_Bhilai.png?download](https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Logo_IIT_Bhilai.png/250px-Logo_IIT_Bhilai.png?download)" alt="IIT Bhilai Logo" class="intro-logo intro-inst" id="inst-splash" onerror="this.style.display='none'">
-            <img src="logo.jpg" alt="DSAI Logo" class="intro-logo intro-club" id="club-splash" onerror="this.style.display='none'">
-        </div>
-        <div class="intro-title" id="intro-title">DSAI CLUB</div>
-    </div>
-
-    <!-- Tab Transition Overlay -->
-    <div id="transition-overlay">
-        <div class="cyber-loader"></div>
-        <div class="overlay-title">DSAI CLUB</div>
-    </div>
-
-    <canvas id="networkCanvas"></canvas>
-
-    <header>
-        <div class="header-content">
-            <div class="title-wrapper">
-                <div class="logo-container">
-                    <img src="[https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Logo_IIT_Bhilai.png/250px-Logo_IIT_Bhilai.png?download](https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Logo_IIT_Bhilai.png/250px-Logo_IIT_Bhilai.png?download)" alt="IIT Bhilai Logo" class="static-logo" onerror="this.style.display='none'">
-                    <img src="logo.jpg" alt="DSAI Logo" class="static-logo" onerror="this.style.display='none'">
-                </div>
-                <h1>DSAI Club</h1>
-            </div>
-            <hr class="header-hr">
-            <p class="subtitle">The Data Science & Artificial Intelligence Community</p>
-        </div>
-    </header>
-
-    <div class="container">
-        
-        <div class="top-controls">
-            <!-- Theme defaults to Light, button switches to Dark -->
-            <button id="theme-switch" class="theme-btn"><i class="fa-solid fa-moon"></i> Dark Mode</button>
-        </div>
-
-        <div class="slider-wrapper">
-            <div class="slider-track">
-                <img src="[https://media.licdn.com/dms/image/v2/D5622AQFBw2qVkEQFRg/feedshare-shrink_800/B56aANgCJtIUAc-/0/1786932896610?e=1790208000&v=beta&t=VK8620pyPesK4buTeIF3it-yOEMiUNGuO4saEh8QoQc](https://media.licdn.com/dms/image/v2/D5622AQFBw2qVkEQFRg/feedshare-shrink_800/B56aANgCJtIUAc-/0/1786932896610?e=1790208000&v=beta&t=VK8620pyPesK4buTeIF3it-yOEMiUNGuO4saEh8QoQc)" alt="DSAI Image 1">
-                <img src="[https://media.licdn.com/dms/image/v2/D5622AQEcDD1DPo4Frw/feedshare-shrink_1280/B56aANgCVXHsAM-/0/1786932897337?e=1790208000&v=beta&t=-TrorEZQw-ZKN1BhfjRh5NSVZlhPIsmJcWU7ztnIy00](https://media.licdn.com/dms/image/v2/D5622AQEcDD1DPo4Frw/feedshare-shrink_1280/B56aANgCVXHsAM-/0/1786932897337?e=1790208000&v=beta&t=-TrorEZQw-ZKN1BhfjRh5NSVZlhPIsmJcWU7ztnIy00)" alt="DSAI Image 2">
-                <img src="[https://scontent-bom2-4.xx.fbcdn.net/v/t39.30808-6/476927714_646486844574808_772153997691883184_n.jpg?stp=dst-jpg_tt6&cstp=mx640x288&ctp=s640x288&_nc_cat=106&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=2Bm9MIfhChgQ7kNvwEc3nrw&_nc_oc=AdoM1Y25F-FdR6nJxMQl71l-_HMHjD4j2hXuulGHOIMuqN8xBvhPsegxgS2troqVHD0&_nc_zt=23&_nc_ht=scontent-bom2-4.xx&_nc_gid=_DyC8aP8dTjmraI4-ly9qw&_nc_ss=7b289&oh=00_AQL0BMx39Y2B1b1H2WMaT0Ub6gr5d3kNAzx78nJrTxV_iA&oe=6AA1AD02](https://scontent-bom2-4.xx.fbcdn.net/v/t39.30808-6/476927714_646486844574808_772153997691883184_n.jpg?stp=dst-jpg_tt6&cstp=mx640x288&ctp=s640x288&_nc_cat=106&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=2Bm9MIfhChgQ7kNvwEc3nrw&_nc_oc=AdoM1Y25F-FdR6nJxMQl71l-_HMHjD4j2hXuulGHOIMuqN8xBvhPsegxgS2troqVHD0&_nc_zt=23&_nc_ht=scontent-bom2-4.xx&_nc_gid=_DyC8aP8dTjmraI4-ly9qw&_nc_ss=7b289&oh=00_AQL0BMx39Y2B1b1H2WMaT0Ub6gr5d3kNAzx78nJrTxV_iA&oe=6AA1AD02)" alt="DSAI Image 3">
-                <img src="logo.jpg" onerror="this.style.display='none'" alt="DSAI Logo">
-                <img src="[https://media.licdn.com/dms/image/v2/D5622AQFBw2qVkEQFRg/feedshare-shrink_800/B56aANgCJtIUAc-/0/1786932896610?e=1790208000&v=beta&t=VK8620pyPesK4buTeIF3it-yOEMiUNGuO4saEh8QoQc](https://media.licdn.com/dms/image/v2/D5622AQFBw2qVkEQFRg/feedshare-shrink_800/B56aANgCJtIUAc-/0/1786932896610?e=1790208000&v=beta&t=VK8620pyPesK4buTeIF3it-yOEMiUNGuO4saEh8QoQc)" alt="DSAI Image 1 Loop">
             </div>
         </div>
 
@@ -785,4 +420,486 @@ Here is your ultimate, copyright-safe, fully interactive final code. Replace `in
             <p>Nobody learns alone here. Our club uses a two-tier mentorship system to ensure that every single beginner gets the personal guidance they need to succeed.</p>
             
             <div class="card-grid">
-                <div class="text-card tilt-card" style="border
+                <div class="text-card tilt-card" style="border-top-color: var(--primary-color);">
+                    <h3>Coordinators</h3>
+                    <p style="color: var(--primary-color); font-weight: bold; margin-bottom: 10px;">Vatsal Yadav & Siddhesh Bansal</p>
+                    <p>The visionary leaders driving the club's operations, organizing hackathons, and ensuring everyone has the resources they need.</p>
+                </div>
+                
+                <div class="text-card tilt-card" style="grid-column: 1 / -1; border-top-color: var(--secondary-color);">
+                    <h3>Core Members</h3>
+                    <p style="color: var(--secondary-color); font-weight: bold; margin-bottom: 15px;">Project Mentors & Technical Leaders</p>
+                    <p>Experienced senior students who lead the technical projects. They act as your personal mentors, guiding you through bugs and code errors.</p>
+                    
+                    <div class="core-grid">
+                        <div class="core-badge">Adhi Agrawal</div>
+                        <div class="core-badge">Dinesh Abhiram A.V.N</div>
+                        <div class="core-badge">Sikharam Satya Sri Harsha</div>
+                        <div class="core-badge">Kushal Radia</div>
+                        <div class="core-badge">Navanil Ghosh</div>
+                        <div class="core-badge">Parth N Bhosale</div>
+                        <div class="core-badge">Sai Siddhardha Moguluri</div>
+                        <div class="core-badge">Shlok Divyam</div>
+                        <div class="core-badge">Siddhant Shukla</div>
+                        <div class="core-badge">Vaibhav</div>
+                        <div class="core-badge">Yog Damahe</div>
+                        <div class="core-badge">Thammandra Saketh Ram</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ML PLAYGROUND SECTION -->
+        <div id="playground" class="section">
+            <h2 class="glitch-target" data-text="ML Playground">ML Playground</h2>
+            <p>Don't just read about Data Science—do it. <strong>Click inside the grid below</strong> to drop data points. Our Vanilla JavaScript algorithm will calculate a <strong>Polynomial Regression (Curve of Best Fit)</strong> in real-time, adapting instantly just like a real machine learning model.</p>
+            
+            <div class="playground-container">
+                <div class="pg-canvas-wrapper">
+                    <div class="playground-header">
+                        <h3>Model Training Canvas</h3>
+                        <button class="btn-clear-data" id="clear-canvas-btn">Clear Data</button>
+                    </div>
+                    <canvas id="regressionCanvas"></canvas>
+                </div>
+                
+                <div class="pg-dashboard">
+                    <div class="pg-dash-title"><i class="fa-solid fa-chart-line"></i> Model Insights</div>
+                    
+                    <div class="pg-stat">
+                        <span>Status:</span>
+                        <span id="mdl-status" style="color:#ef4444">Awaiting Data (0 pts)</span>
+                    </div>
+                    
+                    <div class="pg-stat">
+                        <span>Algorithm:</span>
+                        <span style="color:var(--secondary-color)">Polynomial (Deg 2)</span>
+                    </div>
+
+                    <div class="pg-stat">
+                        <span>Loss (MSE):</span>
+                        <span id="mdl-mse" style="color:#94a3b8">N/A</span>
+                    </div>
+
+                    <div class="pg-insight" id="mdl-insight">
+                        Drop at least 3 points on the canvas to begin training the polynomial curve.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="projects" class="section">
+            <h2 class="glitch-target" data-text="Real Projects">Real Projects</h2>
+            <p>Forget traditional lectures—we believe in active development. Our project teams operate on brief, focused cycles that won't disrupt your studies. You will gain practical experience with industry-standard libraries, Python, and collaborative version control.</p>
+            <p>Check out our open-source code base to see the facial recognition software, trading bots, and data dashboards we have already built!</p>
+            <a href="https://github.com/dsai-iitbhilai" target="_blank" class="action-btn">Explore Our Code <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></a>
+        </div>
+
+    </div>
+
+    <footer id="reach" class="section" style="box-shadow: none; border: none; margin-bottom: 0; background: transparent; padding-top: 0;">
+        <h2 style="text-align: center; margin-bottom: 50px;">Reach Us</h2>
+        <div class="coordinator-info">
+            <h3>Club Coordinators</h3>
+            <p>Vatsal Yadav <span>|</span> Siddhesh Bansal</p>
+        </div>
+        
+        <div class="social-container">
+            <a href="https://www.instagram.com/dsai_iitbhilai/" target="_blank" class="liquid-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://x.com/DSAI_IITBHILAI" target="_blank" class="liquid-btn" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://github.com/dsai-iitbhilai" target="_blank" class="liquid-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/company/data-science-and-artificial-intelligence-club-iit-bhilai/posts/?feedView=all" target="_blank" class="liquid-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE ALIEN OBSERVER (Moves opposite to cursor) -->
+    <div id="alien-wrapper">
+        <div class="alien-container" title="DSAI System Observer">
+            <div class="alien-eye"><div class="alien-pupil"></div></div>
+            <div class="alien-eye"><div class="alien-pupil"></div></div>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE TERMINAL WIDGET -->
+    <button id="open-terminal">
+        <span class="pulse-dot-green"></span> 
+        > Terminal
+    </button>
+    <div id="terminal-window">
+        <div id="terminal-header">
+            <span>DSAI_OS v1.0</span>
+            <button id="terminal-close">×</button>
+        </div>
+        <div id="terminal-body">
+            <div class="term-line">System Initialized. Welcome to DSAI.</div>
+            <div class="term-line">Type <span style="color:var(--primary-color)">'help'</span> to see available commands.</div>
+            <div class="terminal-input-wrapper">
+                <span>></span>
+                <input type="text" id="term-input" autocomplete="off" spellcheck="false">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- SAFE WEB AUDIO ENGINE (Bulletproof against browser blocking) ---
+        let audioCtx = null;
+        let audioSupported = true;
+
+        function initAudio() {
+            try {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (!AudioContext) { audioSupported = false; return; }
+                if (!audioCtx) audioCtx = new AudioContext();
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+            } catch (e) {
+                console.warn("Audio Context blocked by browser.", e);
+                audioSupported = false;
+            }
+        }
+
+        function playHoverBlip() {
+            if (!audioSupported || !audioCtx) return;
+            const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
+            osc.type = 'sine'; osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(300, audioCtx.currentTime + 0.05);
+            gain.gain.setValueAtTime(0.05, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+            osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 0.05);
+        }
+
+        function playBoom() {
+            if (!audioSupported || !audioCtx) return;
+            const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
+            osc.type = 'square'; osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(20, audioCtx.currentTime + 0.8);
+            gain.gain.setValueAtTime(0.3, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.8);
+            osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 0.8);
+        }
+
+        function playPowerUp() {
+            if (!audioSupported || !audioCtx) return;
+            const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
+            osc.type = 'sawtooth'; osc.frequency.setValueAtTime(100, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(600, audioCtx.currentTime + 1);
+            gain.gain.setValueAtTime(0.05, audioCtx.currentTime); gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 1);
+            osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 1);
+        }
+
+        function playKeyClick() {
+            if (!audioSupported || !audioCtx) return;
+            const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
+            osc.type = 'triangle'; osc.frequency.setValueAtTime(800 + Math.random() * 200, audioCtx.currentTime);
+            gain.gain.setValueAtTime(0.05, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.03);
+            osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 0.03);
+        }
+
+        function playTypingSound() {
+            if (!audioSupported || !audioCtx) return;
+            const now = audioCtx.currentTime; const startTime = now + 1; const duration = 3; const steps = 50; const stepTime = duration / steps;
+            for (let i = 0; i < steps; i++) {
+                const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
+                osc.type = 'triangle'; osc.frequency.setValueAtTime(800 + Math.random() * 200, startTime + i * stepTime);
+                gain.gain.setValueAtTime(0.05, startTime + i * stepTime); gain.gain.exponentialRampToValueAtTime(0.001, startTime + i * stepTime + 0.03);
+                osc.connect(gain); gain.connect(audioCtx.destination); osc.start(startTime + i * stepTime); osc.stop(startTime + i * stepTime + 0.03);
+            }
+        }
+
+        // --- CINEMATIC INTRO LOGIC ---
+        const initBtn = document.getElementById('init-btn');
+        initBtn.addEventListener('click', () => {
+            initAudio(); // Safe initialization
+            
+            initBtn.style.display = 'none';
+            document.getElementById('logo-wrapper').style.display = 'flex';
+            document.getElementById('inst-splash').classList.add('animate-left'); 
+            document.getElementById('club-splash').classList.add('animate-right');
+
+            setTimeout(() => {
+                playBoom(); 
+                document.getElementById('flash').classList.add('flash-active');
+                document.getElementById('shockwave').classList.add('shockwave-active');
+                document.getElementById('dust-cloud').classList.add('explode'); 
+                document.getElementById('intro-title').classList.add('title-active');
+            }, 1200);
+
+            setTimeout(() => {
+                const splash = document.getElementById('cinematic-intro'); 
+                splash.style.opacity = '0';
+                document.body.classList.add('site-active'); 
+                playTypingSound();
+                setTimeout(() => splash.style.display = 'none', 800);
+            }, 3800);
+        });
+
+        document.querySelectorAll('.tab-btn, .action-btn, .liquid-btn, .theme-btn').forEach(btn => { btn.addEventListener('mouseenter', playHoverBlip); });
+
+        // Theme Switcher Logic (Now defaults to Dark when clicked)
+        const themeBtn = document.getElementById('theme-switch');
+        themeBtn.addEventListener('click', () => {
+            initAudio(); playPowerUp();
+            themeBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing...'; 
+            themeBtn.style.pointerEvents = 'none';
+            
+            setTimeout(() => {
+                const html = document.documentElement;
+                if (html.getAttribute('data-theme') === 'dark') { 
+                    html.removeAttribute('data-theme'); 
+                    themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i> Dark Mode'; 
+                } else { 
+                    html.setAttribute('data-theme', 'dark'); 
+                    themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i> Light Mode'; 
+                }
+                themeBtn.style.pointerEvents = 'auto';
+            }, 1000);
+        });
+
+        // HACKER GLITCH TEXT EFFECT
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*";
+        document.querySelectorAll('.glitch-target').forEach(el => {
+            let originalText = el.innerText;
+            el.addEventListener('mouseenter', () => {
+                playHoverBlip();
+                let iterations = 0;
+                const interval = setInterval(() => {
+                    el.innerText = originalText.split('').map((char, index) => {
+                        if(index < iterations) return originalText[index];
+                        return chars[Math.floor(Math.random() * chars.length)];
+                    }).join('');
+                    if(iterations >= originalText.length) clearInterval(interval);
+                    iterations += 1/3;
+                }, 30);
+            });
+        });
+
+        document.querySelectorAll('.tab-btn:not(.theme-btn)').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault(); const targetId = this.getAttribute('href'); const overlay = document.getElementById('transition-overlay');
+                overlay.classList.add('active');
+                setTimeout(() => { overlay.classList.remove('active'); document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' }); }, 1000);
+            });
+        });
+
+        const sections = document.querySelectorAll('.section'); const navLinks = document.querySelectorAll('.tab-btn:not(.theme-btn)');
+        const observerOptions = { root: null, rootMargin: '-20% 0px -60% 0px', threshold: 0 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { navLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href').substring(1) === entry.target.id) { link.classList.add('active'); }}); }
+            });
+        }, observerOptions);
+
+        const fadeObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('visible'); }}); }, { threshold: 0.1 });
+        sections.forEach(section => { observer.observe(section); fadeObserver.observe(section); });
+
+        // 3D TILT
+        document.querySelectorAll('.tilt-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect(); const x = e.clientX - rect.left; const y = e.clientY - rect.top;
+                const centerX = rect.width / 2; const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -10; const rotateY = ((x - centerX) / centerX) * 10;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px) scale(1.02)`;
+            });
+            card.addEventListener('mouseleave', () => { card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)`; });
+        });
+
+        // --- ALIEN OBSERVER EYES LOGIC (OPPOSITE MOVEMENT) ---
+        const alienWrapper = document.getElementById('alien-wrapper');
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+
+        document.addEventListener('mousemove', (e) => {
+            if(alienWrapper) {
+                const shiftX = (centerX - e.clientX) * 0.08; 
+                const shiftY = (centerY - e.clientY) * 0.08;
+                alienWrapper.style.transform = `translate(${shiftX}px, ${shiftY}px)`;
+            }
+
+            const eyes = document.querySelectorAll('.alien-eye');
+            eyes.forEach(eye => {
+                const rect = eye.getBoundingClientRect();
+                const eyeX = rect.left + rect.width / 2;
+                const eyeY = rect.top + rect.height / 2;
+                
+                const angle = Math.atan2(e.clientY - eyeY, e.clientX - eyeX);
+                const distance = Math.min(6, Math.hypot(e.clientX - eyeX, e.clientY - eyeY) / 15);
+                
+                const pupilX = Math.cos(angle) * distance;
+                const pupilY = Math.sin(angle) * distance;
+                
+                const pupil = eye.querySelector('.alien-pupil');
+                pupil.style.transform = `translate(${pupilX}px, ${pupilY}px)`;
+            });
+        });
+
+        // --- INTERACTIVE TERMINAL LOGIC ---
+        const termBtn = document.getElementById('open-terminal'); const termWin = document.getElementById('terminal-window');
+        const termClose = document.getElementById('terminal-close'); const termInput = document.getElementById('term-input');
+        const termBody = document.getElementById('terminal-body'); let termState = 'idle';
+
+        termBtn.addEventListener('click', () => { termWin.classList.add('open'); termInput.focus(); });
+        termClose.addEventListener('click', () => { termWin.classList.remove('open'); });
+
+        termInput.addEventListener('keydown', function(e) {
+            playKeyClick(); 
+            if (e.key === 'Enter') {
+                const command = this.value.trim().toLowerCase(); this.value = '';
+                if (command === '') return;
+                
+                const echo = document.createElement('div'); echo.className = 'term-line';
+                echo.innerHTML = `<span class="term-user">> ${command}</span>`; termBody.insertBefore(echo, termBody.lastElementChild);
+                const response = document.createElement('div'); response.className = 'term-line';
+                
+                if (termState === 'learn_1') {
+                    if (command === 'increase') {
+                        response.className = 'term-line term-success';
+                        response.innerHTML = "Correct! The AI increases the weight to fix the error. This is called 'Gradient Descent'.<br><br>Now the weight is 10. For 6 hours of study, AI predicts 60. Error is 0!<br><br>Model Trained. Welcome to Machine Learning. Type 'help' for normal commands.";
+                        termState = 'idle';
+                    } else if (command === 'decrease') {
+                        response.className = 'term-line term-err';
+                        response.innerHTML = "Incorrect. If we decrease it, the guess gets even lower! Try typing 'increase'.";
+                    } else { response.className = 'term-line term-err'; response.innerHTML = "Please type 'increase' or 'decrease'."; }
+                } else {
+                    switch(command) {
+                        case 'help': response.innerHTML = "Commands: <br>- <b>learn</b>: AI Crash Course<br>- <b>team</b>: View Core Members<br>- <b>ping</b>: Network test<br>- <b>clear</b>: Clear screen"; break;
+                        case 'learn':
+                            termState = 'learn_1';
+                            response.innerHTML = "<b>[ CRASH COURSE: Train a Model ]</b><br>Let's train a simple AI.<br>Data: [Study Hours] -> [Test Score]<br>Row 1: [2 hours] -> [20 score]<br>Row 2: [4 hours] -> [40 score]<br><br>Our untrained AI guesses the multiplier (weight) is 5. So for 2 hours, it guesses 10 (Error = 10 off).<br><br>To reduce this error, should we <b>increase</b> or <b>decrease</b> the weight? (Type your answer)";
+                            break;
+                        case 'team':
+                            response.innerHTML = "<b>Coordinators:</b><br>Vatsal Yadav, Siddhesh Bansal<br><b>Core Members:</b><br>Adhi, Dinesh, Sikharam, Kushal, Navanil, Parth, Sai, Shlok, Siddhant, Vaibhav, Yog, Thammandra.<br><br><i>Auto-navigating to Team Section...</i>";
+                            setTimeout(() => { document.querySelector('#team').scrollIntoView({ behavior: 'smooth' }); }, 1000);
+                            break;
+                        case 'ping': response.innerHTML = "Pinging AI mainframe... <br>Reply from 127.0.0.1: time < 1ms. System ONLINE."; break;
+                        case 'clear': document.querySelectorAll('.term-line:not(:last-child)').forEach(line => line.remove()); return; 
+                        default: response.className = 'term-line term-err'; response.innerHTML = `Command not found: ${command}. Type 'help'.`;
+                    }
+                }
+                termBody.insertBefore(response, termBody.lastElementChild); termBody.scrollTop = termBody.scrollHeight; 
+            }
+        });
+
+        // --- LIVE ML PLAYGROUND (Polynomial Regression) ---
+        const regCanvas = document.getElementById('regressionCanvas');
+        const regCtx = regCanvas.getContext('2d');
+        let regPoints = [];
+
+        function fixCanvasScale() {
+            const rect = regCanvas.getBoundingClientRect();
+            regCanvas.width = rect.width; regCanvas.height = rect.height;
+            drawRegression();
+        }
+        window.addEventListener('resize', fixCanvasScale);
+        setTimeout(fixCanvasScale, 3000); 
+
+        regCanvas.addEventListener('mousedown', (e) => {
+            const rect = regCanvas.getBoundingClientRect();
+            const x = e.clientX - rect.left; const y = e.clientY - rect.top;
+            regPoints.push({x, y}); playKeyClick(); drawRegression();
+        });
+
+        document.getElementById('clear-canvas-btn').addEventListener('click', () => {
+            regPoints = []; playHoverBlip(); drawRegression();
+        });
+
+        function calculatePolynomialRegression(points, w, h) {
+            if(points.length < 3) return null;
+            let sx=0, sx2=0, sx3=0, sx4=0, sy=0, sxy=0, sx2y=0;
+            let n = points.length;
+            for(let p of points) {
+                let x = p.x / w; let y = p.y / h; 
+                sx += x; sx2 += x*x; sx3 += x*x*x; sx4 += x*x*x*x;
+                sy += y; sxy += x*y; sx2y += x*x*y;
+            }
+            const det = (m) => m[0][0]*(m[1][1]*m[2][2] - m[1][2]*m[2][1]) - m[0][1]*(m[1][0]*m[2][2] - m[1][2]*m[2][0]) + m[0][2]*(m[1][0]*m[2][1] - m[1][1]*m[2][0]);
+            let M = [[n, sx, sx2], [sx, sx2, sx3], [sx2, sx3, sx4]];
+            let D = det(M);
+            if(Math.abs(D) < 1e-10) return null;
+            let c = det([[sy, sx, sx2], [sxy, sx2, sx3], [sx2y, sx3, sx4]]) / D;
+            let b = det([[n, sy, sx2], [sx, sxy, sx3], [sx2, sx2y, sx4]]) / D;
+            let a = det([[n, sx, sy], [sx, sx2, sxy], [sx2, sx3, sx2y]]) / D;
+            return {a, b, c};
+        }
+
+        function drawRegression() {
+            regCtx.clearRect(0,0, regCanvas.width, regCanvas.height);
+            
+            regPoints.forEach(p => {
+                regCtx.beginPath(); regCtx.arc(p.x, p.y, 6, 0, Math.PI*2);
+                regCtx.fillStyle = '#ffb300'; regCtx.fill();
+                regCtx.strokeStyle = '#fff'; regCtx.stroke();
+            });
+
+            const statusEl = document.getElementById('mdl-status');
+            const mseEl = document.getElementById('mdl-mse');
+            const insightEl = document.getElementById('mdl-insight');
+
+            if(regPoints.length < 3) {
+                statusEl.innerText = `Awaiting Data (${regPoints.length} pts)`; statusEl.style.color = '#ef4444';
+                mseEl.innerText = 'N/A'; mseEl.style.color = '#94a3b8';
+                insightEl.innerHTML = "Drop at least 3 points on the canvas to begin training the polynomial curve.";
+                return;
+            }
+
+            statusEl.innerText = `Trained (${regPoints.length} pts)`; statusEl.style.color = '#10b981';
+
+            const w = regCanvas.width; const h = regCanvas.height;
+            const coeffs = calculatePolynomialRegression(regPoints, w, h);
+            
+            if (coeffs) {
+                regCtx.beginPath();
+                for (let px = 0; px <= w; px += 5) {
+                    let nx = px / w;
+                    let ny = coeffs.a * nx * nx + coeffs.b * nx + coeffs.c;
+                    let py = ny * h;
+                    if(px === 0) regCtx.moveTo(px, py);
+                    else regCtx.lineTo(px, py);
+                }
+                regCtx.strokeStyle = '#ea580c'; regCtx.lineWidth = 3; regCtx.stroke();
+
+                let errorSum = 0;
+                regPoints.forEach(p => {
+                    let nx = p.x / w; let expectedNy = coeffs.a * nx * nx + coeffs.b * nx + coeffs.c;
+                    let diff = (p.y / h) - expectedNy;
+                    errorSum += diff * diff;
+                });
+                let mse = (errorSum / regPoints.length).toFixed(4);
+                
+                mseEl.innerText = mse;
+                mseEl.style.color = mse < 0.05 ? '#10b981' : '#f59e0b';
+                
+                insightEl.innerHTML = "Unlike basic linear lines, real-world data curves. This 2D Polynomial Regression actively arcs to minimize the Mean Squared Error (Loss). <strong>This curve fitting is the core mathematical foundation of Neural Networks!</strong>";
+            }
+        }
+
+        // Background Network Canvas
+        const bgCanvas = document.getElementById('networkCanvas'); const bgCtx = bgCanvas.getContext('2d');
+        let w, h; let bgParticles = []; let bgMouse = { x: null, y: null };
+        function resizeBg() { w = bgCanvas.width = window.innerWidth; h = bgCanvas.height = window.innerHeight; }
+        window.addEventListener('resize', resizeBg); resizeBg();
+        window.addEventListener('mousemove', (e) => { bgMouse.x = e.x; bgMouse.y = e.y; });
+        window.addEventListener('mouseout', () => { bgMouse.x = null; bgMouse.y = null; });
+
+        class BgParticle {
+            constructor() { this.x = Math.random() * w; this.y = Math.random() * h; this.vx = (Math.random() - 0.5) * 0.5; this.vy = (Math.random() - 0.5) * 0.5; this.radius = Math.random() * 2 + 1; }
+            update() { this.x += this.vx; this.y += this.vy; if (this.x < 0 || this.x > w) this.vx *= -1; if (this.y < 0 || this.y > h) this.vy *= -1; }
+            draw() { bgCtx.beginPath(); bgCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); bgCtx.fillStyle = 'rgba(234, 88, 12, 0.4)'; bgCtx.fill(); }
+        }
+        const pCount = Math.min(Math.floor(window.innerWidth / 15), 100);
+        for (let i = 0; i < pCount; i++) { bgParticles.push(new BgParticle()); }
+
+        function animateBg() {
+            bgCtx.clearRect(0, 0, w, h); bgParticles.forEach(p => { p.update(); p.draw(); });
+            for (let i = 0; i < bgParticles.length; i++) {
+                for (let j = i + 1; j < bgParticles.length; j++) {
+                    const dx = bgParticles[i].x - bgParticles[j].x; const dy = bgParticles[i].y - bgParticles[j].y; const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 120) { bgCtx.beginPath(); bgCtx.strokeStyle = `rgba(234, 88, 12, ${0.2 - dist/120})`; bgCtx.lineWidth = 1; bgCtx.moveTo(bgParticles[i].x, bgParticles[i].y); bgCtx.lineTo(bgParticles[j].x, bgParticles[j].y); bgCtx.stroke(); }
+                }
+                if(bgMouse.x != null) {
+                    const dx = bgParticles[i].x - bgMouse.x; const dy = bgParticles[i].y - bgMouse.y; const dist = Math.sqrt(dx * dx + dy * dy);
+                    if(dist < 150) { bgCtx.beginPath(); bgCtx.strokeStyle = `rgba(234, 88, 12, ${0.4 - dist/150})`; bgCtx.lineWidth = 1.5; bgCtx.moveTo(bgParticles[i].x, bgParticles[i].y); bgCtx.lineTo(bgMouse.x, bgMouse.y); bgCtx.stroke(); }
+                }
+            }
+            requestAnimationFrame(animateBg);
+        }
+        animateBg();
+    </script>
+</body>
+</html>
