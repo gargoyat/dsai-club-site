@@ -53,19 +53,14 @@
 
         /* --- CINEMATIC DARK INTRO --- */
         #cinematic-intro {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: #020617; z-index: 10000;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            transition: opacity 0.8s ease;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #020617; z-index: 10000;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.8s ease;
         }
 
         #init-btn {
-            padding: 15px 40px; font-size: 1.5rem; color: var(--neon-blue);
-            background: rgba(0, 240, 255, 0.05); border: 2px solid var(--neon-blue);
-            cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-weight: bold;
-            text-transform: uppercase; letter-spacing: 5px; border-radius: 8px;
-            transition: all 0.3s ease; box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
-            z-index: 10;
+            padding: 15px 40px; font-size: 1.5rem; color: var(--neon-blue); background: rgba(0, 240, 255, 0.05); border: 2px solid var(--neon-blue);
+            cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-weight: bold; text-transform: uppercase; letter-spacing: 5px; border-radius: 8px;
+            transition: all 0.3s ease; box-shadow: 0 0 15px rgba(0, 240, 255, 0.2); z-index: 10;
         }
         #init-btn:hover { background: var(--neon-blue); color: #020617; box-shadow: 0 0 30px var(--neon-blue); transform: scale(1.05); }
 
@@ -103,18 +98,15 @@
         
         h1, h2, h3 { font-family: 'Montserrat', sans-serif; color: var(--main-text); transition: color 0.5s ease; }
         
-        /* Glitch Text Effect */
         .glitch-text { display: inline-block; position: relative; }
         .glitch-text::after { content: attr(data-text); position: absolute; left: 0; top: 0; opacity: 0; color: var(--primary-blue); background: var(--glass-bg); pointer-events: none; }
 
         .title-wrapper { display: flex; align-items: center; justify-content: flex-start; gap: 20px; flex-wrap: wrap; }
         .logo-container { display: flex; gap: 15px; }
-
         .static-logo { height: 90px; width: 90px; border-radius: 50%; object-fit: contain; box-shadow: 0 10px 25px rgba(2, 132, 199, 0.4); border: 4px solid var(--primary-blue); background-color: #fff; }
 
         h1 { font-size: 4.5rem; margin: 0; letter-spacing: -2px; color: var(--primary-blue); text-shadow: 0 2px 15px rgba(255, 255, 255, 0.8); }
         [data-theme="cyber"] h1 { text-shadow: 0 2px 15px rgba(0, 240, 255, 0.5); }
-
         .header-hr { border: 0; height: 4px; background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue), transparent); margin: 15px 0 20px 0; width: 100%; border-radius: 2px; }
 
         .subtitle { font-size: 1.4rem; color: var(--main-text); margin: 0 0 10px 0; font-weight: 800; text-shadow: 0 2px 10px rgba(255, 255, 255, 0.8); border-right: 3px solid var(--primary-blue); white-space: nowrap; overflow: hidden; }
@@ -174,15 +166,27 @@
         .mission-cta code { background: rgba(0,0,0,0.1); padding: 2px 6px; border-radius: 4px; font-family: monospace; }
         [data-theme="cyber"] .mission-cta code { color: #fff; background: rgba(255,255,255,0.1); }
 
-        /* --- ML PLAYGROUND (Linear Regression) --- */
+        /* --- ML PLAYGROUND (Polynomial Regression) --- */
         .playground-container {
-            width: 100%; background: #0f172a; border-radius: 16px; padding: 20px; box-sizing: border-box;
-            border: 2px solid var(--primary-blue); margin-top: 20px;
+            width: 100%; display: flex; flex-wrap: wrap; gap: 20px; background: #0f172a; border-radius: 16px;
+            padding: 20px; box-sizing: border-box; border: 2px solid var(--primary-blue); margin-top: 20px;
         }
+        .pg-canvas-wrapper { flex: 2; min-width: 300px; display: flex; flex-direction: column; }
         .playground-header { display: flex; justify-content: space-between; align-items: center; color: #fff; margin-bottom: 10px; }
-        .playground-header h3 { color: #38bdf8; margin: 0; }
-        #regressionCanvas { width: 100%; height: 300px; background: #1e293b; border-radius: 8px; cursor: crosshair !important; border: 1px dashed #334155; }
-        .btn-clear-data { background: #ef4444; color: #fff; border: none; padding: 8px 15px; border-radius: 6px; font-family: 'Space Grotesk'; font-weight: bold; }
+        .playground-header h3 { color: #38bdf8; margin: 0; font-family: 'Space Grotesk'; }
+        #regressionCanvas { width: 100%; height: 350px; background: #1e293b; border-radius: 8px; cursor: crosshair !important; border: 1px dashed #334155; }
+        
+        .pg-dashboard {
+            flex: 1; min-width: 250px; background: #1e293b; border-radius: 8px; padding: 20px;
+            color: #94a3b8; font-family: monospace; display: flex; flex-direction: column; gap: 15px;
+        }
+        .pg-dash-title { color: #fff; font-weight: bold; font-family: 'Space Grotesk'; border-bottom: 1px solid #334155; padding-bottom: 10px; }
+        .pg-stat { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5px; }
+        .pg-stat span:last-child { color: #10b981; font-weight: bold; }
+        .pg-insight { background: rgba(2, 132, 199, 0.1); border-left: 3px solid #38bdf8; padding: 10px; border-radius: 4px; font-size: 0.9rem; line-height: 1.4; color: #e2e8f0; margin-top: auto; }
+        
+        .btn-clear-data { background: #ef4444; color: #fff; border: none; padding: 8px 15px; border-radius: 6px; font-family: 'Space Grotesk'; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .btn-clear-data:hover { background: #dc2626; transform: scale(1.05); }
 
         footer { background: var(--glass-bg); border-top: 1px solid var(--glass-border); padding: 60px 20px; text-align: center; margin-top: auto; backdrop-filter: blur(10px); scroll-margin-top: 100px; transition: background 0.5s ease, border-color 0.5s ease; }
         .coordinator-info h3 { color: var(--primary-blue); font-size: 1rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; transition: color 0.5s ease; }
@@ -200,7 +204,7 @@
             display: flex; align-items: center; gap: 10px; transition: transform 0.3s ease; display: none;
             animation: pulseBtn 2s infinite alternate;
         }
-        .pulse-dot-green { width: 10px; height: 10px; background-color: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981; }
+        .pulse-dot-green { width: 10px; height: 10px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981; }
         @keyframes pulseBtn { 0% { box-shadow: 0 0 15px rgba(2, 132, 199, 0.4); transform: scale(1); } 100% { box-shadow: 0 0 25px rgba(2, 132, 199, 0.8); transform: scale(1.02); } }
 
         .site-active #open-terminal { display: flex; animation: fadeIn 1s ease-out 2s forwards, pulseBtn 2s infinite alternate; opacity: 0; }
@@ -240,6 +244,7 @@
             .intro-title { font-size: 2.2rem; margin-top: 120px; }
             #terminal-window { width: calc(100vw - 40px); right: 20px; bottom: 80px; }
             #open-terminal { bottom: 20px; right: 20px; }
+            .playground-container { flex-direction: column; }
         }
     </style>
 </head>
@@ -258,7 +263,12 @@
         <div class="intro-title" id="intro-title">DSAI CLUB</div>
     </div>
 
-    <div id="transition-overlay"><div class="cyber-loader"></div><div class="overlay-title">DSAI CLUB</div></div>
+    <!-- Tab Transition Overlay -->
+    <div id="transition-overlay">
+        <div class="cyber-loader"></div>
+        <div class="overlay-title">DSAI CLUB</div>
+    </div>
+
     <canvas id="networkCanvas"></canvas>
 
     <header>
@@ -380,15 +390,48 @@
         <!-- NEW ML PLAYGROUND SECTION -->
         <div id="playground" class="section">
             <h2 class="glitch-target" data-text="ML Playground">ML Playground</h2>
-            <p>Don't just read about Data Science—do it. <strong>Click inside the grid below</strong> to drop data points. Our Vanilla JavaScript algorithm will calculate the Linear Regression (Line of Best Fit) in real-time, just like a real machine learning model predicting a trend.</p>
+            <p>Don't just read about Data Science—do it. <strong>Click inside the grid below</strong> to drop data points. Our Vanilla JavaScript algorithm will calculate a <strong>Polynomial Regression (Curve of Best Fit)</strong> in real-time, adapting instantly just like a real machine learning model.</p>
             
             <div class="playground-container">
-                <div class="playground-header">
-                    <h3>Live Linear Regression Model</h3>
-                    <button class="btn-clear-data" id="clear-canvas-btn">Clear Data</button>
+                <div class="pg-canvas-wrapper">
+                    <div class="playground-header">
+                        <h3>Model Training Canvas</h3>
+                        <button class="btn-clear-data" id="clear-canvas-btn">Clear Data</button>
+                    </div>
+                    <canvas id="regressionCanvas"></canvas>
                 </div>
-                <canvas id="regressionCanvas" width="800" height="350"></canvas>
+                
+                <div class="pg-dashboard">
+                    <div class="pg-dash-title"><i class="fa-solid fa-chart-line"></i> Model Insights</div>
+                    
+                    <div class="pg-stat">
+                        <span>Status:</span>
+                        <span id="mdl-status" style="color:#ef4444">Awaiting Data (0 pts)</span>
+                    </div>
+                    
+                    <div class="pg-stat">
+                        <span>Algorithm:</span>
+                        <span style="color:#38bdf8">Polynomial (Deg 2)</span>
+                    </div>
+
+                    <div class="pg-stat">
+                        <span>Loss (MSE):</span>
+                        <span id="mdl-mse" style="color:#94a3b8">N/A</span>
+                    </div>
+
+                    <div class="pg-insight" id="mdl-insight">
+                        Drop at least 3 points on the canvas to begin training.
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <div id="projects" class="section">
+            <h2 class="glitch-target" data-text="Real Projects">Real Projects</h2>
+            <p>We firmly believe in learning by doing, not just watching boring lectures. From your very first week, you will contribute to meaningful, tangible work.</p>
+            <p>Our project cycles typically run for <strong>8-12 weeks</strong>, requiring just 2-3 hours of commitment per week so it never interferes with your exams. You will learn real industry tools like Python, GitHub, and machine learning libraries.</p>
+            <p>Check out our open-source code base to see the facial recognition software, trading bots, and data dashboards we have already built!</p>
+            <a href="https://github.com/dsai-iitbhilai" target="_blank" class="action-btn">Explore Our Code <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></a>
         </div>
 
     </div>
@@ -611,66 +654,99 @@
             }
         });
 
-        // --- LIVE ML PLAYGROUND (Linear Regression) ---
+        // --- LIVE ML PLAYGROUND (Polynomial Regression) ---
         const regCanvas = document.getElementById('regressionCanvas');
         const regCtx = regCanvas.getContext('2d');
         let regPoints = [];
 
-        // Fix canvas scaling for high-DPI displays
         function fixCanvasScale() {
             const rect = regCanvas.getBoundingClientRect();
-            regCanvas.width = rect.width;
-            regCanvas.height = rect.height;
+            regCanvas.width = rect.width; regCanvas.height = rect.height;
             drawRegression();
         }
         window.addEventListener('resize', fixCanvasScale);
-        // Call once after container is visible
-        setTimeout(fixCanvasScale, 4000);
+        setTimeout(fixCanvasScale, 3000); // Trigger after intro
 
         regCanvas.addEventListener('mousedown', (e) => {
             const rect = regCanvas.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            regPoints.push({x, y});
-            drawRegression();
-            playKeyClick();
+            const x = e.clientX - rect.left; const y = e.clientY - rect.top;
+            regPoints.push({x, y}); playKeyClick(); drawRegression();
         });
 
         document.getElementById('clear-canvas-btn').addEventListener('click', () => {
-            regPoints = []; drawRegression(); playHoverBlip();
+            regPoints = []; playHoverBlip(); drawRegression();
         });
+
+        function calculatePolynomialRegression(points, w, h) {
+            if(points.length < 3) return null;
+            let sx=0, sx2=0, sx3=0, sx4=0, sy=0, sxy=0, sx2y=0;
+            let n = points.length;
+            for(let p of points) {
+                let x = p.x / w; let y = p.y / h; // Normalize
+                sx += x; sx2 += x*x; sx3 += x*x*x; sx4 += x*x*x*x;
+                sy += y; sxy += x*y; sx2y += x*x*y;
+            }
+            const det = (m) => m[0][0]*(m[1][1]*m[2][2] - m[1][2]*m[2][1]) - m[0][1]*(m[1][0]*m[2][2] - m[1][2]*m[2][0]) + m[0][2]*(m[1][0]*m[2][1] - m[1][1]*m[2][0]);
+            let M = [[n, sx, sx2], [sx, sx2, sx3], [sx2, sx3, sx4]];
+            let D = det(M);
+            if(Math.abs(D) < 1e-10) return null;
+            let c = det([[sy, sx, sx2], [sxy, sx2, sx3], [sx2y, sx3, sx4]]) / D;
+            let b = det([[n, sy, sx2], [sx, sxy, sx3], [sx2, sx2y, sx4]]) / D;
+            let a = det([[n, sx, sy], [sx, sx2, sxy], [sx2, sx3, sx2y]]) / D;
+            return {a, b, c};
+        }
 
         function drawRegression() {
             regCtx.clearRect(0,0, regCanvas.width, regCanvas.height);
             
-            // Draw points
+            // Draw Points
             regPoints.forEach(p => {
-                regCtx.beginPath();
-                regCtx.arc(p.x, p.y, 6, 0, Math.PI*2);
-                regCtx.fillStyle = '#00f0ff';
-                regCtx.fill();
-                regCtx.strokeStyle = '#fff';
-                regCtx.stroke();
+                regCtx.beginPath(); regCtx.arc(p.x, p.y, 6, 0, Math.PI*2);
+                regCtx.fillStyle = '#00f0ff'; regCtx.fill();
+                regCtx.strokeStyle = '#fff'; regCtx.stroke();
             });
 
-            if(regPoints.length > 1) {
-                // Least Squares Calculation
-                let sumX = 0, sumY = 0, sumXY = 0, sumXX = 0;
-                let n = regPoints.length;
-                regPoints.forEach(p => {
-                    sumX += p.x; sumY += p.y;
-                    sumXY += p.x * p.y; sumXX += p.x * p.x;
-                });
-                let slope = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX);
-                let intercept = (sumY - slope * sumX) / n;
+            const statusEl = document.getElementById('mdl-status');
+            const mseEl = document.getElementById('mdl-mse');
+            const insightEl = document.getElementById('mdl-insight');
 
-                // Draw Line of Best Fit
+            if(regPoints.length < 3) {
+                statusEl.innerText = `Awaiting Data (${regPoints.length} pts)`; statusEl.style.color = '#ef4444';
+                mseEl.innerText = 'N/A'; mseEl.style.color = '#94a3b8';
+                insightEl.innerHTML = "Drop at least 3 points on the canvas to begin training the polynomial curve.";
+                return;
+            }
+
+            statusEl.innerText = `Trained (${regPoints.length} pts)`; statusEl.style.color = '#10b981';
+
+            const w = regCanvas.width; const h = regCanvas.height;
+            const coeffs = calculatePolynomialRegression(regPoints, w, h);
+            
+            if (coeffs) {
+                // Draw Curve
                 regCtx.beginPath();
-                regCtx.moveTo(0, intercept);
-                regCtx.lineTo(regCanvas.width, slope * regCanvas.width + intercept);
-                regCtx.strokeStyle = '#b026ff';
-                regCtx.lineWidth = 3;
-                regCtx.stroke();
+                for (let px = 0; px <= w; px += 5) {
+                    let nx = px / w;
+                    let ny = coeffs.a * nx * nx + coeffs.b * nx + coeffs.c;
+                    let py = ny * h;
+                    if(px === 0) regCtx.moveTo(px, py);
+                    else regCtx.lineTo(px, py);
+                }
+                regCtx.strokeStyle = '#b026ff'; regCtx.lineWidth = 3; regCtx.stroke();
+
+                // Calculate MSE (Loss)
+                let errorSum = 0;
+                regPoints.forEach(p => {
+                    let nx = p.x / w; let expectedNy = coeffs.a * nx * nx + coeffs.b * nx + coeffs.c;
+                    let diff = (p.y / h) - expectedNy;
+                    errorSum += diff * diff;
+                });
+                let mse = (errorSum / regPoints.length).toFixed(4);
+                
+                mseEl.innerText = mse;
+                mseEl.style.color = mse < 0.05 ? '#10b981' : '#f59e0b';
+                
+                insightEl.innerHTML = "Unlike basic linear lines, real-world data curves. This 2D Polynomial Regression actively arcs to minimize the Mean Squared Error (Loss). <strong>This curve fitting is the core mathematical foundation of Neural Networks!</strong>";
             }
         }
 
