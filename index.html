@@ -54,11 +54,11 @@
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="black" stroke="%23ff6b00" stroke-width="2"/></svg>') 12 12, auto;
         }
 
-        a, button, input, .tab-btn, .action-btn, .slider-wrapper, .image-card, .text-card, .theme-btn, #open-terminal, #clear-canvas-btn {
+        a, button, input, .tab-btn, .action-btn, .slider-wrapper, .image-card, .text-card, .theme-btn, #open-terminal, #clear-canvas-btn, .slider-dot {
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="black" stroke="%23f97316" stroke-width="2.5"/></svg>') 12 12, pointer !important;
         }
 
-        [data-theme="dark"] a, [data-theme="dark"] button, [data-theme="dark"] input, [data-theme="dark"] .tab-btn, [data-theme="dark"] .action-btn, [data-theme="dark"] .theme-btn, [data-theme="dark"] #open-terminal {
+        [data-theme="dark"] a, [data-theme="dark"] button, [data-theme="dark"] input, [data-theme="dark"] .tab-btn, [data-theme="dark"] .action-btn, [data-theme="dark"] .theme-btn, [data-theme="dark"] #open-terminal, [data-theme="dark"] .slider-dot {
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="black" stroke="%23ffb300" stroke-width="2.5"/></svg>') 12 12, pointer !important;
         }
 
@@ -90,7 +90,7 @@
 
         .impact-flash { position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; background: #ffffff; z-index: 3; opacity: 0; pointer-events: none; }
         .flash-active { animation: flashAnim 0.8s ease-out forwards; }
-        @keyframes flashAnim { 0% { opacity: 0; } 10% { opacity: 1; } 100% { opacity: 0; } }
+        @keyframes flashAnim { 0% { opacity: 0; } 10% { opacity: 0.8; } 100% { opacity: 0; } }
 
         .impact-shockwave { position: absolute; width: 50px; height: 50px; border-radius: 50%; border: 15px solid var(--primary-color); top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); opacity: 0; z-index: 1; pointer-events: none; }
         .shockwave-active { animation: shockwaveAnim 1s ease-out forwards; }
@@ -144,14 +144,34 @@
         #transition-overlay.active { opacity: 1; pointer-events: all; }
         .cyber-loader { width: 90px; height: 90px; border: 5px solid transparent; border-top-color: var(--primary-color); border-bottom-color: var(--secondary-color); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 25px; }
 
-        .slider-wrapper { width: 100%; height: 450px; border-radius: 24px; overflow: hidden; margin-bottom: 50px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 4px solid var(--card-bg); position: relative; transition: border-color 0.5s ease; }
-        .slider-track { display: flex; width: 500%; height: 100%; animation: autoSlide 20s infinite cubic-bezier(0.77, 0, 0.175, 1); }
-        .slider-wrapper:hover .slider-track { animation-play-state: paused; }
-        .slider-track img { width: 20%; height: 100%; object-fit: cover; object-position: center; background-color: var(--card-bg); }
-
-        @keyframes autoSlide { 0%, 15% { transform: translateX(0); } 20%, 35% { transform: translateX(-20%); } 40%, 55% { transform: translateX(-40%); } 60%, 75% { transform: translateX(-60%); } 80%, 95% { transform: translateX(-80%); } 100% { transform: translateX(0); } }
+        /* --- INTERACTIVE SLIDER --- */
+        .slider-wrapper { 
+            width: 100%; height: 450px; border-radius: 24px; overflow: hidden; margin-bottom: 50px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 4px solid var(--card-bg); 
+            position: relative; transition: border-color 0.5s ease;
+        }
+        .slider-track { 
+            display: flex; width: 400%; height: 100%; 
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .slider-track img { width: 25%; height: 100%; object-fit: cover; object-position: center; background-color: var(--card-bg); }
         
-        .tabs { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; position: sticky; top: 20px; z-index: 1000; background: var(--glass-bg); backdrop-filter: blur(12px); padding: 15px; border-radius: 16px; border: 1px solid var(--glass-border); box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: background 0.5s ease, border-color 0.5s ease; }
+        .slider-nav {
+            position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+            display: flex; gap: 12px; z-index: 10;
+        }
+        .slider-dot {
+            width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.6);
+            border: 2px solid transparent; cursor: pointer; transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        .slider-dot:hover { background: #fff; transform: scale(1.2); }
+        .slider-dot.active {
+            background: var(--primary-color); border-color: #fff; transform: scale(1.4);
+            box-shadow: 0 0 10px var(--primary-color);
+        }
+        
+        .tabs { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; position: sticky; top: 20px; z-index: 1000; background: var(--glass-bg); backdrop-filter: blur(12px); padding: 15px; border-radius: 16px; border: 1px solid var(--glass-border); box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: background 0.5s ease, border-color 0.5s ease; }
         .tab-btn { background: transparent; color: var(--sub-text); border: 1px solid transparent; padding: 10px 20px; border-radius: 30px; font-weight: 600; font-size: 1.05rem; text-decoration: none; transition: all 0.3s ease; }
         .tab-btn:hover { color: var(--primary-color); background: rgba(234, 88, 12, 0.05); }
         .tab-btn.active { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: #fff; box-shadow: 0 5px 15px rgba(234, 88, 12, 0.3); }
@@ -179,8 +199,8 @@
         .core-badge { background: rgba(234, 88, 12, 0.05); border: 1px solid rgba(234, 88, 12, 0.2); color: var(--main-text); padding: 10px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-align: center; pointer-events: none; transition: all 0.3s ease; }
         
         .mission-cta { background: rgba(234, 88, 12, 0.1); border-left: 4px solid var(--primary-color); padding: 15px; margin-top: 20px; border-radius: 8px; font-weight: bold; color: var(--primary-color); }
-        .mission-cta code { background: rgba(0,0,0,0.1); color: #000; padding: 2px 6px; border-radius: 4px; font-family: monospace; }
-        [data-theme="dark"] .mission-cta code { color: #fff; background: rgba(255,255,255,0.1); }
+        .mission-cta code { color: #000; background: rgba(0,0,0,0.1); padding: 2px 6px; border-radius: 4px; font-family: monospace; }
+        [data-theme="dark"] .mission-cta code { background: rgba(255,255,255,0.1); color: #fff; }
 
         /* --- ML PLAYGROUND --- */
         .playground-container {
@@ -223,7 +243,7 @@
         .coordinator-info p { color: var(--main-text); font-size: 1.4rem; font-weight: 700; margin: 0 0 30px 0; transition: color 0.5s ease; }
         .coordinator-info span { color: var(--secondary-color); margin: 0 15px; }
         .social-container { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-        .liquid-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: var(--light-bg); color: var(--primary-color); font-size: 1.6rem; text-decoration: none; border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transition: all 0.5s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 2px solid transparent; }
+        .liquid-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: var(--light-bg); color: var(--primary-color); font-size: 1.6rem; text-decoration: none; border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transition: all 0.5s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 2px solid transparent; }
         .liquid-btn:hover { border-radius: 50%; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: #ffffff; transform: translateY(-5px) scale(1.1); box-shadow: 0 15px 30px rgba(234, 88, 12, 0.4); }
 
         /* --- INTERACTIVE ALIEN OBSERVER --- */
@@ -236,12 +256,12 @@
         .alien-container {
             background: var(--glass-bg); border: 2px solid var(--primary-color); 
             border-radius: 50px; padding: 10px 20px; display: flex; gap: 15px; 
-            box-shadow: 0 0 20px rgba(234, 88, 12, 0.3); backdrop-filter: blur(10px); 
+            box-shadow: 0 0 20px rgba(234, 88, 12, 0.2); backdrop-filter: blur(10px); 
             animation: floatAlien 4s ease-in-out infinite; cursor: crosshair;
             transition: box-shadow 0.3s ease, transform 0.3s ease, background 0.5s ease, border-color 0.5s ease;
         }
         @keyframes floatAlien { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        .alien-container:hover { box-shadow: 0 0 30px rgba(234, 88, 12, 0.6); transform: scale(1.1); }
+        .alien-container:hover { box-shadow: 0 0 30px rgba(234, 88, 12, 0.5); transform: scale(1.1); }
         
         .alien-eye {
             width: 25px; height: 25px; background: #fff; border-radius: 50%;
@@ -350,16 +370,23 @@
     <div class="container">
         
         <div class="top-controls">
+            <!-- Theme defaults to Light, button switches to Dark Cyber mode -->
             <button id="theme-switch" class="theme-btn"><i class="fa-solid fa-moon"></i> Dark Mode</button>
         </div>
 
-        <div class="slider-wrapper">
-            <div class="slider-track">
+        <!-- NEW INTERACTIVE JAVASCRIPT SLIDER -->
+        <div class="slider-wrapper" id="main-slider">
+            <div class="slider-track" id="slider-track">
                 <img src="https://media.licdn.com/dms/image/v2/D5622AQFBw2qVkEQFRg/feedshare-shrink_800/B56aANgCJtIUAc-/0/1786932896610?e=1790208000&v=beta&t=VK8620pyPesK4buTeIF3it-yOEMiUNGuO4saEh8QoQc" alt="DSAI Image 1">
                 <img src="https://media.licdn.com/dms/image/v2/D5622AQEcDD1DPo4Frw/feedshare-shrink_1280/B56aANgCVXHsAM-/0/1786932897337?e=1790208000&v=beta&t=-TrorEZQw-ZKN1BhfjRh5NSVZlhPIsmJcWU7ztnIy00" alt="DSAI Image 2">
                 <img src="https://scontent-bom2-4.xx.fbcdn.net/v/t39.30808-6/476927714_646486844574808_772153997691883184_n.jpg?stp=dst-jpg_tt6&cstp=mx640x288&ctp=s640x288&_nc_cat=106&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=2Bm9MIfhChgQ7kNvwEc3nrw&_nc_oc=AdoM1Y25F-FdR6nJxMQl71l-_HMHjD4j2hXuulGHOIMuqN8xBvhPsegxgS2troqVHD0&_nc_zt=23&_nc_ht=scontent-bom2-4.xx&_nc_gid=_DyC8aP8dTjmraI4-ly9qw&_nc_ss=7b289&oh=00_AQL0BMx39Y2B1b1H2WMaT0Ub6gr5d3kNAzx78nJrTxV_iA&oe=6AA1AD02" alt="DSAI Image 3">
-                <img src="logo.jpg" onerror="this.style.display='none'" alt="DSAI Logo">
-                <img src="https://media.licdn.com/dms/image/v2/D5622AQFBw2qVkEQFRg/feedshare-shrink_800/B56aANgCJtIUAc-/0/1786932896610?e=1790208000&v=beta&t=VK8620pyPesK4buTeIF3it-yOEMiUNGuO4saEh8QoQc" alt="DSAI Image 1 Loop">
+                <img src="logo.jpg" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23f97316\'/></svg>'" alt="DSAI Logo">
+            </div>
+            <div class="slider-nav">
+                <button class="slider-dot active" data-index="0" title="Slide 1"></button>
+                <button class="slider-dot" data-index="1" title="Slide 2"></button>
+                <button class="slider-dot" data-index="2" title="Slide 3"></button>
+                <button class="slider-dot" data-index="3" title="Slide 4"></button>
             </div>
         </div>
 
@@ -541,7 +568,7 @@
     </div>
 
     <script>
-        // --- SAFE WEB AUDIO ENGINE (Bulletproof against browser blocking) ---
+        // --- SAFE WEB AUDIO ENGINE ---
         let audioCtx = null;
         let audioSupported = true;
 
@@ -552,9 +579,51 @@
                 if (!audioCtx) audioCtx = new AudioContext();
                 if (audioCtx.state === 'suspended') audioCtx.resume();
             } catch (e) {
-                console.warn("Audio Context blocked by browser.", e);
+                console.warn("Audio Context blocked.", e);
                 audioSupported = false;
             }
+        }
+
+        // Tire Screech Brakes Effect
+        function playScreech() {
+            if (!audioSupported || !audioCtx) return;
+            const now = audioCtx.currentTime;
+            
+            // Generate Noise for tire friction
+            const bufferSize = audioCtx.sampleRate * 1.2; 
+            const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+            const data = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) { data[i] = Math.random() * 2 - 1; }
+            
+            const noise = audioCtx.createBufferSource();
+            noise.buffer = buffer;
+            
+            // Filter noise to sound like screech
+            const bandpass = audioCtx.createBiquadFilter();
+            bandpass.type = 'bandpass';
+            bandpass.frequency.setValueAtTime(1200, now);
+            bandpass.frequency.linearRampToValueAtTime(600, now + 1.2);
+            bandpass.Q.value = 1;
+            
+            const gain = audioCtx.createGain();
+            gain.gain.setValueAtTime(0, now);
+            gain.gain.linearRampToValueAtTime(1, now + 0.1);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + 1.2);
+            
+            noise.connect(bandpass); bandpass.connect(gain); gain.connect(audioCtx.destination);
+            noise.start(now);
+            
+            // Add tonal squeal
+            const osc = audioCtx.createOscillator();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(1000, now);
+            osc.frequency.exponentialRampToValueAtTime(400, now + 1.2);
+            const oscGain = audioCtx.createGain();
+            oscGain.gain.setValueAtTime(0, now);
+            oscGain.gain.linearRampToValueAtTime(0.3, now + 0.1);
+            oscGain.gain.exponentialRampToValueAtTime(0.01, now + 1.2);
+            osc.connect(oscGain); oscGain.connect(audioCtx.destination);
+            osc.start(now); osc.stop(now + 1.2);
         }
 
         function playHoverBlip() {
@@ -606,13 +675,17 @@
         // --- CINEMATIC INTRO LOGIC ---
         const initBtn = document.getElementById('init-btn');
         initBtn.addEventListener('click', () => {
-            initAudio(); // Safe initialization
-            
+            initAudio(); 
             initBtn.style.display = 'none';
             document.getElementById('logo-wrapper').style.display = 'flex';
+            
+            // Play Tire Screech as they roll in
+            playScreech();
+
             document.getElementById('inst-splash').classList.add('animate-left'); 
             document.getElementById('club-splash').classList.add('animate-right');
 
+            // Play Boom when they hit
             setTimeout(() => {
                 playBoom(); 
                 document.getElementById('flash').classList.add('flash-active');
@@ -630,9 +703,43 @@
             }, 3800);
         });
 
+        // --- INTERACTIVE JS IMAGE SLIDER ---
+        const track = document.getElementById('slider-track');
+        const dots = document.querySelectorAll('.slider-dot');
+        const wrapper = document.getElementById('main-slider');
+        let currentSlide = 0;
+        let slideInterval;
+
+        function goToSlide(index) {
+            currentSlide = index;
+            track.style.transform = `translateX(-${currentSlide * 25}%)`;
+            dots.forEach(d => d.classList.remove('active'));
+            dots[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % 4; // 4 unique images
+            goToSlide(currentSlide);
+        }
+
+        function startSlide() { slideInterval = setInterval(nextSlide, 3500); }
+        function stopSlide() { clearInterval(slideInterval); }
+
+        wrapper.addEventListener('mouseenter', stopSlide);
+        wrapper.addEventListener('mouseleave', startSlide);
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', (e) => {
+                playHoverBlip();
+                const index = parseInt(e.target.getAttribute('data-index'));
+                goToSlide(index);
+            });
+        });
+        startSlide(); // init slider
+
         document.querySelectorAll('.tab-btn, .action-btn, .liquid-btn, .theme-btn').forEach(btn => { btn.addEventListener('mouseenter', playHoverBlip); });
 
-        // Theme Switcher Logic (Now defaults to Dark when clicked)
+        // Theme Switcher Logic 
         const themeBtn = document.getElementById('theme-switch');
         themeBtn.addEventListener('click', () => {
             initAudio(); playPowerUp();
