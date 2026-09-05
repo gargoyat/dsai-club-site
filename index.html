@@ -53,7 +53,7 @@
             background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
         }
         
-        /* New Hero Header with Institute Background */
+        /* Hero Header with Less Faded Institute Background */
         header {
             position: relative;
             text-align: left;
@@ -66,13 +66,13 @@
             border-bottom: 4px solid var(--primary-blue);
         }
 
-        /* Glass overlay so text stays readable */
+        /* Adjusted Glass overlay for more image visibility */
         header::before {
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.4); /* Reduced fade */
+            backdrop-filter: blur(2px); /* Reduced blur */
             z-index: 0;
         }
 
@@ -107,7 +107,7 @@
             margin: 0;
             letter-spacing: -2px;
             color: var(--primary-blue);
-            text-shadow: 0 4px 15px rgba(255,255,255,0.8);
+            text-shadow: 0 2px 15px rgba(255, 255, 255, 1);
             animation: slideRight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
         }
 
@@ -128,9 +128,10 @@
 
         .subtitle {
             font-size: 1.4rem;
-            color: #1e293b;
+            color: #0f172a;
             margin: 0 0 10px 0;
-            font-weight: 700;
+            font-weight: 800;
+            text-shadow: 0 2px 10px rgba(255, 255, 255, 1);
             border-right: 3px solid var(--primary-blue);
             white-space: nowrap;
             overflow: hidden;
@@ -190,7 +191,7 @@
 
         .slider-track {
             display: flex;
-            width: 500%; /* 4 images + 1 clone = 500% */
+            width: 500%; 
             height: 100%;
             animation: autoSlide 20s infinite cubic-bezier(0.77, 0, 0.175, 1);
         }
@@ -200,10 +201,11 @@
         }
 
         .slider-track img {
-            width: 20%; /* 100% / 5 */
+            width: 20%; 
             height: 100%;
             object-fit: cover;
             object-position: center;
+            background-color: #fff;
         }
 
         @keyframes autoSlide {
@@ -520,13 +522,8 @@
         </div>
 
         <div id="about" class="section">
-            <h2>Demystifying AI</h2>
-            <p>Proudly operating under the Sci-Tech Council of IIT Bhilai, we are a community of builders. If you have ever wondered how Netflix recommends movies, how self-driving cars see the road, or how ChatGPT writes code—that is Data Science and AI. We are here to help you learn how to build those exact systems from scratch.</p>
-            <ul>
-                <li><strong>Machine Learning:</strong> Instead of writing strict rules for a computer, we teach it to learn by showing it massive amounts of data examples.</li>
-                <li><strong>Data Analytics:</strong> Acting like a digital detective to take messy numbers and turn them into beautiful, predictive graphs.</li>
-                <li><strong>Artificial Intelligence:</strong> The ultimate goal. Building smart systems that can reason, predict, and solve complex human problems.</li>
-            </ul>
+            <h2>The Mission</h2>
+            <p>The DSAI Club at IIT Bhilai explores the world of data science and AI through hands-on projects, research, and innovation. It offers a collaborative space for students to engage with intelligent systems and data-driven solutions. Through workshops, research initiatives, and peer learning, members gain practical skills and a deeper understanding of emerging technologies. The club encourages curiosity, problem-solving, and creativity in applying AI to real-world challenges. We warmly welcome you to IIT Bhilai and look forward to being part of your journey into data and intelligence.</p>
         </div>
 
         <div id="activities" class="section">
@@ -546,7 +543,7 @@
                 
                 <div class="image-card">
                     <div class="img-container">
-                        <img src="https://images.unsplash.com/photo-1544150613-277d33b86064?auto=format&fit=crop&w=600&q=80" alt="Expert Talk">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80" alt="Expert Talk">
                     </div>
                     <div class="card-content">
                         <h3>Expert Talks</h3>
