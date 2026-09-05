@@ -207,9 +207,6 @@
         .text-card > * { transform: translateZ(30px); transition: transform 0.3s; }
         .text-card h3 { color: var(--primary-color); margin: 0 0 10px 0; font-size: 1.3rem; transition: color 0.5s ease; }
         .text-card p { margin: 0; font-size: 0.95rem; color: var(--sub-text); transition: color 0.5s ease; }
-
-        .core-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 15px; }
-        .core-badge { background: rgba(234, 88, 12, 0.05); border: 1px solid rgba(234, 88, 12, 0.2); color: var(--main-text); padding: 10px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-align: center; pointer-events: none; transition: all 0.3s ease; }
         
         .mission-cta { background: rgba(234, 88, 12, 0.1); border-left: 4px solid var(--primary-color); padding: 15px; margin-top: 20px; border-radius: 8px; font-weight: bold; color: var(--primary-color); }
         .mission-cta code { color: #000; background: rgba(0,0,0,0.1); padding: 2px 6px; border-radius: 4px; font-family: monospace; }
@@ -252,14 +249,14 @@
         .btn-clear-data:hover { background: #dc2626; transform: scale(1.05); }
 
         footer { background: var(--glass-bg); border-top: 1px solid var(--glass-border); padding: 60px 20px; text-align: center; margin-top: auto; backdrop-filter: blur(10px); scroll-margin-top: 100px; transition: background 0.5s ease, border-color 0.5s ease; }
-        .coordinator-info h3 { color: var(--primary-color); font-size: 1rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; transition: color 0.5s ease; }
-        .coordinator-info p { color: var(--main-text); font-size: 1.4rem; font-weight: 700; margin: 0 0 30px 0; transition: color 0.5s ease; }
-        .coordinator-info span { color: var(--secondary-color); margin: 0 15px; }
+        .coordinator-info h3 { color: var(--primary-color); font-size: 1.2rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; transition: color 0.5s ease; }
+        .coordinator-info p { color: var(--main-text); font-size: 1.1rem; font-weight: 600; margin: 0 0 30px 0; transition: color 0.5s ease; }
+        
         .social-container { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-        .liquid-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: var(--light-bg); color: var(--primary-color); font-size: 1.6rem; text-decoration: none; border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transition: all 0.5s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 2px solid transparent; }
+        .liquid-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: var(--light-bg); color: var(--primary-color); font-size: 1.6rem; text-decoration: none; border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transition: all 0.5s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 2px solid transparent; }
         .liquid-btn:hover { border-radius: 50%; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: #ffffff; transform: translateY(-5px) scale(1.1); box-shadow: 0 15px 30px rgba(234, 88, 12, 0.4); }
 
-        /* --- INTERACTIVE ALIEN OBSERVER --- */
+        /* --- INTERACTIVE ALIEN OBSERVER (Moves opposite to cursor) --- */
         #alien-wrapper {
             position: fixed; bottom: 30px; left: 30px; z-index: 8999;
             opacity: 0; pointer-events: none; transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease 2s;
@@ -269,12 +266,12 @@
         .alien-container {
             background: var(--glass-bg); border: 2px solid var(--primary-color); 
             border-radius: 50px; padding: 10px 20px; display: flex; gap: 15px; 
-            box-shadow: 0 0 20px rgba(234, 88, 12, 0.3); backdrop-filter: blur(10px); 
+            box-shadow: 0 0 20px rgba(234, 88, 12, 0.2); backdrop-filter: blur(10px); 
             animation: floatAlien 4s ease-in-out infinite; cursor: crosshair;
             transition: box-shadow 0.3s ease, transform 0.3s ease, background 0.5s ease, border-color 0.5s ease;
         }
         @keyframes floatAlien { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        .alien-container:hover { box-shadow: 0 0 30px rgba(234, 88, 12, 0.6); transform: scale(1.1); }
+        .alien-container:hover { box-shadow: 0 0 30px rgba(234, 88, 12, 0.5); transform: scale(1.1); }
         
         .alien-eye {
             width: 25px; height: 25px; background: #fff; border-radius: 50%;
@@ -388,14 +385,12 @@
             <button id="theme-switch" class="theme-btn"><i class="fa-solid fa-moon"></i> Dark Mode</button>
         </div>
 
-        <!-- NEW INTERACTIVE JS SLIDER WITH CONTROLS -->
+        <!-- INTERACTIVE JS SLIDER WITH CONTROLS -->
         <div class="slider-wrapper" id="main-slider">
-            
             <!-- Left and Right Arrows -->
             <button class="slider-btn prev-btn" id="slide-prev" title="Previous Image"><i class="fa-solid fa-chevron-left"></i></button>
             <button class="slider-btn next-btn" id="slide-next" title="Next Image"><i class="fa-solid fa-chevron-right"></i></button>
             
-            <!-- The Image Track -->
             <div class="slider-track" id="slider-track">
                 <img src="https://media.licdn.com/dms/image/v2/D5622AQFBw2qVkEQFRg/feedshare-shrink_800/B56aANgCJtIUAc-/0/1786932896610?e=1790208000&v=beta&t=VK8620pyPesK4buTeIF3it-yOEMiUNGuO4saEh8QoQc" alt="DSAI Image 1">
                 <img src="https://media.licdn.com/dms/image/v2/D5622AQEcDD1DPo4Frw/feedshare-shrink_1280/B56aANgCVXHsAM-/0/1786932897337?e=1790208000&v=beta&t=-TrorEZQw-ZKN1BhfjRh5NSVZlhPIsmJcWU7ztnIy00" alt="DSAI Image 2">
@@ -415,85 +410,51 @@
         <div class="tabs" id="nav-tabs">
             <a href="#about" class="tab-btn active">The Mission</a>
             <a href="#activities" class="tab-btn">Activities</a>
-            <a href="#join" class="tab-btn">How to Join</a>
-            <a href="#team" class="tab-btn">Our Structure</a>
+            <a href="#team" class="tab-btn">Leadership</a>
             <a href="#playground" class="tab-btn">Playground <i class="fa-solid fa-bolt" style="color: var(--primary-color)"></i></a>
             <a href="#reach" class="tab-btn">Reach Us</a>
         </div>
 
         <div id="about" class="section">
             <h2 class="glitch-target" data-text="The Mission">The Mission</h2>
-            <p>Welcome to the Data Science and Artificial Intelligence Club at IIT Bhilai! We are a community dedicated to exploring machine learning, analytics, and intelligent systems. By building hands-on projects and collaborating on cutting-edge research, we help students transition from beginners to skilled innovators. Join us to turn raw data into meaningful technology.</p>
+            <p>The DSAI Club at IIT Bhilai explores the exciting fields of data science, artificial intelligence, and machine learning through hands-on projects, workshops, research initiatives, and peer learning. As a collaborative platform for innovation and problem-solving, the club enables students to develop practical skills, explore emerging technologies, and build intelligent, data-driven solutions. The DSAI Club warmly welcomes you to IIT Bhilai and looks forward to being a part of your journey in the world of data and AI.</p>
             <div class="mission-cta">
                 <i class="fa-solid fa-terminal"></i> Want a 2-minute crash course? Open the Terminal in the bottom right corner and type <code>learn</code>.
             </div>
         </div>
 
         <div id="activities" class="section">
-            <h2 class="glitch-target" data-text="What We Actually Do">What We Actually Do</h2>
-            <p>We believe in transforming theoretical knowledge into hands-on experiences through continuous campus events and community building.</p>
+            <h2 class="glitch-target" data-text="What We Actually Do">Activities</h2>
             
             <div class="card-grid">
                 <div class="text-card tilt-card">
                     <h3>Group Discussions</h3>
-                    <p>Interactive roundtable sessions where members break down new research papers, debate AI ethics, and brainstorm collaborative tech solutions.</p>
+                    <p>Interactive sessions where members explore and debate the latest advancements, research papers, and ethical considerations in AI and Data Science.</p>
                 </div>
                 <div class="text-card tilt-card">
-                    <h3>Expert Talks</h3>
-                    <p>We regularly invite industry leaders, technical researchers, and accomplished alumni to share insights on the future of the AI industry.</p>
+                    <h3>Expert Talk</h3>
+                    <p>Guest lectures and insightful sessions by industry leaders, researchers, and alumni sharing their expertise on emerging tech trends.</p>
                 </div>
                 <div class="text-card tilt-card">
-                    <h3>Hackathons</h3>
-                    <p>Intense, high-energy coding marathons where competitive teams build functioning artificial intelligence applications in just 24 to 48 hours.</p>
+                    <h3>Hackathon</h3>
+                    <p>Competitive coding events where teams collaborate to build innovative, functioning AI applications and data-driven solutions.</p>
                 </div>
                 <div class="text-card tilt-card">
-                    <h3>Meraz Fest Events</h3>
-                    <p>We proudly host the flagship algorithmic challenges, tech showcases, and competitive data events during IIT Bhilai's annual festival.</p>
+                    <h3>Exciting events in Meraz</h3>
+                    <p>Hosting flagship algorithmic challenges, tech showcases, and competitive data events during IIT Bhilai's annual techno-cultural festival.</p>
                 </div>
             </div>
         </div>
 
-        <div id="join" class="section">
-            <h2 class="glitch-target" data-text="Start Your Journey">Start Your Journey</h2>
-            <p>Ready to build with us? We welcome first-years from all branches—<strong>absolutely no prior coding experience required.</strong> We will teach you everything. The onboarding process is simple:</p>
-            <ul>
-                <li><strong>Introductory Session:</strong> Attend our orientation to see the cool tech we build and understand our vision.</li>
-                <li><strong>Member Forms:</strong> Fill out a quick form to tell us what excites you—whether it is making AI art, trading stocks, or building robots.</li>
-                <li><strong>The Chat (Interview):</strong> Don't panic! This is just a casual conversation to see how curious you are and how you approach puzzles.</li>
-                <li><strong>Welcome Aboard:</strong> Selected members join the community and are immediately placed into a team to start building!</li>
-            </ul>
-        </div>
-
         <div id="team" class="section">
-            <h2 class="glitch-target" data-text="How We Operate">How We Operate</h2>
-            <p>Nobody learns alone here. Our club uses a two-tier mentorship system to ensure that every single beginner gets the personal guidance they need to succeed.</p>
+            <h2 class="glitch-target" data-text="Leadership">Leadership</h2>
+            <p>As highlighted in our official brochure, the Data Science and Artificial Intelligence Club is driven by dedicated student coordinators who organize events, manage resources, and foster a collaborative environment.</p>
             
             <div class="card-grid">
                 <div class="text-card tilt-card" style="border-top-color: var(--primary-color);">
-                    <h3>Coordinators</h3>
+                    <h3>Club Coordinators</h3>
                     <p style="color: var(--primary-color); font-weight: bold; margin-bottom: 10px;">Vatsal Yadav & Siddhesh Bansal</p>
-                    <p>The visionary leaders driving the club's operations, organizing hackathons, and ensuring everyone has the resources they need.</p>
-                </div>
-                
-                <div class="text-card tilt-card" style="grid-column: 1 / -1; border-top-color: var(--secondary-color);">
-                    <h3>Core Members</h3>
-                    <p style="color: var(--secondary-color); font-weight: bold; margin-bottom: 15px;">Project Mentors & Technical Leaders</p>
-                    <p>Experienced senior students who lead the technical projects. They act as your personal mentors, guiding you through bugs and code errors.</p>
-                    
-                    <div class="core-grid">
-                        <div class="core-badge">Adhi Agrawal</div>
-                        <div class="core-badge">Dinesh Abhiram A.V.N</div>
-                        <div class="core-badge">Sikharam Satya Sri Harsha</div>
-                        <div class="core-badge">Kushal Radia</div>
-                        <div class="core-badge">Navanil Ghosh</div>
-                        <div class="core-badge">Parth N Bhosale</div>
-                        <div class="core-badge">Sai Siddhardha Moguluri</div>
-                        <div class="core-badge">Shlok Divyam</div>
-                        <div class="core-badge">Siddhant Shukla</div>
-                        <div class="core-badge">Vaibhav</div>
-                        <div class="core-badge">Yog Damahe</div>
-                        <div class="core-badge">Thammandra Saketh Ram</div>
-                    </div>
+                    <p>Leading the club's initiatives, organizing expert talks, and guiding members through hands-on projects and hackathons.</p>
                 </div>
             </div>
         </div>
@@ -537,20 +498,13 @@
             </div>
         </div>
 
-        <div id="projects" class="section">
-            <h2 class="glitch-target" data-text="Real Projects">Real Projects</h2>
-            <p>Forget traditional lectures—we believe in active development. Our project teams operate on brief, focused cycles that won't disrupt your studies. You will gain practical experience with industry-standard libraries, Python, and collaborative version control.</p>
-            <p>Check out our open-source code base to see the facial recognition software, trading bots, and data dashboards we have already built!</p>
-            <a href="https://github.com/dsai-iitbhilai" target="_blank" class="action-btn">Explore Our Code <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></a>
-        </div>
-
     </div>
 
     <footer id="reach" class="section" style="box-shadow: none; border: none; margin-bottom: 0; background: transparent; padding-top: 0;">
         <h2 style="text-align: center; margin-bottom: 50px;">Reach Us</h2>
         <div class="coordinator-info">
-            <h3>Club Coordinators</h3>
-            <p>Vatsal Yadav <span>|</span> Siddhesh Bansal</p>
+            <h3>Contact The Club</h3>
+            <p>Connect with us on our official platforms</p>
         </div>
         
         <div class="social-container">
@@ -766,7 +720,7 @@
 
         document.querySelectorAll('.tab-btn, .action-btn, .liquid-btn, .theme-btn').forEach(btn => { btn.addEventListener('mouseenter', playHoverBlip); });
 
-        // Theme Switcher Logic (Now defaults to Dark when clicked)
+        // Theme Switcher Logic
         const themeBtn = document.getElementById('theme-switch');
         themeBtn.addEventListener('click', () => {
             initAudio(); playPowerUp();
@@ -892,13 +846,13 @@
                     } else { response.className = 'term-line term-err'; response.innerHTML = "Please type 'increase' or 'decrease'."; }
                 } else {
                     switch(command) {
-                        case 'help': response.innerHTML = "Commands: <br>- <b>learn</b>: AI Crash Course<br>- <b>team</b>: View Core Members<br>- <b>ping</b>: Network test<br>- <b>clear</b>: Clear screen"; break;
+                        case 'help': response.innerHTML = "Commands: <br>- <b>learn</b>: AI Crash Course<br>- <b>team</b>: View Leadership<br>- <b>ping</b>: Network test<br>- <b>clear</b>: Clear screen"; break;
                         case 'learn':
                             termState = 'learn_1';
                             response.innerHTML = "<b>[ CRASH COURSE: Train a Model ]</b><br>Let's train a simple AI.<br>Data: [Study Hours] -> [Test Score]<br>Row 1: [2 hours] -> [20 score]<br>Row 2: [4 hours] -> [40 score]<br><br>Our untrained AI guesses the multiplier (weight) is 5. So for 2 hours, it guesses 10 (Error = 10 off).<br><br>To reduce this error, should we <b>increase</b> or <b>decrease</b> the weight? (Type your answer)";
                             break;
                         case 'team':
-                            response.innerHTML = "<b>Coordinators:</b><br>Vatsal Yadav, Siddhesh Bansal<br><b>Core Members:</b><br>Adhi, Dinesh, Sikharam, Kushal, Navanil, Parth, Sai, Shlok, Siddhant, Vaibhav, Yog, Thammandra.<br><br><i>Auto-navigating to Team Section...</i>";
+                            response.innerHTML = "<b>Leadership:</b><br>Led by Vatsal Yadav and Siddhesh Bansal.<br><br><i>Auto-navigating to Leadership Section...</i>";
                             setTimeout(() => { document.querySelector('#team').scrollIntoView({ behavior: 'smooth' }); }, 1000);
                             break;
                         case 'ping': response.innerHTML = "Pinging AI mainframe... <br>Reply from 127.0.0.1: time < 1ms. System ONLINE."; break;
