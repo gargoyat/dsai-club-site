@@ -5,57 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DSAI Club | IIT Bhilai</title>
     
-    <!-- Importing professional fonts from Google -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     
     <style>
         body {
             font-family: 'Open Sans', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #708090; /* Your custom Slate Gray */
-            color: #333333; /* Dark text for readability on white cards */
+            background-color: #708090; 
+            color: #333333; 
             line-height: 1.7;
         }
         header {
             text-align: center;
             padding: 80px 20px 40px;
-            color: #ffffff; /* White text to pop against the slate background */
         }
         h1, h2 {
             font-family: 'Montserrat', sans-serif;
         }
+        
+        /* Energetic, animated gradient for the main title */
         h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 10px;
-            letter-spacing: -1px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            letter-spacing: -2px;
+            background: linear-gradient(90deg, #ffffff, #e0f2fe, #bae6fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: slideDown 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
         }
+        
+        /* Keyframe animation for the title sliding in */
+        @keyframes slideDown {
+            0% { opacity: 0; transform: translateY(-30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
         .subtitle {
             font-size: 1.2rem;
             max-width: 600px;
             margin: 0 auto;
-            opacity: 0.95;
+            color: #f8fafc;
+            opacity: 0;
+            animation: fadeIn 1s ease-in 0.5s forwards; /* Fades in after title */
         }
+        
+        @keyframes fadeIn {
+            to { opacity: 0.95; }
+        }
+
         .container {
             max-width: 900px;
             margin: 0 auto;
             padding: 20px;
         }
+        
         .section-box {
-            background-color: #ffffff; /* Crisp white cards */
+            background-color: #ffffff; 
             padding: 40px;
             border-radius: 12px;
             margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* Soft drop shadow */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            transition: transform 0.3s ease; /* Smooth hover effect */
         }
+        
+        /* Makes the whole card lift up slightly when hovered */
+        .section-box:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Floating, animated underline */
         h2 {
             color: #1e293b; 
             margin-top: 0;
-            border-bottom: 3px solid #708090;
-            padding-bottom: 10px;
+            position: relative;
             display: inline-block;
+            margin-bottom: 20px;
         }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px; /* Drops the line below the text */
+            left: 0;
+            width: 40px; /* Starts as a short floating line */
+            height: 4px;
+            background-color: #38bdf8;
+            border-radius: 4px;
+            box-shadow: 0 3px 6px rgba(56, 189, 248, 0.4); /* Gives the line a glowing shadow */
+            transition: width 0.4s ease;
+        }
+        
+        /* The floating line expands when the box is hovered */
+        .section-box:hover h2::after {
+            width: 100%;
+        }
+
         li {
             margin-bottom: 12px;
         }
