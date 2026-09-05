@@ -12,6 +12,7 @@
         :root {
             --primary-blue: #0284c7;
             --secondary-blue: #38bdf8;
+            --neon-blue: #00f0ff;
             --main-text: #0f172a;
             --sub-text: #475569;
             --light-bg: #f8fafc;
@@ -38,8 +39,8 @@
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Space Grotesk', sans-serif;
-            margin: 0; padding: 0; background-color: var(--light-bg); color: var(--main-text);
+            font-family: 'Space Grotesk', sans-serif; margin: 0; padding: 0;
+            background-color: var(--light-bg); color: var(--main-text);
             line-height: 1.7; overflow-x: hidden; min-height: 100vh;
             display: flex; flex-direction: column; position: relative;
             transition: background-color 0.5s ease, color 0.5s ease;
@@ -50,58 +51,61 @@
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="black" stroke="%2338bdf8" stroke-width="2.5"/></svg>') 12 12, pointer !important;
         }
 
-        /* Full Screen Splash Intro */
-        #splash-screen {
+        /* --- CINEMATIC DARK INTRO --- */
+        #cinematic-intro {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: var(--light-bg); z-index: 10000;
-            display: flex; align-items: center; justify-content: center;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-        }
-        
-        [data-theme="cyber"] #splash-screen { background: var(--light-bg); }
-
-        .splash-logo {
-            position: absolute; height: 140px; width: 140px; border-radius: 50%;
-            object-fit: contain; background: #fff; border: 4px solid var(--primary-blue);
-            box-shadow: 0 10px 25px rgba(2, 132, 199, 0.4); z-index: 3;
+            background: #020617; z-index: 10000;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            transition: opacity 0.8s ease;
         }
 
-        .inst-splash {
-            left: -200px;
-            animation: rollInLeftSplash 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        .intro-logos-wrapper { position: relative; display: flex; align-items: center; justify-content: center; height: 150px; width: 100%; z-index: 2; }
+
+        .intro-logo {
+            width: 130px; height: 130px; border-radius: 50%; object-fit: contain; background: #fff;
+            border: 4px solid var(--neon-blue); position: absolute; box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
         }
 
-        .club-splash {
-            right: -200px;
-            animation: rollInRightSplash 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        .intro-inst { animation: clashLeft 1.2s cubic-bezier(0.5, 0, 0.5, 1) forwards; }
+        .intro-club { animation: clashRight 1.2s cubic-bezier(0.5, 0, 0.5, 1) forwards; }
+
+        @keyframes clashLeft {
+            0% { transform: translateX(-60vw) rotate(-1080deg); }
+            100% { transform: translateX(-70px) rotate(0deg); }
+        }
+        @keyframes clashRight {
+            0% { transform: translateX(60vw) rotate(1080deg); }
+            100% { transform: translateX(70px) rotate(0deg); }
         }
 
-        @keyframes rollInLeftSplash {
-            0% { left: -200px; transform: rotate(-720deg); }
-            100% { left: calc(50% - 150px); transform: rotate(0deg); }
+        /* Explosion Flash & Shockwave */
+        .impact-flash {
+            position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; background: #ffffff;
+            z-index: 3; opacity: 0; pointer-events: none; animation: flashAnim 0.8s ease-out 1.2s forwards;
+        }
+        @keyframes flashAnim { 0% { opacity: 0; } 10% { opacity: 1; } 100% { opacity: 0; } }
+
+        .impact-shockwave {
+            position: absolute; width: 50px; height: 50px; border-radius: 50%;
+            border: 15px solid var(--neon-blue); top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0);
+            opacity: 0; z-index: 1; pointer-events: none; animation: shockwaveAnim 1s ease-out 1.2s forwards;
+        }
+        @keyframes shockwaveAnim {
+            0% { transform: translate(-50%, -50%) scale(0); opacity: 1; border-width: 15px; }
+            100% { transform: translate(-50%, -50%) scale(40); opacity: 0; border-width: 0; }
         }
 
-        @keyframes rollInRightSplash {
-            0% { right: -200px; transform: rotate(720deg); }
-            100% { right: calc(50% - 150px); transform: rotate(0deg); }
+        .intro-title {
+            margin-top: 180px; font-family: 'Montserrat', sans-serif; font-size: 3.5rem; color: #fff;
+            letter-spacing: 10px; text-shadow: 0 0 20px var(--neon-blue); text-align: center;
+            opacity: 0; animation: textReveal 1s ease-out 1.4s forwards;
+        }
+        @keyframes textReveal {
+            0% { opacity: 0; transform: translateY(20px); letter-spacing: 25px; filter: blur(10px); }
+            100% { opacity: 1; transform: translateY(0); letter-spacing: 8px; filter: blur(0); }
         }
 
-        .dust-cloud {
-            position: absolute; width: 10px; height: 10px; border-radius: 50%;
-            background: transparent; z-index: 2; transition: all 0.6s ease-out;
-        }
-
-        .dust-cloud.explode {
-            box-shadow: 
-                -40px -40px 60px 40px rgba(100, 116, 139, 0.6),
-                40px 40px 60px 40px rgba(100, 116, 139, 0.6),
-                -40px 40px 60px 40px rgba(100, 116, 139, 0.6),
-                40px -40px 60px 40px rgba(100, 116, 139, 0.6),
-                0px 0px 100px 100px rgba(100, 116, 139, 0.8);
-            transform: scale(2.5);
-            opacity: 0;
-        }
-
+        /* --- MAIN SITE CSS --- */
         #networkCanvas {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
             background: var(--canvas-bg); transition: background 0.5s ease;
@@ -109,10 +113,10 @@
         
         header {
             position: relative; text-align: left; padding: 80px 20px 40px;
-            width: 100%; box-sizing: border-box; overflow: hidden;
+            width: 100%; box-sizing: border-box;
             background-image: url('https://media.licdn.com/dms/image/v2/D4D3DAQFRzBS_ytkuLw/image-scale_191_1128/image-scale_191_1128/0/1713457712793/data_science_and_artificial_intelligence_club_iit_bhilai_cover?e=1789200000&v=beta&t=pTkM-99X8uFxTWFCMIwc4mxMxPh206eZuHm1bo2M1OQ');
             background-size: cover; background-position: center; border-bottom: 4px solid var(--primary-blue);
-            transition: border-color 0.5s ease;
+            transition: border-color 0.5s ease; overflow: hidden;
         }
 
         header::before {
@@ -122,7 +126,6 @@
         }
 
         .header-content { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; }
-        
         h1, h2, h3 { font-family: 'Montserrat', sans-serif; color: var(--main-text); transition: color 0.5s ease; }
         
         .title-wrapper { display: flex; align-items: center; justify-content: flex-start; gap: 20px; flex-wrap: wrap; }
@@ -137,7 +140,7 @@
         h1 {
             font-size: 4.5rem; margin: 0; letter-spacing: -2px; color: var(--primary-blue);
             text-shadow: 0 2px 15px rgba(255, 255, 255, 0.8);
-            animation: slideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s both;
+            animation: slideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 3.5s both; /* Delayed until intro finishes */
         }
         [data-theme="cyber"] h1 { text-shadow: 0 2px 15px rgba(0, 240, 255, 0.5); }
 
@@ -145,7 +148,7 @@
 
         .header-hr {
             border: 0; height: 4px; background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue), transparent);
-            margin: 15px 0 20px 0; width: 100%; border-radius: 2px; animation: slideRight 1s ease-out 0.8s both;
+            margin: 15px 0 20px 0; width: 100%; border-radius: 2px; animation: slideRight 1s ease-out 3.8s both;
         }
         
         @keyframes slideRight { 0% { opacity: 0; transform: translateX(-30px); } 100% { opacity: 1; transform: translateX(0); } }
@@ -153,7 +156,7 @@
         .subtitle {
             font-size: 1.4rem; color: var(--main-text); margin: 0 0 10px 0; font-weight: 800;
             text-shadow: 0 2px 10px rgba(255, 255, 255, 0.8); border-right: 3px solid var(--primary-blue);
-            white-space: nowrap; overflow: hidden; animation: typing 3s steps(50, end) 1s both, blink-caret .75s step-end infinite;
+            white-space: nowrap; overflow: hidden; animation: typing 3s steps(50, end) 4s both, blink-caret .75s step-end infinite;
         }
         [data-theme="cyber"] .subtitle { text-shadow: 0 2px 10px rgba(0,0,0,1); }
 
@@ -163,7 +166,10 @@
         .container {
             max-width: 1100px; margin: 0 auto; padding: 40px 20px 60px;
             flex: 1; width: 100%; box-sizing: border-box;
+            animation: fadeIn 1s ease-out 3.5s both; /* Delayed until intro finishes */
         }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         /* Top Controls for Theme Switcher */
         .top-controls { display: flex; justify-content: flex-end; margin-bottom: 25px; }
@@ -176,7 +182,7 @@
         }
         .theme-btn:hover { background: var(--primary-blue); color: #fff; box-shadow: 0 0 20px var(--primary-blue); transform: translateY(-2px); }
 
-        /* Transition Overlay for Tabs */
+        /* Tab Transition Overlay */
         #transition-overlay {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background: var(--glass-bg); backdrop-filter: blur(20px);
@@ -190,13 +196,6 @@
             border-top-color: var(--primary-blue); border-bottom-color: var(--secondary-blue);
             border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 25px;
         }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-        
-        .overlay-title { 
-            font-family: 'Montserrat', sans-serif; font-size: 2.8rem; font-weight: 800; 
-            color: var(--primary-blue); letter-spacing: 4px; animation: pulse 1s infinite alternate; text-align: center;
-        }
-        @keyframes pulse { from { opacity: 0.6; transform: scale(0.95); } to { opacity: 1; transform: scale(1.05); } }
 
         /* Image Slider */
         .slider-wrapper {
@@ -264,6 +263,7 @@
             border: 1px solid var(--glass-border); display: flex; flex-direction: column;
             box-shadow: 0 10px 20px rgba(0,0,0,0.05); will-change: transform; transition: transform 0.1s, background 0.5s ease, border-color 0.5s ease;
         }
+        .image-card:hover, .text-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(2, 132, 199, 0.2); border-color: var(--primary-blue); }
         .text-card { border-top: 4px solid var(--primary-blue); padding: 30px; }
         
         .img-container { overflow: hidden; pointer-events: none; }
@@ -280,7 +280,6 @@
         }
         .core-badge:hover { background: var(--primary-blue); color: #ffffff; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(2, 132, 199, 0.2); }
 
-        /* Footer */
         footer {
             background: var(--glass-bg); border-top: 1px solid var(--glass-border);
             padding: 60px 20px; text-align: center; margin-top: auto; backdrop-filter: blur(10px);
@@ -324,25 +323,32 @@
             header { padding: 40px 15px 20px; }
             .title-wrapper { flex-direction: column; align-items: center; gap: 15px; text-align: center; }
             .logo-container { margin-bottom: 10px; }
-            .institute-logo, .club-logo { height: 75px; width: 75px; }
-            h1 { font-size: 2.8rem; animation: slideUp 0.8s ease both; }
-            .subtitle { font-size: 1.1rem; white-space: normal; border-right: none; animation: subtitleFadeIn 0.1s 1.5s forwards; text-align: center; }
+            .static-logo, .intro-logo { height: 75px; width: 75px; }
+            h1 { font-size: 2.8rem; }
+            .subtitle { font-size: 1.1rem; white-space: normal; border-right: none; animation: fadeIn 0.5s 4s forwards; text-align: center; }
             .slider-wrapper { height: 220px; border-radius: 16px; margin-bottom: 30px; }
             .tabs { gap: 8px; padding: 10px; top: 10px; justify-content: center; }
             .tab-btn { padding: 8px 14px; font-size: 0.9rem; }
             .theme-btn { margin-left: 0; width: 100%; justify-content: center; margin-top: 10px; }
             .section { padding: 30px 20px; border-radius: 16px; scroll-margin-top: 200px; }
             h2 { font-size: 2rem; }
+            .intro-title { font-size: 2.2rem; letter-spacing: 5px; margin-top: 120px; }
         }
     </style>
 </head>
 <body>
-    
-    <!-- Initial Full Screen Splash Overlay -->
-    <div id="splash-screen">
-        <div class="dust-cloud" id="dust-cloud"></div>
-        <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Logo_IIT_Bhilai.png/250px-Logo_IIT_Bhilai.png?download" class="splash-logo inst-splash" alt="IIT Bhilai">
-        <img src="logo.jpg" class="splash-logo club-splash" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'40\' fill=\'none\' stroke=\'%230284c7\' stroke-width=\'8\'/></svg>'" alt="DSAI Logo">
+
+    <!-- Cinematic Splash Screen Intro -->
+    <div id="cinematic-intro">
+        <div class="impact-flash"></div>
+        <div class="impact-shockwave"></div>
+        
+        <div class="intro-logos-wrapper">
+            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Logo_IIT_Bhilai.png/250px-Logo_IIT_Bhilai.png?download" alt="IIT Bhilai Logo" class="intro-logo intro-inst" onerror="this.style.display='none'">
+            <img src="logo.jpg" alt="DSAI Logo" class="intro-logo intro-club" onerror="this.style.display='none'">
+        </div>
+        
+        <div class="intro-title">DSAI CLUB</div>
     </div>
 
     <!-- Tab Transition Overlay -->
@@ -369,7 +375,6 @@
 
     <div class="container">
         
-        <!-- Top Controls: Theme Switcher -->
         <div class="top-controls">
             <button id="theme-switch" class="theme-btn"><i class="fa-solid fa-microchip"></i> Train Model</button>
         </div>
@@ -417,7 +422,7 @@
                 </div>
                 <div class="text-card">
                     <h3>Meraz Fest Events</h3>
-                    <p>Hosting flagship technical challenges, AI showcases, and competitive tech events during IIT Bhilai's annual techno-cultural extravaganza.</p>
+                    <p>Hosting flagship technical challenges, AI showcases, and competitive tech events during IIT Bhilai's annual techno-cultural extravaganza[cite: 2].</p>
                 </div>
             </div>
         </div>
@@ -501,16 +506,14 @@
     </footer>
 
     <script>
-        // Full Screen Splash Screen Logic
+        // Cinematic Splash Screen Timing
         window.addEventListener('load', () => {
+            // Remove intro after 3.2 seconds
             setTimeout(() => {
-                document.getElementById('dust-cloud').classList.add('explode');
-                setTimeout(() => {
-                    const splash = document.getElementById('splash-screen');
-                    splash.style.opacity = '0';
-                    setTimeout(() => splash.style.visibility = 'hidden', 800);
-                }, 600);
-            }, 1500); 
+                const splash = document.getElementById('cinematic-intro');
+                splash.style.opacity = '0';
+                setTimeout(() => splash.style.display = 'none', 800);
+            }, 3200); 
         });
 
         // Theme Switcher Logic
@@ -551,7 +554,6 @@
         // Scroll Spying
         const sections = document.querySelectorAll('.section');
         const navLinks = document.querySelectorAll('.tab-btn:not(.theme-btn)');
-
         const observerOptions = { root: null, rootMargin: '-20% 0px -60% 0px', threshold: 0 };
 
         const observer = new IntersectionObserver((entries) => {
@@ -623,7 +625,6 @@
 
         function animate() {
             ctx.clearRect(0, 0, width, height);
-            
             particles.forEach(p => { p.update(); p.draw(); });
 
             for (let i = 0; i < particles.length; i++) {
